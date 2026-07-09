@@ -167,6 +167,10 @@ function Workspace({
   }, [detail.slug]);
 
   function pickLang(lang: string) {
+    if (lang === selected) return;
+    // Switching language starts fresh in that language: regenerate the problem
+    // statement as comments and drop anything previously written.
+    setValue(buildTemplate(detail, lang));
     setSelected(lang);
     try {
       localStorage.setItem(LANG_KEY, lang);
