@@ -17,17 +17,20 @@ import { SolutionView } from "@/components/detail/solution-view";
 import { DifficultyPill } from "@/components/difficulty-pill";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 import type { ProblemDetail, Solution } from "@/types";
 
 export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
   const { optimal, bruteForce } = detail.solutions;
   const solutionTabs = [
-    optimal && { value: "optimal", label: "Optimal", solution: optimal },
     bruteForce && {
       value: "brute",
       label: "Brute force",
       solution: bruteForce,
+    },
+    optimal && {
+      value: "optimal", 
+      label: "Optimal",
+      solution: optimal,
     },
   ].filter(Boolean) as { value: string; label: string; solution: Solution }[];
 

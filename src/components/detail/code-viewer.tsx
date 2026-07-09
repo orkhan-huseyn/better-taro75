@@ -3,7 +3,14 @@
 import * as React from "react";
 import dynamic from "next/dynamic";
 import { useTheme } from "next-themes";
-import { Check, Copy } from "lucide-react";
+import { Check, ChevronDown, Copy } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 
 // Monaco is client-only and loads its assets lazily (via the default CDN loader),
@@ -47,7 +54,8 @@ export function CodeViewer({
 }) {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
-  const [selected, setSelected] = React.useState(languages[0]);
+  const defaultLang = languages.includes("Python") ? "Python" : languages[0];
+  const [selected, setSelected] = React.useState(defaultLang);
   const [copied, setCopied] = React.useState(false);
 
   React.useEffect(() => setMounted(true), []);
@@ -81,24 +89,37 @@ export function CodeViewer({
 
   return (
     <div className="overflow-hidden rounded-xl border">
-      <div className="flex items-center gap-2 border-b bg-muted/40 px-1.5 py-1.5">
-        <div className="flex flex-1 items-center gap-0.5 overflow-x-auto scrollbar-thin">
-          {languages.map((lang) => (
-            <button
-              key={lang}
-              type="button"
-              onClick={() => pick(lang)}
-              className={cn(
-                "whitespace-nowrap rounded-md px-2.5 py-1 text-xs font-medium transition-colors",
-                lang === selected
-                  ? "bg-background text-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
+      <div className="flex items-center justify-between gap-2 border-b bg-muted/40 px-2 py-1.5">
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-7 gap-1.5 px-2 font-medium"
             >
-              {lang}
-            </button>
-          ))}
-        </div>
+              {selected}
+              <ChevronDown className="h-3.5 w-3.5 opacity-60" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
+            align="start"
+            className="max-h-72 overflow-y-auto scrollbar-thin"
+          >
+            {languages.map((lang) => (
+              <DropdownMenuItem
+                key={lang}
+                onSelect={() => pick(lang)}
+                className={cn(
+                  "justify-between gap-6",
+                  lang === selected && "font-semibold text-primary",
+                )}
+              >
+                {lang}
+                {lang === selected && <Check className="h-4 w-4" />}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
         <button
           type="button"
           onClick={copy}
