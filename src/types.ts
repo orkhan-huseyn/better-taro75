@@ -33,12 +33,6 @@ export interface CompanyRef {
   logo: string | null;
 }
 
-export interface Example {
-  input: string;
-  output: string;
-  explanation: string;
-}
-
 export interface EdgeCase {
   edgeCase: string;
   handling: string;
@@ -51,17 +45,13 @@ export interface BigO {
   spaceExplanation: string;
 }
 
-export interface CodeBlock {
-  code: string;
-  html: string;
-}
-
 export interface Solution {
   overview: string;
   steps: string[];
   bigO: BigO;
   languages: string[];
-  code: Record<string, CodeBlock>;
+  // language display name -> raw source code
+  code: Record<string, string>;
 }
 
 export interface ProblemDetail {
@@ -74,8 +64,6 @@ export interface ProblemDetail {
   externalUrl: string | null;
   numViews: number | null;
   questionBody: string;
-  plainEnglishBody: string;
-  examples: Example[];
   clarifyingQuestions: string[];
   edgeCases: EdgeCase[];
   companies: CompanyRef[];

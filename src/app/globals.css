@@ -84,23 +84,6 @@
   }
 }
 
-/* Shiki: swap themes with the .dark class */
-html.dark .shiki,
-html.dark .shiki span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-}
-
-.shiki {
-  margin: 0;
-  padding: 1rem 1.1rem;
-  border-radius: 0;
-  overflow-x: auto;
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  font-family: var(--font-mono), ui-monospace, monospace;
-}
-
 /* thin scrollbars */
 .scrollbar-thin::-webkit-scrollbar {
   height: 8px;

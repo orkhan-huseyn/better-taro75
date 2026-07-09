@@ -28,7 +28,9 @@ and reference solutions in 12 languages, and track your own progress locally.
 - Next.js (App Router) with `output: 'export'` — a fully static site.
 - Tailwind CSS + Radix UI primitives.
 - Zustand (+ `persist`) for local progress.
-- [Shiki](https://shiki.style/) for build-time syntax highlighting.
+- [Monaco editor](https://microsoft.github.io/monaco-editor/) (read-only) to render
+  the solution code. The JSON stores only raw source; highlighting happens at render
+  time.
 
 ## Getting started
 

@@ -1,9 +1,8 @@
 "use client";
 
 import * as React from "react";
-import { ChevronDown, Search, X } from "lucide-react";
+import { Check, ChevronDown, Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   Popover,
   PopoverContent,
@@ -102,7 +101,17 @@ export function MultiSelect({
                 onClick={() => toggle(opt.value)}
                 className="flex w-full items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-sm transition-colors hover:bg-accent"
               >
-                <Checkbox checked={checked} className="pointer-events-none" />
+                <span
+                  aria-hidden
+                  className={cn(
+                    "flex h-4 w-4 shrink-0 items-center justify-center rounded-[4px] border",
+                    checked
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-input",
+                  )}
+                >
+                  {checked && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
+                </span>
                 {opt.icon}
                 <span className="flex-1 truncate">{opt.label}</span>
                 {opt.count != null && (

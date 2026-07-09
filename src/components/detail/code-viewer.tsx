@@ -1,23 +1,58 @@
 "use client";
 
 import * as React from "react";
+import dynamic from "next/dynamic";
+import { useTheme } from "next-themes";
 import { Check, Copy } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { CodeBlock } from "@/types";
+
+// Monaco is client-only and loads its assets lazily (via the default CDN loader),
+// so keep it out of SSR entirely.
+const MonacoEditor = dynamic(
+  () => import("@monaco-editor/react").then((m) => m.default),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex h-40 items-center justify-center text-sm text-muted-foreground">
+        Loading editor…
+      </div>
+    ),
+  },
+);
+
+const MONACO_LANG: Record<string, string> = {
+  Python: "python",
+  JavaScript: "javascript",
+  TypeScript: "typescript",
+  Java: "java",
+  "C++": "cpp",
+  "C#": "csharp",
+  Go: "go",
+  Rust: "rust",
+  Kotlin: "kotlin",
+  Swift: "swift",
+  Ruby: "ruby",
+  PHP: "php",
+};
 
 const LANG_PREF_KEY = "better-taro75:lang";
+const LINE_HEIGHT = 20;
 
 export function CodeViewer({
   languages,
   code,
 }: {
   languages: string[];
-  code: Record<string, CodeBlock>;
+  code: Record<string, string>;
 }) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
   const [selected, setSelected] = React.useState(languages[0]);
   const [copied, setCopied] = React.useState(false);
 
-  // Apply a stored language preference on mount (client-only to avoid mismatch).
+  React.useEffect(() => setMounted(true), []);
+
+  // Restore the reader's preferred language on mount.
   React.useEffect(() => {
     const pref = localStorage.getItem(LANG_PREF_KEY);
     if (pref && languages.includes(pref)) setSelected(pref);
@@ -30,15 +65,19 @@ export function CodeViewer({
     } catch {}
   }
 
+  const source = code[selected] ?? code[languages[0]] ?? "";
+
   async function copy() {
     try {
-      await navigator.clipboard.writeText(code[selected]?.code ?? "");
+      await navigator.clipboard.writeText(source);
       setCopied(true);
       setTimeout(() => setCopied(false), 1500);
     } catch {}
   }
 
-  const block = code[selected] ?? code[languages[0]];
+  const isDark = mounted && resolvedTheme === "dark";
+  const lineCount = source.split("\n").length;
+  const height = Math.min(Math.max(lineCount * LINE_HEIGHT + 24, 140), 560);
 
   return (
     <div className="overflow-hidden rounded-xl border">
@@ -76,10 +115,44 @@ export function CodeViewer({
           )}
         </button>
       </div>
-      <div
-        className="max-h-[34rem] overflow-y-auto scrollbar-thin"
-        dangerouslySetInnerHTML={{ __html: block?.html ?? "" }}
-      />
+      <div className={isDark ? "bg-[#1e1e1e]" : "bg-white"}>
+        <MonacoEditor
+          height={height}
+          language={MONACO_LANG[selected] ?? "plaintext"}
+          value={source}
+          theme={isDark ? "vs-dark" : "vs"}
+          options={{
+            readOnly: true,
+            domReadOnly: true,
+            minimap: { enabled: false },
+            scrollBeyondLastLine: false,
+            lineNumbers: "on",
+            lineHeight: LINE_HEIGHT,
+            fontSize: 13,
+            fontFamily:
+              "var(--font-mono), ui-monospace, SFMono-Regular, Menlo, monospace",
+            fontLigatures: false,
+            renderLineHighlight: "none",
+            overviewRulerLanes: 0,
+            hideCursorInOverviewRuler: true,
+            overviewRulerBorder: false,
+            scrollbar: {
+              alwaysConsumeMouseWheel: false,
+              verticalScrollbarSize: 9,
+              horizontalScrollbarSize: 9,
+            },
+            padding: { top: 12, bottom: 12 },
+            folding: false,
+            glyphMargin: false,
+            contextmenu: false,
+            guides: { indentation: false },
+            wordWrap: "off",
+            automaticLayout: true,
+            tabSize: 4,
+            stickyScroll: { enabled: false },
+          }}
+        />
+      </div>
     </div>
   );
 }

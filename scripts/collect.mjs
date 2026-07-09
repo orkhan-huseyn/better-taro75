@@ -16,7 +16,6 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { codeToHtml } from "shiki";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -33,12 +32,6 @@ const LANG_ORDER = [
   "Python", "JavaScript", "TypeScript", "Java", "C++", "C#",
   "Go", "Rust", "Kotlin", "Swift", "Ruby", "PHP",
 ];
-const SHIKI_LANG = {
-  Python: "python", JavaScript: "javascript", TypeScript: "typescript",
-  Java: "java", "C++": "cpp", "C#": "csharp", Go: "go", Rust: "rust",
-  Kotlin: "kotlin", Swift: "swift", Ruby: "ruby", PHP: "php",
-};
-
 // Company slug -> nice display name (title-case handles the rest).
 const COMPANY_NAME_OVERRIDES = {
   "bloomberg-lp": "Bloomberg", tiktok: "TikTok", bytedance: "ByteDance",
@@ -102,22 +95,14 @@ async function mapPool(items, limit, fn) {
   return results;
 }
 
-async function highlight(code, lang) {
-  return codeToHtml(code, {
-    lang,
-    themes: { light: "github-light", dark: "github-dark" },
-    defaultColor: "light",
-  });
-}
-
-async function buildSolution(sol) {
+function buildSolution(sol) {
   if (!sol) return null;
   const raw = sol.codeSolutions || {};
   const langs = LANG_ORDER.filter((l) => typeof raw[l] === "string" && raw[l].trim());
   const code = {};
   for (const l of langs) {
-    const shikiLang = SHIKI_LANG[l] || "text";
-    code[l] = { code: raw[l], html: await highlight(raw[l], shikiLang) };
+    // Store raw source only; syntax highlighting happens at render time.
+    code[l] = raw[l];
   }
   const overview = sol.plainEnglishOverview || {};
   const steps = Array.isArray(overview.steps)
@@ -206,8 +191,8 @@ async function main() {
     const ii = extractNextData(html).props.pageProps.interviewInsight;
 
     const companies = (q.askingCompanies || []).map((c) => companyMeta(c.slug));
-    const bruteForce = await buildSolution(ii.bruteForceSolution);
-    const optimal = await buildSolution(ii.optimalSolution);
+    const bruteForce = buildSolution(ii.bruteForceSolution);
+    const optimal = buildSolution(ii.optimalSolution);
 
     const detail = {
       id: q.id,
@@ -219,8 +204,6 @@ async function main() {
       externalUrl: ii.externalUrl || null,
       numViews: ii.numViews ?? null,
       questionBody: ii.questionBody || "",
-      plainEnglishBody: ii.question?.plainEnglishBody || "",
-      examples: ii.question?.examples || [],
       clarifyingQuestions: ii.clarifyingQuestions || [],
       edgeCases: ii.edgeCases || [],
       companies,

@@ -7,7 +7,6 @@ import {
   CircleHelp,
   ExternalLink,
   Eye,
-  Lightbulb,
   ShieldAlert,
 } from "lucide-react";
 import { CompanyLogo } from "@/components/company-logo";
@@ -86,18 +85,6 @@ export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
             <Prose html={detail.questionBody} />
           </Section>
 
-          {detail.plainEnglishBody && (
-            <div className="rounded-2xl border border-primary/20 bg-primary/[0.04] p-4 sm:p-5">
-              <h3 className="mb-2 flex items-center gap-1.5 text-sm font-semibold text-primary">
-                <Lightbulb className="h-4 w-4" /> In plain English
-              </h3>
-              <Prose
-                html={detail.plainEnglishBody}
-                className="text-[0.92rem]"
-              />
-            </div>
-          )}
-
           {detail.clarifyingQuestions.length > 0 && (
             <Section
               title="Clarifying questions"
@@ -161,7 +148,7 @@ export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
         </div>
 
         {/* Sidebar */}
-        <aside className="lg:row-start-1 lg:row-end-2">
+        <aside>
           <div className="space-y-4 lg:sticky lg:top-20">
             <ProgressPanel slug={detail.slug} />
             {detail.companies.length > 0 && (
