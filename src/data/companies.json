@@ -1,0 +1,806 @@
+[
+  {
+    "slug": "amazon",
+    "name": "Amazon",
+    "logo": "/logos/amazon.jpg",
+    "count": 75
+  },
+  {
+    "slug": "bloomberg-lp",
+    "name": "Bloomberg",
+    "logo": "/logos/bloomberg-lp.jpg",
+    "count": 75
+  },
+  {
+    "slug": "google",
+    "name": "Google",
+    "logo": "/logos/google.jpg",
+    "count": 75
+  },
+  {
+    "slug": "meta",
+    "name": "Meta",
+    "logo": "/logos/meta.jpg",
+    "count": 75
+  },
+  {
+    "slug": "uber",
+    "name": "Uber",
+    "logo": "/logos/uber.jpg",
+    "count": 75
+  },
+  {
+    "slug": "apple",
+    "name": "Apple",
+    "logo": "/logos/apple.jpg",
+    "count": 74
+  },
+  {
+    "slug": "microsoft",
+    "name": "Microsoft",
+    "logo": "/logos/microsoft.jpg",
+    "count": 73
+  },
+  {
+    "slug": "adobe",
+    "name": "Adobe",
+    "logo": "/logos/adobe.jpg",
+    "count": 72
+  },
+  {
+    "slug": "tiktok",
+    "name": "TikTok",
+    "logo": "/logos/tiktok.png",
+    "count": 67
+  },
+  {
+    "slug": "walmart",
+    "name": "Walmart",
+    "logo": "/logos/walmart.jpg",
+    "count": 62
+  },
+  {
+    "slug": "yahoo",
+    "name": "Yahoo",
+    "logo": "/logos/yahoo.jpg",
+    "count": 62
+  },
+  {
+    "slug": "goldman-sachs",
+    "name": "Goldman Sachs",
+    "logo": "/logos/goldman-sachs.jpg",
+    "count": 61
+  },
+  {
+    "slug": "salesforce",
+    "name": "Salesforce",
+    "logo": "/logos/salesforce.png",
+    "count": 57
+  },
+  {
+    "slug": "oracle",
+    "name": "Oracle",
+    "logo": "/logos/oracle.jpg",
+    "count": 51
+  },
+  {
+    "slug": "nvidia",
+    "name": "NVIDIA",
+    "logo": "/logos/nvidia.jpg",
+    "count": 46
+  },
+  {
+    "slug": "ibm",
+    "name": "IBM",
+    "logo": "/logos/ibm.jpg",
+    "count": 44
+  },
+  {
+    "slug": "paypal",
+    "name": "PayPal",
+    "logo": "/logos/paypal.jpg",
+    "count": 42
+  },
+  {
+    "slug": "servicenow",
+    "name": "ServiceNow",
+    "logo": "/logos/servicenow.jpg",
+    "count": 39
+  },
+  {
+    "slug": "flipkart",
+    "name": "Flipkart",
+    "logo": "/logos/flipkart.jpg",
+    "count": 38
+  },
+  {
+    "slug": "cisco",
+    "name": "Cisco",
+    "logo": "/logos/cisco.jpg",
+    "count": 35
+  },
+  {
+    "slug": "ebay",
+    "name": "eBay",
+    "logo": "/logos/ebay.jpg",
+    "count": 34
+  },
+  {
+    "slug": "visa",
+    "name": "Visa",
+    "logo": "/logos/visa.png",
+    "count": 33
+  },
+  {
+    "slug": "intuit",
+    "name": "Intuit",
+    "logo": "/logos/intuit.jpg",
+    "count": 31
+  },
+  {
+    "slug": "citadel",
+    "name": "Citadel",
+    "logo": "/logos/citadel.jpg",
+    "count": 30
+  },
+  {
+    "slug": "linkedin",
+    "name": "LinkedIn",
+    "logo": "/logos/linkedin.png",
+    "count": 29
+  },
+  {
+    "slug": "samsung",
+    "name": "Samsung",
+    "logo": "/logos/samsung.jpg",
+    "count": 29
+  },
+  {
+    "slug": "bytedance",
+    "name": "ByteDance",
+    "logo": "/logos/bytedance.jpg",
+    "count": 27
+  },
+  {
+    "slug": "de-shaw",
+    "name": "De Shaw",
+    "logo": "/logos/de-shaw.jpg",
+    "count": 26
+  },
+  {
+    "slug": "snap",
+    "name": "Snap",
+    "logo": "/logos/snap.png",
+    "count": 26
+  },
+  {
+    "slug": "nutanix",
+    "name": "Nutanix",
+    "logo": "/logos/nutanix.jpg",
+    "count": 24
+  },
+  {
+    "slug": "sap",
+    "name": "SAP",
+    "logo": "/logos/sap.jpg",
+    "count": 24
+  },
+  {
+    "slug": "tesla",
+    "name": "Tesla",
+    "logo": "/logos/tesla.jpg",
+    "count": 24
+  },
+  {
+    "slug": "phonepe",
+    "name": "Phonepe",
+    "logo": "/logos/phonepe.jpg",
+    "count": 22
+  },
+  {
+    "slug": "snowflake",
+    "name": "Snowflake",
+    "logo": "/logos/snowflake.jpg",
+    "count": 22
+  },
+  {
+    "slug": "atlassian",
+    "name": "Atlassian",
+    "logo": "/logos/atlassian.png",
+    "count": 21
+  },
+  {
+    "slug": "morgan-stanley",
+    "name": "Morgan Stanley",
+    "logo": "/logos/morgan-stanley.jpg",
+    "count": 21
+  },
+  {
+    "slug": "doordash",
+    "name": "DoorDash",
+    "logo": "/logos/doordash.png",
+    "count": 20
+  },
+  {
+    "slug": "expedia-group",
+    "name": "Expedia Group",
+    "logo": "/logos/expedia-group.jpg",
+    "count": 20
+  },
+  {
+    "slug": "netflix",
+    "name": "Netflix",
+    "logo": "/logos/netflix.jpg",
+    "count": 20
+  },
+  {
+    "slug": "qualcomm",
+    "name": "Qualcomm",
+    "logo": "/logos/qualcomm.jpg",
+    "count": 20
+  },
+  {
+    "slug": "capgemini",
+    "name": "Capgemini",
+    "logo": "/logos/capgemini.jpg",
+    "count": 19
+  },
+  {
+    "slug": "intel",
+    "name": "Intel",
+    "logo": "/logos/intel.jpg",
+    "count": 19
+  },
+  {
+    "slug": "agoda",
+    "name": "Agoda",
+    "logo": "/logos/agoda.jpg",
+    "count": 18
+  },
+  {
+    "slug": "autodesk",
+    "name": "Autodesk",
+    "logo": "/logos/autodesk.jpg",
+    "count": 17
+  },
+  {
+    "slug": "capital-one",
+    "name": "Capital One",
+    "logo": "/logos/capital-one.jpg",
+    "count": 17
+  },
+  {
+    "slug": "palo-alto-networks",
+    "name": "Palo Alto Networks",
+    "logo": "/logos/palo-alto-networks.jpg",
+    "count": 17
+  },
+  {
+    "slug": "anduril",
+    "name": "Anduril",
+    "logo": "/logos/anduril.jpg",
+    "count": 16
+  },
+  {
+    "slug": "swiggy",
+    "name": "Swiggy",
+    "logo": "/logos/swiggy.jpg",
+    "count": 16
+  },
+  {
+    "slug": "coupang",
+    "name": "Coupang",
+    "logo": "/logos/coupang.jpg",
+    "count": 15
+  },
+  {
+    "slug": "disney",
+    "name": "Disney",
+    "logo": "/logos/disney.jpg",
+    "count": 15
+  },
+  {
+    "slug": "docusign",
+    "name": "DocuSign",
+    "logo": "/logos/docusign.jpg",
+    "count": 15
+  },
+  {
+    "slug": "roblox",
+    "name": "Roblox",
+    "logo": "/logos/roblox.jpg",
+    "count": 15
+  },
+  {
+    "slug": "arista-networks",
+    "name": "Arista Networks",
+    "logo": "/logos/arista-networks.jpg",
+    "count": 13
+  },
+  {
+    "slug": "yelp",
+    "name": "Yelp",
+    "logo": "/logos/yelp.jpg",
+    "count": 12
+  },
+  {
+    "slug": "airbnb",
+    "name": "Airbnb",
+    "logo": "/logos/airbnb.jpg",
+    "count": 11
+  },
+  {
+    "slug": "amd",
+    "name": "AMD",
+    "logo": "/logos/amd.jpg",
+    "count": 11
+  },
+  {
+    "slug": "splunk",
+    "name": "Splunk",
+    "logo": "/logos/splunk.jpg",
+    "count": 10
+  },
+  {
+    "slug": "american-express",
+    "name": "American Express",
+    "logo": "/logos/american-express.jpg",
+    "count": 9
+  },
+  {
+    "slug": "crowdstrike",
+    "name": "Crowdstrike",
+    "logo": "/logos/crowdstrike.jpg",
+    "count": 9
+  },
+  {
+    "slug": "grab",
+    "name": "Grab",
+    "logo": "/logos/grab.jpg",
+    "count": 9
+  },
+  {
+    "slug": "netapp",
+    "name": "NetApp",
+    "logo": "/logos/netapp.jpg",
+    "count": 9
+  },
+  {
+    "slug": "pinterest",
+    "name": "Pinterest",
+    "logo": "/logos/pinterest.png",
+    "count": 9
+  },
+  {
+    "slug": "ripple",
+    "name": "Ripple",
+    "logo": "/logos/ripple.jpg",
+    "count": 9
+  },
+  {
+    "slug": "zscaler",
+    "name": "Zscaler",
+    "logo": "/logos/zscaler.jpg",
+    "count": 9
+  },
+  {
+    "slug": "blackrock",
+    "name": "Blackrock",
+    "logo": "/logos/blackrock.jpg",
+    "count": 8
+  },
+  {
+    "slug": "grammarly",
+    "name": "Grammarly",
+    "logo": "/logos/grammarly.jpg",
+    "count": 8
+  },
+  {
+    "slug": "lyft",
+    "name": "Lyft",
+    "logo": "/logos/lyft.jpg",
+    "count": 8
+  },
+  {
+    "slug": "okta",
+    "name": "Okta",
+    "logo": "/logos/okta.jpg",
+    "count": 8
+  },
+  {
+    "slug": "palantir",
+    "name": "Palantir",
+    "logo": "/logos/palantir.jpg",
+    "count": 8
+  },
+  {
+    "slug": "sofi",
+    "name": "SoFi",
+    "logo": "/logos/sofi.jpg",
+    "count": 8
+  },
+  {
+    "slug": "zomato",
+    "name": "Zomato",
+    "logo": "/logos/zomato.jpg",
+    "count": 8
+  },
+  {
+    "slug": "dropbox",
+    "name": "Dropbox",
+    "logo": "/logos/dropbox.jpg",
+    "count": 7
+  },
+  {
+    "slug": "hubspot",
+    "name": "HubSpot",
+    "logo": "/logos/hubspot.jpg",
+    "count": 7
+  },
+  {
+    "slug": "nike",
+    "name": "Nike",
+    "logo": "/logos/nike.jpg",
+    "count": 7
+  },
+  {
+    "slug": "bookingcom",
+    "name": "Bookingcom",
+    "logo": "/logos/bookingcom.jpg",
+    "count": 6
+  },
+  {
+    "slug": "dell",
+    "name": "Dell",
+    "logo": "/logos/dell.jpg",
+    "count": 6
+  },
+  {
+    "slug": "karat",
+    "name": "Karat",
+    "logo": "/logos/karat.jpg",
+    "count": 6
+  },
+  {
+    "slug": "roku",
+    "name": "Roku",
+    "logo": "/logos/roku.jpg",
+    "count": 6
+  },
+  {
+    "slug": "mongodb",
+    "name": "Mongodb",
+    "logo": "/logos/mongodb.jpg",
+    "count": 5
+  },
+  {
+    "slug": "rippling",
+    "name": "Rippling",
+    "logo": "/logos/rippling.jpg",
+    "count": 5
+  },
+  {
+    "slug": "rivian",
+    "name": "Rivian",
+    "logo": "/logos/rivian.jpg",
+    "count": 5
+  },
+  {
+    "slug": "spotify",
+    "name": "Spotify",
+    "logo": "/logos/spotify.jpg",
+    "count": 5
+  },
+  {
+    "slug": "wayfair",
+    "name": "Wayfair",
+    "logo": "/logos/wayfair.jpg",
+    "count": 5
+  },
+  {
+    "slug": "affirm",
+    "name": "Affirm",
+    "logo": "/logos/affirm.jpg",
+    "count": 4
+  },
+  {
+    "slug": "databricks",
+    "name": "Databricks",
+    "logo": "/logos/databricks.jpg",
+    "count": 4
+  },
+  {
+    "slug": "target",
+    "name": "Target",
+    "logo": "/logos/target.png",
+    "count": 4
+  },
+  {
+    "slug": "veeva-systems",
+    "name": "Veeva Systems",
+    "logo": "/logos/veeva-systems.jpg",
+    "count": 4
+  },
+  {
+    "slug": "verkada",
+    "name": "Verkada",
+    "logo": "/logos/verkada.jpg",
+    "count": 4
+  },
+  {
+    "slug": "waymo",
+    "name": "Waymo",
+    "logo": "/logos/waymo.jpg",
+    "count": 4
+  },
+  {
+    "slug": "zillow",
+    "name": "Zillow",
+    "logo": "/logos/zillow.jpg",
+    "count": 4
+  },
+  {
+    "slug": "cloudflare",
+    "name": "Cloudflare",
+    "logo": "/logos/cloudflare.jpg",
+    "count": 3
+  },
+  {
+    "slug": "datadog",
+    "name": "Datadog",
+    "logo": "/logos/datadog.jpg",
+    "count": 3
+  },
+  {
+    "slug": "flexport",
+    "name": "Flexport",
+    "logo": "/logos/flexport.jpg",
+    "count": 3
+  },
+  {
+    "slug": "godaddy",
+    "name": "Godaddy",
+    "logo": "/logos/godaddy.jpg",
+    "count": 3
+  },
+  {
+    "slug": "instacart",
+    "name": "Instacart",
+    "logo": "/logos/instacart.jpg",
+    "count": 3
+  },
+  {
+    "slug": "nuro",
+    "name": "Nuro",
+    "logo": "/logos/nuro.jpg",
+    "count": 3
+  },
+  {
+    "slug": "reddit",
+    "name": "Reddit",
+    "logo": "/logos/reddit.png",
+    "count": 3
+  },
+  {
+    "slug": "rubrik",
+    "name": "Rubrik",
+    "logo": "/logos/rubrik.jpg",
+    "count": 3
+  },
+  {
+    "slug": "toast",
+    "name": "Toast",
+    "logo": "/logos/toast.jpg",
+    "count": 3
+  },
+  {
+    "slug": "twilio",
+    "name": "Twilio",
+    "logo": "/logos/twilio.png",
+    "count": 3
+  },
+  {
+    "slug": "twitch",
+    "name": "Twitch",
+    "logo": "/logos/twitch.jpg",
+    "count": 3
+  },
+  {
+    "slug": "uipath",
+    "name": "Uipath",
+    "logo": "/logos/uipath.jpg",
+    "count": 3
+  },
+  {
+    "slug": "verily",
+    "name": "Verily",
+    "logo": "/logos/verily.jpg",
+    "count": 3
+  },
+  {
+    "slug": "workday",
+    "name": "Workday",
+    "logo": "/logos/workday.jpg",
+    "count": 3
+  },
+  {
+    "slug": "bolt",
+    "name": "Bolt",
+    "logo": "/logos/bolt.jpg",
+    "count": 2
+  },
+  {
+    "slug": "box",
+    "name": "Box",
+    "logo": "/logos/box.jpg",
+    "count": 2
+  },
+  {
+    "slug": "faire",
+    "name": "Faire",
+    "logo": "/logos/faire.jpg",
+    "count": 2
+  },
+  {
+    "slug": "jane-street",
+    "name": "Jane Street",
+    "logo": "/logos/jane-street.jpg",
+    "count": 2
+  },
+  {
+    "slug": "miro",
+    "name": "Miro",
+    "logo": "/logos/miro.jpg",
+    "count": 2
+  },
+  {
+    "slug": "optiver",
+    "name": "Optiver",
+    "logo": "/logos/optiver.jpg",
+    "count": 2
+  },
+  {
+    "slug": "patreon",
+    "name": "Patreon",
+    "logo": "/logos/patreon.jpg",
+    "count": 2
+  },
+  {
+    "slug": "paycom",
+    "name": "Paycom",
+    "logo": "/logos/paycom.jpg",
+    "count": 2
+  },
+  {
+    "slug": "quora",
+    "name": "Quora",
+    "logo": "/logos/quora.jpg",
+    "count": 2
+  },
+  {
+    "slug": "revolut",
+    "name": "Revolut",
+    "logo": "/logos/revolut.jpg",
+    "count": 2
+  },
+  {
+    "slug": "robinhood",
+    "name": "Robinhood",
+    "logo": "/logos/robinhood.jpg",
+    "count": 2
+  },
+  {
+    "slug": "two-sigma",
+    "name": "Two Sigma",
+    "logo": "/logos/two-sigma.jpg",
+    "count": 2
+  },
+  {
+    "slug": "akuna-capital",
+    "name": "Akuna Capital",
+    "logo": "/logos/akuna-capital.jpg",
+    "count": 1
+  },
+  {
+    "slug": "applovin",
+    "name": "Applovin",
+    "logo": "/logos/applovin.jpg",
+    "count": 1
+  },
+  {
+    "slug": "asana",
+    "name": "Asana",
+    "logo": "/logos/asana.jpg",
+    "count": 1
+  },
+  {
+    "slug": "block",
+    "name": "Block",
+    "logo": "/logos/block.jpg",
+    "count": 1
+  },
+  {
+    "slug": "canva",
+    "name": "Canva",
+    "logo": "/logos/canva.jpg",
+    "count": 1
+  },
+  {
+    "slug": "chime",
+    "name": "Chime",
+    "logo": "/logos/chime.jpg",
+    "count": 1
+  },
+  {
+    "slug": "citrix",
+    "name": "Citrix",
+    "logo": "/logos/citrix.jpg",
+    "count": 1
+  },
+  {
+    "slug": "epic-games",
+    "name": "Epic Games",
+    "logo": "/logos/epic-games.jpg",
+    "count": 1
+  },
+  {
+    "slug": "groupon",
+    "name": "Groupon",
+    "logo": "/logos/groupon.jpg",
+    "count": 1
+  },
+  {
+    "slug": "guidewire",
+    "name": "Guidewire",
+    "logo": "/logos/guidewire.jpg",
+    "count": 1
+  },
+  {
+    "slug": "indeed",
+    "name": "Indeed",
+    "logo": "/logos/indeed.jpg",
+    "count": 1
+  },
+  {
+    "slug": "openai",
+    "name": "Openai",
+    "logo": "/logos/openai.jpg",
+    "count": 1
+  },
+  {
+    "slug": "plaid",
+    "name": "Plaid",
+    "logo": "/logos/plaid.jpg",
+    "count": 1
+  },
+  {
+    "slug": "pure-storage",
+    "name": "Pure Storage",
+    "logo": "/logos/pure-storage.jpg",
+    "count": 1
+  },
+  {
+    "slug": "riot-games",
+    "name": "Riot Games",
+    "logo": "/logos/riot-games.jpg",
+    "count": 1
+  },
+  {
+    "slug": "samsara",
+    "name": "Samsara",
+    "logo": "/logos/samsara.png",
+    "count": 1
+  },
+  {
+    "slug": "shopify",
+    "name": "Shopify",
+    "logo": "/logos/shopify.jpg",
+    "count": 1
+  },
+  {
+    "slug": "spacex",
+    "name": "Spacex",
+    "logo": "/logos/spacex.jpg",
+    "count": 1
+  }
+]

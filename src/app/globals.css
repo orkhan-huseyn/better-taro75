@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 210 40% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 243 75% 59%;
+
+    --easy: 142 71% 45%;
+    --medium: 38 92% 50%;
+    --hard: 0 72% 51%;
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 44% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 44% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 243 75% 68%;
+    --primary-foreground: 222 47% 9%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 16%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 19%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 45%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 22%;
+    --ring: 243 75% 68%;
+
+    --easy: 142 69% 50%;
+    --medium: 38 92% 55%;
+    --hard: 0 72% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Shiki: swap themes with the .dark class */
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.shiki {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 0;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  font-family: var(--font-mono), ui-monospace, monospace;
+}
+
+/* thin scrollbars */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+  border-radius: 9999px;
+}
+
+/* Prose styling for the HTML problem statements coming from Taro. */
+.taro-prose {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: hsl(var(--foreground));
+}
+.taro-prose p {
+  margin: 0.75rem 0;
+}
+.taro-prose p:first-child {
+  margin-top: 0;
+}
+.taro-prose strong {
+  font-weight: 600;
+}
+.taro-prose em {
+  font-style: italic;
+}
+.taro-prose code {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.85em;
+  background: hsl(var(--muted));
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.35rem;
+}
+.taro-prose pre {
+  background: hsl(var(--muted));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  margin: 0.9rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+}
+.taro-prose pre code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+}
+.taro-prose ul,
+.taro-prose ol {
+  margin: 0.75rem 0;
+  padding-left: 1.4rem;
+}
+.taro-prose ul {
+  list-style: disc;
+}
+.taro-prose ol {
+  list-style: decimal;
+}
+.taro-prose li {
+  margin: 0.3rem 0;
+}
+.taro-prose a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.taro-prose .example {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
