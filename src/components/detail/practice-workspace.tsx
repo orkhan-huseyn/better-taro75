@@ -4,7 +4,16 @@ import * as React from "react";
 import dynamic from "next/dynamic";
 import type { Monaco, OnMount } from "@monaco-editor/react";
 import { useTheme } from "next-themes";
-import { Check, ChevronDown, Copy, RotateCcw, SquareCode, X } from "lucide-react";
+import {
+  Check,
+  ChevronDown,
+  Copy,
+  RotateCcw,
+  Square,
+  SquareCode,
+  Timer,
+  X,
+} from "lucide-react";
 import { DifficultyPill } from "@/components/difficulty-pill";
 import { Button } from "@/components/ui/button";
 import {
@@ -34,6 +43,8 @@ const MonacoEditor = dynamic(
 
 const LANG_KEY = "better-taro75:scratch-lang";
 const contentKey = (slug: string) => `better-taro75:scratch:${slug}`;
+
+const DEFAULT_SECONDS = 45 * 60;
 
 // Turn off every source of IntelliSense so the pad behaves like a plain
 // interview whiteboard — syntax highlighting, but no autocomplete.
@@ -211,8 +222,10 @@ function Workspace({
           <span className="truncate text-sm font-semibold">{detail.title}</span>
         </div>
 
-        {/* Right cluster. A timer and tab switch (whiteboard) can slot in here. */}
+        {/* Right cluster. A tab switch (whiteboard) can slot in here later. */}
         <div className="ml-auto flex shrink-0 items-center gap-0.5">
+          <PracticeTimer />
+          <span className="mx-1 h-5 w-px bg-border" />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
@@ -281,6 +294,66 @@ function Workspace({
         )}
       </div>
     </div>
+  );
+}
+
+// A single-button countdown: click to start, click again to stop (which resets
+// to the default — there is no pause). Isolated in its own component so its
+// per-second ticks don't re-render the editor.
+function PracticeTimer() {
+  const [remaining, setRemaining] = React.useState(DEFAULT_SECONDS);
+  const [running, setRunning] = React.useState(false);
+  const deadlineRef = React.useRef(0);
+
+  React.useEffect(() => {
+    if (!running) return;
+    const tick = () => {
+      const secs = Math.max(0, Math.round((deadlineRef.current - Date.now()) / 1000));
+      setRemaining(secs);
+      if (secs === 0) setRunning(false);
+    };
+    tick();
+    const id = setInterval(tick, 250);
+    return () => clearInterval(id);
+  }, [running]);
+
+  function toggle() {
+    if (running) {
+      setRunning(false);
+      setRemaining(DEFAULT_SECONDS);
+      return;
+    }
+    const start = remaining > 0 ? remaining : DEFAULT_SECONDS;
+    deadlineRef.current = Date.now() + start * 1000;
+    setRemaining(start);
+    setRunning(true);
+  }
+
+  const done = !running && remaining === 0;
+  const mm = String(Math.floor(remaining / 60)).padStart(2, "0");
+  const ss = String(remaining % 60).padStart(2, "0");
+
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      title={running ? "Stop timer" : "Start timer"}
+      className={cn(
+        "flex items-center gap-1.5 rounded-md px-2 py-1.5 text-xs font-semibold tabular-nums transition-colors",
+        running
+          ? "bg-primary/10 text-primary hover:bg-primary/15"
+          : done
+            ? "text-hard"
+            : "text-muted-foreground hover:text-foreground",
+      )}
+    >
+      {running ? (
+        <Square className="h-3.5 w-3.5 fill-current" />
+      ) : (
+        <Timer className="h-3.5 w-3.5" />
+      )}
+      {mm}:{ss}
+    </button>
   );
 }
 
