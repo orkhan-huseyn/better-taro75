@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import {
   ArrowLeft,
+  ChevronDown,
   CircleHelp,
   ExternalLink,
   Eye,
@@ -80,15 +81,16 @@ export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_20rem]">
         {/* Main column */}
-        <div className="min-w-0 space-y-6">
+        <div className="min-w-0 space-y-4">
           <Section title="Problem">
             <Prose html={detail.questionBody} />
           </Section>
 
           {detail.clarifyingQuestions.length > 0 && (
-            <Section
+            <CollapsibleSection
               title="Clarifying questions"
               icon={<CircleHelp className="h-4 w-4 text-primary" />}
+              count={detail.clarifyingQuestions.length}
             >
               <ul className="space-y-2.5">
                 {detail.clarifyingQuestions.map((q, i) => (
@@ -100,13 +102,14 @@ export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
                   </li>
                 ))}
               </ul>
-            </Section>
+            </CollapsibleSection>
           )}
 
           {detail.edgeCases.length > 0 && (
-            <Section
+            <CollapsibleSection
               title="Edge cases"
               icon={<ShieldAlert className="h-4 w-4 text-primary" />}
+              count={detail.edgeCases.length}
             >
               <ul className="space-y-3">
                 {detail.edgeCases.map((e, i) => (
@@ -120,7 +123,7 @@ export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
                   </li>
                 ))}
               </ul>
-            </Section>
+            </CollapsibleSection>
           )}
 
           {solutionTabs.length > 0 && (
@@ -197,6 +200,35 @@ function Section({
       </h2>
       {children}
     </section>
+  );
+}
+
+// Native <details> panel — collapsed by default, no JS/hydration cost.
+function CollapsibleSection({
+  title,
+  icon,
+  count,
+  children,
+}: {
+  title: string;
+  icon?: React.ReactNode;
+  count?: number;
+  children: React.ReactNode;
+}) {
+  return (
+    <details className="rounded-2xl border bg-card shadow-sm">
+      <summary className="flex cursor-pointer select-none items-center gap-1.5 p-4 text-base font-semibold sm:p-5">
+        {icon}
+        <span>{title}</span>
+        {count != null && (
+          <span className="rounded-full bg-secondary px-2 py-0.5 text-xs font-medium text-muted-foreground">
+            {count}
+          </span>
+        )}
+        <ChevronDown className="details-chevron ml-auto h-4 w-4 text-muted-foreground transition-transform" />
+      </summary>
+      <div className="px-4 pb-4 sm:px-5 sm:pb-5">{children}</div>
+    </details>
   );
 }
 
