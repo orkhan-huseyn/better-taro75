@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { MONACO_LANG } from "@/lib/monaco";
 import { cn } from "@/lib/utils";
 
 // Monaco is client-only and loads its assets lazily (via the default CDN loader),
@@ -26,21 +27,6 @@ const MonacoEditor = dynamic(
     ),
   },
 );
-
-const MONACO_LANG: Record<string, string> = {
-  Python: "python",
-  JavaScript: "javascript",
-  TypeScript: "typescript",
-  Java: "java",
-  "C++": "cpp",
-  "C#": "csharp",
-  Go: "go",
-  Rust: "rust",
-  Kotlin: "kotlin",
-  Swift: "swift",
-  Ruby: "ruby",
-  PHP: "php",
-};
 
 const LANG_PREF_KEY = "better-taro75:lang";
 const LINE_HEIGHT = 20;

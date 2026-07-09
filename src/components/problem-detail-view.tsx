@@ -11,6 +11,7 @@ import {
   ShieldAlert,
 } from "lucide-react";
 import { CompanyLogo } from "@/components/company-logo";
+import { PracticeWorkspace } from "@/components/detail/practice-workspace";
 import { Prose } from "@/components/detail/prose";
 import { ProgressPanel } from "@/components/detail/progress-panel";
 import { SolutionView } from "@/components/detail/solution-view";
@@ -68,17 +69,20 @@ export function ProblemDetailView({ detail }: { detail: ProblemDetail }) {
               {detail.numViews.toLocaleString()} views
             </span>
           )}
-          {detail.externalUrl && (
-            <Button variant="outline" size="sm" asChild className="ml-auto">
-              <a
-                href={detail.externalUrl}
-                target="_blank"
-                rel="noreferrer noopener"
-              >
-                <ExternalLink className="h-3.5 w-3.5" /> LeetCode
-              </a>
-            </Button>
-          )}
+          <div className="ml-auto flex items-center gap-2">
+            <PracticeWorkspace detail={detail} />
+            {detail.externalUrl && (
+              <Button variant="outline" size="sm" asChild>
+                <a
+                  href={detail.externalUrl}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <ExternalLink className="h-3.5 w-3.5" /> LeetCode
+                </a>
+              </Button>
+            )}
+          </div>
         </div>
       </header>
 
