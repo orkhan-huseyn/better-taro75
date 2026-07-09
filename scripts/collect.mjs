@@ -16,6 +16,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { needsReflow, reflow, stripCrlfArtifacts } from "./reflow.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
@@ -102,7 +103,10 @@ function buildSolution(sol) {
   const code = {};
   for (const l of langs) {
     // Store raw source only; syntax highlighting happens at render time.
-    code[l] = raw[l];
+    // Some blocks arrive corrupted (newlines stripped, or \r\n artifacts) — fix.
+    let out = stripCrlfArtifacts(raw[l]);
+    if (needsReflow(out)) out = reflow(out);
+    code[l] = out;
   }
   const overview = sol.plainEnglishOverview || {};
   const steps = Array.isArray(overview.steps)

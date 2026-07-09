@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "collect": "node scripts/collect.mjs",
+    "reformat": "node scripts/reformat.mjs",
     "serve": "node scripts/serve.mjs"
   },
   "dependencies": {
