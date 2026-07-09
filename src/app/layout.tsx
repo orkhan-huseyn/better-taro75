@@ -3,6 +3,7 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { SiteHeader } from "@/components/site-header";
+import { withBasePath } from "@/lib/base-path";
 import "./globals.css";
 
 const inter = Inter({
@@ -54,19 +55,54 @@ export default function RootLayout({
 
 function SiteFooter() {
   return (
-    <footer className="border-t py-6 text-center text-xs text-muted-foreground">
-      <div className="container">
-        A better UI for{" "}
+    <footer className="border-t py-8">
+      <div className="container flex flex-col items-center gap-3 text-center">
         <a
-          href="https://www.jointaro.com/interviews/taro-75/"
+          href="https://www.jointaro.com/"
           target="_blank"
           rel="noreferrer noopener"
-          className="font-medium underline underline-offset-2 hover:text-foreground"
+          className="inline-flex items-center gap-2 opacity-80 transition-opacity hover:opacity-100"
+          aria-label="Taro"
         >
-          Taro 75
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={withBasePath("/taro-logo.png")}
+            alt=""
+            width={20}
+            height={20}
+            className="h-5 w-5 rounded"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={withBasePath("/taro-wordmark.png")}
+            alt="Taro"
+            width={64}
+            height={16}
+            className="h-4 w-auto"
+          />
         </a>
-        . Problem data &amp; explanations sourced from Taro. Progress is stored
-        only in your browser.
+        <p className="max-w-xl text-xs leading-relaxed text-muted-foreground">
+          All problems, rankings, and explanations belong to{" "}
+          <a
+            href="https://www.jointaro.com/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-medium underline underline-offset-2 hover:text-foreground"
+          >
+            Taro
+          </a>
+          . This is an unofficial, better-UI reader of the{" "}
+          <a
+            href="https://www.jointaro.com/interviews/taro-75/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="font-medium underline underline-offset-2 hover:text-foreground"
+          >
+            Taro 75
+          </a>{" "}
+          list — all credit goes to Taro. Your progress is stored only in this
+          browser.
+        </p>
       </div>
     </footer>
   );

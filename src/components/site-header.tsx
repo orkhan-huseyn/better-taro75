@@ -5,6 +5,7 @@ import { Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { ProgressMenu } from "@/components/progress-menu";
+import { withBasePath } from "@/lib/base-path";
 import { useHydratedProgress } from "@/lib/progress-store";
 
 export function SiteHeader() {
@@ -14,9 +15,14 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 items-center gap-3">
         <Link href="/" className="group flex items-center gap-2.5">
-          <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary text-sm font-bold text-primary-foreground shadow-sm">
-            75
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={withBasePath("/taro-logo.png")}
+            alt="Taro"
+            width={28}
+            height={28}
+            className="h-7 w-7 rounded-lg shadow-sm"
+          />
           <span className="text-[15px] font-semibold tracking-tight">
             Better Taro 75
           </span>
