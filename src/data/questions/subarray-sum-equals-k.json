@@ -1,1 +1,314 @@
-{"id":"DiKJJC5zP4CJGS8acWEI","slug":"subarray-sum-equals-k","rank":14,"title":"Subarray Sum Equals K","difficulty":"medium","topics":["Arrays","Sliding Windows","Dynamic Programming"],"externalUrl":"https://www.leetcode.com/problems/subarray-sum-equals-k","numViews":1027,"questionBody":"<p>Given an array of integers <code>nums</code> and an integer <code>k</code>, return <em>the total number of subarrays whose sum equals to</em> <code>k</code>.</p>\n\n<p>A subarray is a contiguous <strong>non-empty</strong> sequence of elements within an array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,1,1], k = 2\n<strong>Output:</strong> 2\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3], k = 3\n<strong>Output:</strong> 2\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>\n\t<li><code>-10<sup>7</sup> &lt;= k &lt;= 10<sup>7</sup></code></li>\n</ul>\n","clarifyingQuestions":["What are the possible ranges for the values within the `nums` array and for the target value `k`?","Can the `nums` array contain negative numbers, zero, or only positive integers?","What should be returned if there are no subarrays that sum to `k`?","Does the order of elements within a subarray matter? For example, is `[1, 2]` considered different from `[2, 1]`?","Can the input array `nums` be empty or null?"],"edgeCases":[{"edgeCase":"Empty input array (nums is null or has length 0)","handling":"Return 0, as there are no subarrays in an empty array."},{"edgeCase":"Array with a single element that equals k","handling":"Return 1 if the single element equals k, otherwise return 0."},{"edgeCase":"Array with all zeros and k is 0","handling":"The number of subarrays summing to 0 is (n*(n+1))/2 where n is the length of the array, handled by the hashmap approach."},{"edgeCase":"Array contains only negative numbers and k is positive","handling":"Return 0, since the sum of negative numbers cannot be positive."},{"edgeCase":"Large array with a sum exceeding integer limits","handling":"Use a long datatype to store the cumulative sum to avoid integer overflow."},{"edgeCase":"Array contains very large positive and negative numbers that cancel each other out to equal k","handling":"The hashmap correctly handles cases where the cumulative sum reaches k after a series of additions and subtractions."},{"edgeCase":"k is 0 and the array contains both positive and negative numbers that cancel each other.","handling":"The hashmap accurately counts subarrays that sum to 0 even with alternating positive and negative values."},{"edgeCase":"k is negative and the array consists of positive numbers","handling":"Return 0 as the sum of positive numbers can never be negative."}],"companies":[{"slug":"meta","name":"Meta","logo":"/logos/meta.jpg"},{"slug":"microsoft","name":"Microsoft","logo":"/logos/microsoft.jpg"},{"slug":"amazon","name":"Amazon","logo":"/logos/amazon.jpg"},{"slug":"tiktok","name":"TikTok","logo":"/logos/tiktok.png"},{"slug":"google","name":"Google","logo":"/logos/google.jpg"},{"slug":"bloomberg-lp","name":"Bloomberg","logo":"/logos/bloomberg-lp.jpg"},{"slug":"apple","name":"Apple","logo":"/logos/apple.jpg"},{"slug":"nvidia","name":"NVIDIA","logo":"/logos/nvidia.jpg"},{"slug":"yahoo","name":"Yahoo","logo":"/logos/yahoo.jpg"},{"slug":"uber","name":"Uber","logo":"/logos/uber.jpg"},{"slug":"bytedance","name":"ByteDance","logo":"/logos/bytedance.jpg"},{"slug":"snap","name":"Snap","logo":"/logos/snap.png"},{"slug":"adobe","name":"Adobe","logo":"/logos/adobe.jpg"},{"slug":"oracle","name":"Oracle","logo":"/logos/oracle.jpg"},{"slug":"walmart","name":"Walmart","logo":"/logos/walmart.jpg"},{"slug":"qualcomm","name":"Qualcomm","logo":"/logos/qualcomm.jpg"},{"slug":"ripple","name":"Ripple","logo":"/logos/ripple.jpg"},{"slug":"tesla","name":"Tesla","logo":"/logos/tesla.jpg"},{"slug":"paypal","name":"PayPal","logo":"/logos/paypal.jpg"},{"slug":"morgan-stanley","name":"Morgan Stanley","logo":"/logos/morgan-stanley.jpg"},{"slug":"ibm","name":"IBM","logo":"/logos/ibm.jpg"},{"slug":"amd","name":"AMD","logo":"/logos/amd.jpg"},{"slug":"disney","name":"Disney","logo":"/logos/disney.jpg"},{"slug":"goldman-sachs","name":"Goldman Sachs","logo":"/logos/goldman-sachs.jpg"},{"slug":"servicenow","name":"ServiceNow","logo":"/logos/servicenow.jpg"},{"slug":"bolt","name":"Bolt","logo":"/logos/bolt.jpg"},{"slug":"capgemini","name":"Capgemini","logo":"/logos/capgemini.jpg"},{"slug":"quora","name":"Quora","logo":"/logos/quora.jpg"},{"slug":"snowflake","name":"Snowflake","logo":"/logos/snowflake.jpg"},{"slug":"flipkart","name":"Flipkart","logo":"/logos/flipkart.jpg"},{"slug":"swiggy","name":"Swiggy","logo":"/logos/swiggy.jpg"},{"slug":"cisco","name":"Cisco","logo":"/logos/cisco.jpg"},{"slug":"grab","name":"Grab","logo":"/logos/grab.jpg"}],"solutions":{"bruteForce":{"overview":"The brute force method solves this by checking every possible group of numbers within the larger list. It's like trying out every possible combination to see if any adds up to the target value.","steps":["Start by considering the first number in the list as a group by itself.","Check if this single number is equal to the target value.","Then, consider the first and second numbers together as a group.","Check if this group's sum is equal to the target value.","Continue adding one more number at a time to this group, and check the sum each time, until you reach the end of the list.","Now, move to the second number in the original list and repeat the same process: start with just that number, then that number plus the next, and so on, until you reach the end.","Keep doing this, shifting your starting point one number further each time, until you've checked every possible group of numbers within the list.","Every time you find a group of numbers that adds up to the target value, count it."],"bigO":{"runtimeValue":"O(n²)","runtimeExplanation":"The brute force approach iterates through each element of the input array of size n. For each element, it calculates the sum of all possible subarrays starting from that element. In the worst case, for the first element, it considers n subarrays, for the second n-1, and so on. The total number of operations approximates to n + (n-1) + (n-2) + ... + 1 which is n*(n+1)/2. This simplifies to O(n²).","spaceValue":"O(1)","spaceExplanation":"The provided brute force solution iterates through all possible subarrays by maintaining a starting index and an ending index. The algorithm does not use any auxiliary data structures like lists, hash maps, or sets to store intermediate results. It only uses a few constant space variables to keep track of the current subarray's sum and the start/end indices, so the extra space remains constant regardless of the input array's size (N)."},"languages":["Python","JavaScript","TypeScript","Java","C++","C#","Go","Rust","Kotlin","Swift","Ruby","PHP"],"code":{"Python":"def subarray_sum_equals_k_brute_force(numbers, target):\n    number_of_subarrays = 0\n\n    # Iterate through all possible start indices.\n    for start_index in range(len(numbers)):\n        current_subarray_sum = 0\n\n        # Iterate through all possible end indices for each start index.\n        for end_index in range(start_index, len(numbers)):\n            current_subarray_sum += numbers[end_index]\n\n            # Check if the current subarray sum equals the target\n            if current_subarray_sum == target:\n                number_of_subarrays += 1\n\n    # Return the number of subarrays that sum to k\n    return number_of_subarrays","JavaScript":"function subarraySumEqualsKBruteForce(numbers, target) {\n  let count = 0;\n\n  // Iterate through all possible start indices\n  for (let startIndex = 0; startIndex < numbers.length; startIndex++) {\n    let currentSum = 0;\n\n    // Iterate through all possible end indices for the current start index\n    for (let endIndex = startIndex; endIndex < numbers.length; endIndex++) {\n      currentSum += numbers[endIndex];\n\n      // Check if the current subarray sum equals the target\n      if (currentSum === target) {\n        count++;\n      }\n    }\n  }\n\n  return count;\n}\n","TypeScript":"function subarraySumEqualsK_bruteForce(numbers: number[], target: number): number {\n  let count = 0;\n\n  for (let startIndex = 0; startIndex < numbers.length; startIndex++) {\n   // Iterate through all possible starting positions.\n\n   for (let endIndex = startIndex; endIndex < numbers.length; endIndex++) {\n    let currentSubarraySum = 0;\n\n    // Calculate the sum of the current subarray.\n    for (let currentIndex = startIndex; currentIndex <= endIndex; currentIndex++) {\n     currentSubarraySum += numbers[currentIndex];\n    }\n\n    // Check if the current subarray sum equals the target.\n    if (currentSubarraySum === target) {\n     // Increment if we have an equal.\n     count++;\n    }\n   }\n  }\n\n  return count;\n }","Java":"public class Solution {\n    public int subarraySumEqualsK(int[] numbers, int target) {\n        int numberOfSubarrays = 0;\n\n        // Iterate through all possible start indices\n        for (int startIndex = 0; startIndex < numbers.length; startIndex++) {\n\n            //Iterate through all possible end indices for each start index\n            int currentSubarraySum = 0;\n            for (int endIndex = startIndex; endIndex < numbers.length; endIndex++) {\n                currentSubarraySum += numbers[endIndex];\n\n                //Check if the sum equals the target\n                if (currentSubarraySum == target) {\n                    numberOfSubarrays++;\n                }\n            }\n        }\n\n        return numberOfSubarrays;\n    }\n}\n","C++":"#include <vector>\n\nusing namespace std;\n\nstruct CodeBlock {\n    string code;\n};\n\nCodeBlock SubarraySumEqualsK(vector<int>& numbers, int target) {\n    int count = 0;\n\n    // Iterate through all possible starting points.\n    for (size_t startIndex = 0; startIndex < numbers.size(); ++startIndex) {\n\n        // For each starting point, iterate through all possible ending points.\n        int currentSum = 0;\n\n        for (size_t endIndex = startIndex; endIndex < numbers.size(); ++endIndex) {\n            currentSum += numbers[endIndex];\n\n            //Check if the current subarray sum equals the target\n            if (currentSum == target) {\n                count++;\n            }\n        }\n    }\n\n    string code = \"#include <vector>\n\nusing namespace std;\n\nstruct CodeBlock {\n    string code;\n};\n\nCodeBlock SubarraySumEqualsK(vector<int>& numbers, int target) {\n    int count = 0;\n\n    // Iterate through all possible starting points.\n    for (size_t startIndex = 0; startIndex < numbers.size(); ++startIndex) {\n\n        // For each starting point, iterate through all possible ending points.\n        int currentSum = 0;\n\n        for (size_t endIndex = startIndex; endIndex < numbers.size(); ++endIndex) {\n            currentSum += numbers[endIndex];\n\n            //Check if the current subarray sum equals the target\n            if (currentSum == target) {\n                count++;\n            }\n        }\n    }\n\n    CodeBlock result;\n    result.code = to_string(count);\n    return result;\n}\n\";\n\n    CodeBlock result;\n    result.code = to_string(count);\n    return result;\n}\n","C#":"public class Solution\n{\n    public int SubarraySumEqualsK(int[] numbers, int targetSum)\n    {\n        int subarrayCount = 0;\n\n        // Iterate through all possible start indices of subarrays\n        for (int startIndex = 0; startIndex < numbers.Length; startIndex++)\n        {\n            // Iterate through all possible end indices of subarrays starting at startIndex\n            int currentSum = 0;\n            for (int endIndex = startIndex; endIndex < numbers.Length; endIndex++)\n            {\n                currentSum += numbers[endIndex];\n\n                // Check if the current subarray's sum equals the target\n                if (currentSum == targetSum)\n                {\n                    subarrayCount++;\n                }\n            }\n        }\n\n        return subarrayCount;\n    }\n}","Go":"package main\n\nfunc SubarraySumEqualsKBruteForce(numbers []int, target int) int {\n\tsubarrayCount := 0\n\n\t// Iterate through all possible start indices\n\tfor startIndex := 0; startIndex < len(numbers); startIndex++ {\n\n\t\tcurrentSum := 0\n\n\t\t// Iterate through all possible end indices starting from startIndex\n\t\tfor endIndex := startIndex; endIndex < len(numbers); endIndex++ {\n\t\t\tcurrentSum += numbers[endIndex]\n\n\t\t\t// Check if the current subarray sum equals the target\n\t\t\tif currentSum == target {\n\t\t\t\tsubarrayCount++\n\t\t\t}\n\t\t}\n\t}\n\n\treturn subarrayCount\n}\n","Rust":"fn subarray_sum_equals_k_brute_force(numbers: Vec<i32>, target: i32) -> i32 {\n    let mut count = 0;\n\n    // Iterate through all possible start indices.\n    for start_index in 0..numbers.len() {\n\n        let mut current_subarray_sum = 0;\n\n        // Iterate through all possible end indices for the current start index.\n        for end_index in start_index..numbers.len() {\n\n            current_subarray_sum += numbers[end_index];\n\n            //Check to see if the current subarray sum is equal to the target\n            if current_subarray_sum == target {\n                count += 1;\n            }\n        }\n    }\n\n    count\n}\n","Kotlin":"fun subarraySumBruteForce(numbers: IntArray, target: Int): Int {\n    var subarrayCount = 0\n\n    // Iterate through all possible start indices.\n    for (startIndex in numbers.indices) {\n\n      // Iterate through all possible end indices for each start index.\n      var currentSum = 0\n      for (endIndex in startIndex until numbers.size) {\n        currentSum += numbers[endIndex]\n\n        //Check if the current subarray sum equals the target.\n        if (currentSum == target) {\n          subarrayCount++\n        }\n      }\n    }\n\n    return subarrayCount\n  }","Swift":"func subarraySumEqualsKBruteForce(numbers: [Int], target: Int) -> Int {\n    var subarrayCount = 0\n\n    // Iterate through possible start indices\n    for startIndex in 0..<numbers.count {\n        \n        var currentSum = 0\n\n        // Iterate through possible end indices for each start index\n        for endIndex in startIndex..<numbers.count {\n            currentSum += numbers[endIndex]\n            // Check if the current subarray sum equals target\n            if currentSum == target {\n                \n                subarrayCount += 1\n            }\n        }\n    }\n    return subarrayCount\n}\n","Ruby":"def subarray_sum_equals_k_brute_force(numbers, target):\n    subarray_count = 0\n\n    # Iterate through all possible start indices.\n    for start_index in range(len(numbers)):\n\n        current_sum = 0\n\n        # Iterate through all possible end indices for each start index.\n        for end_index in range(start_index, len(numbers)):\n            current_sum += numbers[end_index]\n\n            #Check if current sum matches target.\n            if current_sum == target:\n                subarray_count += 1\n\n    return subarray_count","PHP":"<?php\nfunction subarraySumEqualsKBruteForce(array $numbers, int $target):\nint {\n    $subarrayCount = 0;\n\n    // Iterate through possible start indices\n    for ($startIndex = 0; $startIndex < count($numbers); $startIndex++) {\n\n        //Iterate through possible end indices, starting from the current start index\n        for ($endIndex = $startIndex; $endIndex < count($numbers); $endIndex++) {\n            $currentSum = 0;\n\n            // Calculate the sum of the current subarray\n            for ($currentIndex = $startIndex; $currentIndex <= $endIndex; $currentIndex++) {\n                $currentSum += $numbers[$currentIndex];\n            }\n\n            // Check if the current subarray sum equals the target.\n            if ($currentSum === $target) {\n                $subarrayCount++;\n            }\n        }\n    }\n\n    return $subarrayCount;\n}\n?>"}},"optimal":{"overview":"Instead of checking every single group of numbers, we'll use a trick to keep track of sums we've already seen. This allows us to quickly determine if a group adding up to the target number exists without repetitive calculations. It's like remembering past results to avoid redoing work.","steps":["Start by going through the numbers one by one, and keep a running total of the sum so far.","Also, keep a record of all the sums you have seen so far, and how many times you've seen each one.","As you calculate each new sum, check if the difference between this sum and the target number is in your record. If it is, it means you've found a group that adds up to the target.","Increase the count of the current sum in your record.","Continue going through the numbers. The running sum and record will help you efficiently identify groups that meet your requirement."],"bigO":{"runtimeValue":"O(n)","runtimeExplanation":"The algorithm iterates through the input array of size n once to calculate the running sum. Inside the loop, it performs constant-time operations: checking for a value in the hash map and updating the hash map. The hash map operations (containsKey and put) take O(1) time on average. Therefore, the overall time complexity is dominated by the single pass through the array, resulting in O(n).","spaceValue":"O(N)","spaceExplanation":"The algorithm uses a record (likely a hash map or dictionary) to store the cumulative sums encountered so far and their frequencies. In the worst-case scenario, all N elements of the input array `nums` could have distinct cumulative sums, leading to N entries in the record. Therefore, the auxiliary space required to store this record grows linearly with the input size N. Thus the space complexity is O(N)."},"languages":["Python","JavaScript","TypeScript","Java","C++","C#","Go","Rust","Kotlin","Swift","Ruby","PHP"],"code":{"Python":"def subarray_sum_equals_k(numbers, target_value):\n    running_sum = 0\n    sum_frequency = {0: 1}\n    subarray_count = 0\n\n    for number in numbers:\n        running_sum += number\n\n        #Check if there is a prefix sum equal to running_sum - target_value\n        if (running_sum - target_value) in sum_frequency:\n\n            subarray_count += sum_frequency[running_sum - target_value]\n\n        # Store the frequency of the current running sum.\n        if running_sum in sum_frequency:\n            sum_frequency[running_sum] += 1\n        else:\n            sum_frequency[running_sum] = 1\n\n    # Return total number of subarrays found.\n    return subarray_count","JavaScript":"function subarraySumEqualsK(numbers, targetSum) {\n  let numberOfSubarrays = 0;\n  let currentSum = 0;\n  const prefixSumCounts = new Map();\n\n  // Initialize the map with a sum of 0 occurring once.\n  prefixSumCounts.set(0, 1);\n\n  for (let i = 0; i < numbers.length; i++) {\n    currentSum += numbers[i];\n\n    // Check if the difference between the current sum and the target exists.\n    if (prefixSumCounts.has(currentSum - targetSum)) {\n      numberOfSubarrays += prefixSumCounts.get(currentSum - targetSum);\n    }\n\n    // Update the count of the current sum in the map.\n    if (prefixSumCounts.has(currentSum)) {\n      prefixSumCounts.set(currentSum, prefixSumCounts.get(currentSum) + 1);\n    } else {\n      prefixSumCounts.set(currentSum, 1);\n    }\n  }\n\n  return numberOfSubarrays;\n}","TypeScript":"function subarraySumEqualsK(numbers: number[], targetSum: number): number {\n    let numberOfSubarrays = 0;\n    let currentSum = 0;\n    const sumFrequencyMap = new Map<number, number>();\n\n    sumFrequencyMap.set(0, 1);\n\n    for (const number of numbers) {\n      currentSum += number;\n\n      // Check if the difference exists in the map.\n      const difference = currentSum - targetSum;\n\n      if (sumFrequencyMap.has(difference)) {\n        numberOfSubarrays += sumFrequencyMap.get(difference)!;\n      }\n\n      // Update the frequency of the current sum in the map.\n      if (sumFrequencyMap.has(currentSum)) {\n        sumFrequencyMap.set(currentSum, sumFrequencyMap.get(currentSum)! + 1);\n      } else {\n        // Initialize the frequency of the current sum if not present.\n        sumFrequencyMap.set(currentSum, 1);\n\n      }\n    }\n\n    return numberOfSubarrays;\n  }","Java":"public class Solution {\n    public int subarraySum(int[] numbers, int targetSum) {\n        int numberOfSubarrays = 0;\n        int currentSum = 0;\n        java.util.Map<Integer, Integer> sumFrequencyMap = new java.util.HashMap<>();\n        sumFrequencyMap.put(0, 1); \n\n        for (int i = 0; i < numbers.length; i++) {\n            currentSum += numbers[i];\n\n            // Check if (currentSum - targetSum) exists.\n            if (sumFrequencyMap.containsKey(currentSum - targetSum)) {\n                numberOfSubarrays += sumFrequencyMap.get(currentSum - targetSum);\n            }\n\n            //Update the frequency of the current sum.\n            if (sumFrequencyMap.containsKey(currentSum)) {\n                sumFrequencyMap.put(currentSum, sumFrequencyMap.get(currentSum) + 1);\n            } else {\n                //First time seeing the current sum, initialize to 1.\n                sumFrequencyMap.put(currentSum, 1);\n            }\n        }\n\n        return numberOfSubarrays;\n    }\n}\n","C++":"#include <iostream>\n#include <vector>\n#include <unordered_map>\n\nint subarraySum(std::vector<int>& nums, int k) {\n    int count = 0;\n    int currentSum = 0;\n    std::unordered_map<int, int> sumFrequency;\n\n    sumFrequency[0] = 1;\n\n    for (int i = 0; i < nums.size(); ++i) {\n        currentSum += nums[i];\n\n        // Check if (currentSum - k) exists, meaning a subarray sums to k\n        if (sumFrequency.find(currentSum - k) != sumFrequency.end()) {\n\n            count += sumFrequency[currentSum - k];\n        }\n\n        // Update the frequency of the current sum\n        sumFrequency[currentSum]++;\n    }\n\n    return count;\n}\n","C#":"public class Solution\n{\n    public int SubarraySum(int[] numbers, int targetSum)\n    {\n        int count = 0;\n        int currentSum = 0;\n\n        // Store sum frequencies for efficient lookup.\n        Dictionary<int, int> sumFrequencies = new Dictionary<int, int>();\n        sumFrequencies[0] = 1;\n\n        for (int i = 0; i < numbers.Length; i++)\n        {\n            currentSum += numbers[i];\n\n            // Check if (currentSum - targetSum) exists.\n            if (sumFrequencies.ContainsKey(currentSum - targetSum))\n            {\n                count += sumFrequencies[currentSum - targetSum];\n            }\n\n            // Update frequency of the current sum.\n            if (sumFrequencies.ContainsKey(currentSum))\n            {\n                sumFrequencies[currentSum]++;\n            }\n            else\n            {\n                sumFrequencies[currentSum] = 1;\n            }\n        }\n\n        return count;\n    }\n}\n","Go":"package main\n\nfunc subarraySum(numbers []int, target int) int {\n\tsubarrayCount := 0\n\tcurrentSum := 0\n\n\t// Store prefix sums and their counts.\n\tsumFrequencies := make(map[int]int)\n\tsumFrequencies[0] = 1\n\n\tfor _, number := range numbers {\n\t\tcurrentSum += number\n\n\t\t// Check if a subarray exists that sums to target.\n\t\tdifference := currentSum - target\n\t\tif frequency, ok := sumFrequencies[difference]; ok {\n\t\t\tsubarrayCount += frequency\n\t\t}\n\n\t\t// Update the frequency of the current sum.\n\t\tsumFrequencies[currentSum]++\n\t}\n\n\treturn subarrayCount\n}\n","Rust":"use std::collections::HashMap;\n\nfn subarray_sum_equals_k(numbers: Vec<i32>, target: i32) -> i32 {\n    let mut count = 0;\n    let mut running_sum = 0;\n    let mut sum_frequency: HashMap<i32, i32> = HashMap::new();\n    // Initialize hashmap with 0 to account for subarrays starting at index 0\n    sum_frequency.insert(0, 1);\n\n    for number in numbers {\n        running_sum += number;\n        \n        // Check if the difference (running_sum - target) exists.\n        let complement = running_sum - target;\n        if sum_frequency.contains_key(&complement) {\n            count += sum_frequency.get(&complement).unwrap();\n        }\n\n        // Update the frequency of the current running sum.\n        let frequency = sum_frequency.entry(running_sum).or_insert(0);\n        *frequency += 1;\n    }\n\n    count\n}\n\n#[cfg(test)]\nmod tests {\n    use super::*;\n\n    #[test]\n    fn test_empty_array() {\n        assert_eq!(subarray_sum_equals_k(vec![], 0), 0);\n    }\n\n    #[test]\n    fn test_single_element_match() {\n        assert_eq!(subarray_sum_equals_k(vec![3], 3), 1);\n    }\n\n    #[test]\n    fn test_single_element_no_match() {\n        assert_eq!(subarray_sum_equals_k(vec![3], 5), 0);\n    }\n\n    #[test]\n    fn test_example_1() {\n        assert_eq!(subarray_sum_equals_k(vec![1, 1, 1], 2), 2);\n    }\n\n    #[test]\n    fn test_example_2() {\n        assert_eq!(subarray_sum_equals_k(vec![1, 2, 3], 3), 2);\n    }\n\n    #[test]\n    fn test_negative_numbers() {\n        assert_eq!(subarray_sum_equals_k(vec![1, -1, 0], 0), 3);\n    }\n\n    #[test]\n    fn test_all_zeros() {\n        assert_eq!(subarray_sum_equals_k(vec![0, 0, 0], 0), 6);\n    }\n\n    #[test]\n    fn test_large_array() {\n        let numbers = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n        assert_eq!(subarray_sum_equals_k(numbers, 15), 2);\n    }\n}","Kotlin":"fun subarraySum(numbers: IntArray, target: Int): Int {\n    var numberOfSubarrays = 0\n    var currentSum = 0\n\n    // Store sum frequencies to optimize search.\n    val sumFrequencies = mutableMapOf<Int, Int>()\n    sumFrequencies[0] = 1\n\n    for (number in numbers) {\n      currentSum += number\n\n      // Check if the difference exists to find a subarray.\n      val requiredSum = currentSum - target\n\n      if (sumFrequencies.containsKey(requiredSum)) {\n        numberOfSubarrays += sumFrequencies[requiredSum]!!\n      }\n\n      // Update the frequency of the current sum.\n      sumFrequencies[currentSum] = sumFrequencies.getOrDefault(currentSum, 0) + 1\n    }\n\n    return numberOfSubarrays\n  }","Swift":"func subarraySumEqualsK(numbers: [Int], target: Int) -> Int {\n    var numberOfSubarrays = 0\n    var currentSum = 0\n    var prefixSums = [0: 1]\n\n    for number in numbers {\n        currentSum += number\n\n        // Check if there's a prefix sum that, when subtracted,\n        // gives us the target value\n        if let count = prefixSums[currentSum - target] {\n            numberOfSubarrays += count\n        }\n\n        // Update the frequency of the current sum\n        prefixSums[currentSum, default: 0] += 1\n    }\n\n    return numberOfSubarrays\n}\n","Ruby":"def subarray_sum_equals_k(numbers, target_value):\n  current_sum = 0\n  sum_frequency = {0: 1}\n  subarray_count = 0\n\n  for number in numbers:\n    current_sum += number\n\n    # Key decision: Check if the difference exists\n    # If it does, a subarray summing to k exists.\n    if (current_sum - target_value) in sum_frequency:\n\n      subarray_count += sum_frequency[current_sum - target_value]\n\n    # Keep track of how many times each sum happens\n    # This is crucial for efficiently finding subarrays\n    if current_sum in sum_frequency:\n\n      sum_frequency[current_sum] += 1\n\n    else:\n      sum_frequency[current_sum] = 1\n\n  return subarray_count","PHP":"<?php\nfunction subarraySumEqualsK(array $numbers, int $targetSum): int {\n    $currentSum = 0;\n    $sumFrequency = [0 => 1];\n    $subarrayCount = 0;\n\n    foreach ($numbers as $number) {\n        $currentSum += $number;\n\n        // Check if a subarray exists that sums to targetSum.\n        if (isset($sumFrequency[$currentSum - $targetSum])) {\n            $subarrayCount += $sumFrequency[$currentSum - $targetSum];\n        }\n\n        // Store the frequency of the current sum.\n        if (!isset($sumFrequency[$currentSum])) {\n            $sumFrequency[$currentSum] = 0;\n        }\n\n        $sumFrequency[$currentSum]++;\n    }\n\n    return $subarrayCount;\n}\n?>"}}}}
+{
+  "id": "DiKJJC5zP4CJGS8acWEI",
+  "slug": "subarray-sum-equals-k",
+  "rank": 14,
+  "title": "Subarray Sum Equals K",
+  "difficulty": "medium",
+  "topics": [
+    "Arrays & Hashing"
+  ],
+  "externalUrl": "https://www.leetcode.com/problems/subarray-sum-equals-k",
+  "numViews": 1027,
+  "questionBody": "<p>Given an array of integers <code>nums</code> and an integer <code>k</code>, return <em>the total number of subarrays whose sum equals to</em> <code>k</code>.</p>\n\n<p>A subarray is a contiguous <strong>non-empty</strong> sequence of elements within an array.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,1,1], k = 2\n<strong>Output:</strong> 2\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3], k = 3\n<strong>Output:</strong> 2\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 2 * 10<sup>4</sup></code></li>\n\t<li><code>-1000 &lt;= nums[i] &lt;= 1000</code></li>\n\t<li><code>-10<sup>7</sup> &lt;= k &lt;= 10<sup>7</sup></code></li>\n</ul>\n",
+  "clarifyingQuestions": [
+    "What are the possible ranges for the values within the `nums` array and for the target value `k`?",
+    "Can the `nums` array contain negative numbers, zero, or only positive integers?",
+    "What should be returned if there are no subarrays that sum to `k`?",
+    "Does the order of elements within a subarray matter? For example, is `[1, 2]` considered different from `[2, 1]`?",
+    "Can the input array `nums` be empty or null?"
+  ],
+  "edgeCases": [
+    {
+      "edgeCase": "Empty input array (nums is null or has length 0)",
+      "handling": "Return 0, as there are no subarrays in an empty array."
+    },
+    {
+      "edgeCase": "Array with a single element that equals k",
+      "handling": "Return 1 if the single element equals k, otherwise return 0."
+    },
+    {
+      "edgeCase": "Array with all zeros and k is 0",
+      "handling": "The number of subarrays summing to 0 is (n*(n+1))/2 where n is the length of the array, handled by the hashmap approach."
+    },
+    {
+      "edgeCase": "Array contains only negative numbers and k is positive",
+      "handling": "Return 0, since the sum of negative numbers cannot be positive."
+    },
+    {
+      "edgeCase": "Large array with a sum exceeding integer limits",
+      "handling": "Use a long datatype to store the cumulative sum to avoid integer overflow."
+    },
+    {
+      "edgeCase": "Array contains very large positive and negative numbers that cancel each other out to equal k",
+      "handling": "The hashmap correctly handles cases where the cumulative sum reaches k after a series of additions and subtractions."
+    },
+    {
+      "edgeCase": "k is 0 and the array contains both positive and negative numbers that cancel each other.",
+      "handling": "The hashmap accurately counts subarrays that sum to 0 even with alternating positive and negative values."
+    },
+    {
+      "edgeCase": "k is negative and the array consists of positive numbers",
+      "handling": "Return 0 as the sum of positive numbers can never be negative."
+    }
+  ],
+  "companies": [
+    {
+      "slug": "meta",
+      "name": "Meta",
+      "logo": "/logos/meta.jpg"
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "logo": "/logos/microsoft.jpg"
+    },
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "logo": "/logos/amazon.jpg"
+    },
+    {
+      "slug": "tiktok",
+      "name": "TikTok",
+      "logo": "/logos/tiktok.png"
+    },
+    {
+      "slug": "google",
+      "name": "Google",
+      "logo": "/logos/google.jpg"
+    },
+    {
+      "slug": "bloomberg-lp",
+      "name": "Bloomberg",
+      "logo": "/logos/bloomberg-lp.jpg"
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "logo": "/logos/apple.jpg"
+    },
+    {
+      "slug": "nvidia",
+      "name": "NVIDIA",
+      "logo": "/logos/nvidia.jpg"
+    },
+    {
+      "slug": "yahoo",
+      "name": "Yahoo",
+      "logo": "/logos/yahoo.jpg"
+    },
+    {
+      "slug": "uber",
+      "name": "Uber",
+      "logo": "/logos/uber.jpg"
+    },
+    {
+      "slug": "bytedance",
+      "name": "ByteDance",
+      "logo": "/logos/bytedance.jpg"
+    },
+    {
+      "slug": "snap",
+      "name": "Snap",
+      "logo": "/logos/snap.png"
+    },
+    {
+      "slug": "adobe",
+      "name": "Adobe",
+      "logo": "/logos/adobe.jpg"
+    },
+    {
+      "slug": "oracle",
+      "name": "Oracle",
+      "logo": "/logos/oracle.jpg"
+    },
+    {
+      "slug": "walmart",
+      "name": "Walmart",
+      "logo": "/logos/walmart.jpg"
+    },
+    {
+      "slug": "qualcomm",
+      "name": "Qualcomm",
+      "logo": "/logos/qualcomm.jpg"
+    },
+    {
+      "slug": "ripple",
+      "name": "Ripple",
+      "logo": "/logos/ripple.jpg"
+    },
+    {
+      "slug": "tesla",
+      "name": "Tesla",
+      "logo": "/logos/tesla.jpg"
+    },
+    {
+      "slug": "paypal",
+      "name": "PayPal",
+      "logo": "/logos/paypal.jpg"
+    },
+    {
+      "slug": "morgan-stanley",
+      "name": "Morgan Stanley",
+      "logo": "/logos/morgan-stanley.jpg"
+    },
+    {
+      "slug": "ibm",
+      "name": "IBM",
+      "logo": "/logos/ibm.jpg"
+    },
+    {
+      "slug": "amd",
+      "name": "AMD",
+      "logo": "/logos/amd.jpg"
+    },
+    {
+      "slug": "disney",
+      "name": "Disney",
+      "logo": "/logos/disney.jpg"
+    },
+    {
+      "slug": "goldman-sachs",
+      "name": "Goldman Sachs",
+      "logo": "/logos/goldman-sachs.jpg"
+    },
+    {
+      "slug": "servicenow",
+      "name": "ServiceNow",
+      "logo": "/logos/servicenow.jpg"
+    },
+    {
+      "slug": "bolt",
+      "name": "Bolt",
+      "logo": "/logos/bolt.jpg"
+    },
+    {
+      "slug": "capgemini",
+      "name": "Capgemini",
+      "logo": "/logos/capgemini.jpg"
+    },
+    {
+      "slug": "quora",
+      "name": "Quora",
+      "logo": "/logos/quora.jpg"
+    },
+    {
+      "slug": "snowflake",
+      "name": "Snowflake",
+      "logo": "/logos/snowflake.jpg"
+    },
+    {
+      "slug": "flipkart",
+      "name": "Flipkart",
+      "logo": "/logos/flipkart.jpg"
+    },
+    {
+      "slug": "swiggy",
+      "name": "Swiggy",
+      "logo": "/logos/swiggy.jpg"
+    },
+    {
+      "slug": "cisco",
+      "name": "Cisco",
+      "logo": "/logos/cisco.jpg"
+    },
+    {
+      "slug": "grab",
+      "name": "Grab",
+      "logo": "/logos/grab.jpg"
+    }
+  ],
+  "solutions": {
+    "bruteForce": {
+      "overview": "The brute force method solves this by checking every possible group of numbers within the larger list. It's like trying out every possible combination to see if any adds up to the target value.",
+      "steps": [
+        "Start by considering the first number in the list as a group by itself.",
+        "Check if this single number is equal to the target value.",
+        "Then, consider the first and second numbers together as a group.",
+        "Check if this group's sum is equal to the target value.",
+        "Continue adding one more number at a time to this group, and check the sum each time, until you reach the end of the list.",
+        "Now, move to the second number in the original list and repeat the same process: start with just that number, then that number plus the next, and so on, until you reach the end.",
+        "Keep doing this, shifting your starting point one number further each time, until you've checked every possible group of numbers within the list.",
+        "Every time you find a group of numbers that adds up to the target value, count it."
+      ],
+      "bigO": {
+        "runtimeValue": "O(n²)",
+        "runtimeExplanation": "The brute force approach iterates through each element of the input array of size n. For each element, it calculates the sum of all possible subarrays starting from that element. In the worst case, for the first element, it considers n subarrays, for the second n-1, and so on. The total number of operations approximates to n + (n-1) + (n-2) + ... + 1 which is n*(n+1)/2. This simplifies to O(n²).",
+        "spaceValue": "O(1)",
+        "spaceExplanation": "The provided brute force solution iterates through all possible subarrays by maintaining a starting index and an ending index. The algorithm does not use any auxiliary data structures like lists, hash maps, or sets to store intermediate results. It only uses a few constant space variables to keep track of the current subarray's sum and the start/end indices, so the extra space remains constant regardless of the input array's size (N)."
+      },
+      "languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C++",
+        "C#",
+        "Go",
+        "Rust",
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "PHP"
+      ],
+      "code": {
+        "Python": "def subarray_sum_equals_k_brute_force(numbers, target):\n    number_of_subarrays = 0\n\n    # Iterate through all possible start indices.\n    for start_index in range(len(numbers)):\n        current_subarray_sum = 0\n\n        # Iterate through all possible end indices for each start index.\n        for end_index in range(start_index, len(numbers)):\n            current_subarray_sum += numbers[end_index]\n\n            # Check if the current subarray sum equals the target\n            if current_subarray_sum == target:\n                number_of_subarrays += 1\n\n    # Return the number of subarrays that sum to k\n    return number_of_subarrays",
+        "JavaScript": "function subarraySumEqualsKBruteForce(numbers, target) {\n  let count = 0;\n\n  // Iterate through all possible start indices\n  for (let startIndex = 0; startIndex < numbers.length; startIndex++) {\n    let currentSum = 0;\n\n    // Iterate through all possible end indices for the current start index\n    for (let endIndex = startIndex; endIndex < numbers.length; endIndex++) {\n      currentSum += numbers[endIndex];\n\n      // Check if the current subarray sum equals the target\n      if (currentSum === target) {\n        count++;\n      }\n    }\n  }\n\n  return count;\n}\n",
+        "TypeScript": "function subarraySumEqualsK_bruteForce(numbers: number[], target: number): number {\n  let count = 0;\n\n  for (let startIndex = 0; startIndex < numbers.length; startIndex++) {\n   // Iterate through all possible starting positions.\n\n   for (let endIndex = startIndex; endIndex < numbers.length; endIndex++) {\n    let currentSubarraySum = 0;\n\n    // Calculate the sum of the current subarray.\n    for (let currentIndex = startIndex; currentIndex <= endIndex; currentIndex++) {\n     currentSubarraySum += numbers[currentIndex];\n    }\n\n    // Check if the current subarray sum equals the target.\n    if (currentSubarraySum === target) {\n     // Increment if we have an equal.\n     count++;\n    }\n   }\n  }\n\n  return count;\n }",
+        "Java": "public class Solution {\n    public int subarraySumEqualsK(int[] numbers, int target) {\n        int numberOfSubarrays = 0;\n\n        // Iterate through all possible start indices\n        for (int startIndex = 0; startIndex < numbers.length; startIndex++) {\n\n            //Iterate through all possible end indices for each start index\n            int currentSubarraySum = 0;\n            for (int endIndex = startIndex; endIndex < numbers.length; endIndex++) {\n                currentSubarraySum += numbers[endIndex];\n\n                //Check if the sum equals the target\n                if (currentSubarraySum == target) {\n                    numberOfSubarrays++;\n                }\n            }\n        }\n\n        return numberOfSubarrays;\n    }\n}\n",
+        "C++": "#include <vector>\n\nusing namespace std;\n\nstruct CodeBlock {\n    string code;\n};\n\nCodeBlock SubarraySumEqualsK(vector<int>& numbers, int target) {\n    int count = 0;\n\n    // Iterate through all possible starting points.\n    for (size_t startIndex = 0; startIndex < numbers.size(); ++startIndex) {\n\n        // For each starting point, iterate through all possible ending points.\n        int currentSum = 0;\n\n        for (size_t endIndex = startIndex; endIndex < numbers.size(); ++endIndex) {\n            currentSum += numbers[endIndex];\n\n            //Check if the current subarray sum equals the target\n            if (currentSum == target) {\n                count++;\n            }\n        }\n    }\n\n    string code = \"#include <vector>\n\nusing namespace std;\n\nstruct CodeBlock {\n    string code;\n};\n\nCodeBlock SubarraySumEqualsK(vector<int>& numbers, int target) {\n    int count = 0;\n\n    // Iterate through all possible starting points.\n    for (size_t startIndex = 0; startIndex < numbers.size(); ++startIndex) {\n\n        // For each starting point, iterate through all possible ending points.\n        int currentSum = 0;\n\n        for (size_t endIndex = startIndex; endIndex < numbers.size(); ++endIndex) {\n            currentSum += numbers[endIndex];\n\n            //Check if the current subarray sum equals the target\n            if (currentSum == target) {\n                count++;\n            }\n        }\n    }\n\n    CodeBlock result;\n    result.code = to_string(count);\n    return result;\n}\n\";\n\n    CodeBlock result;\n    result.code = to_string(count);\n    return result;\n}\n",
+        "C#": "public class Solution\n{\n    public int SubarraySumEqualsK(int[] numbers, int targetSum)\n    {\n        int subarrayCount = 0;\n\n        // Iterate through all possible start indices of subarrays\n        for (int startIndex = 0; startIndex < numbers.Length; startIndex++)\n        {\n            // Iterate through all possible end indices of subarrays starting at startIndex\n            int currentSum = 0;\n            for (int endIndex = startIndex; endIndex < numbers.Length; endIndex++)\n            {\n                currentSum += numbers[endIndex];\n\n                // Check if the current subarray's sum equals the target\n                if (currentSum == targetSum)\n                {\n                    subarrayCount++;\n                }\n            }\n        }\n\n        return subarrayCount;\n    }\n}",
+        "Go": "package main\n\nfunc SubarraySumEqualsKBruteForce(numbers []int, target int) int {\n\tsubarrayCount := 0\n\n\t// Iterate through all possible start indices\n\tfor startIndex := 0; startIndex < len(numbers); startIndex++ {\n\n\t\tcurrentSum := 0\n\n\t\t// Iterate through all possible end indices starting from startIndex\n\t\tfor endIndex := startIndex; endIndex < len(numbers); endIndex++ {\n\t\t\tcurrentSum += numbers[endIndex]\n\n\t\t\t// Check if the current subarray sum equals the target\n\t\t\tif currentSum == target {\n\t\t\t\tsubarrayCount++\n\t\t\t}\n\t\t}\n\t}\n\n\treturn subarrayCount\n}\n",
+        "Rust": "fn subarray_sum_equals_k_brute_force(numbers: Vec<i32>, target: i32) -> i32 {\n    let mut count = 0;\n\n    // Iterate through all possible start indices.\n    for start_index in 0..numbers.len() {\n\n        let mut current_subarray_sum = 0;\n\n        // Iterate through all possible end indices for the current start index.\n        for end_index in start_index..numbers.len() {\n\n            current_subarray_sum += numbers[end_index];\n\n            //Check to see if the current subarray sum is equal to the target\n            if current_subarray_sum == target {\n                count += 1;\n            }\n        }\n    }\n\n    count\n}\n",
+        "Kotlin": "fun subarraySumBruteForce(numbers: IntArray, target: Int): Int {\n    var subarrayCount = 0\n\n    // Iterate through all possible start indices.\n    for (startIndex in numbers.indices) {\n\n      // Iterate through all possible end indices for each start index.\n      var currentSum = 0\n      for (endIndex in startIndex until numbers.size) {\n        currentSum += numbers[endIndex]\n\n        //Check if the current subarray sum equals the target.\n        if (currentSum == target) {\n          subarrayCount++\n        }\n      }\n    }\n\n    return subarrayCount\n  }",
+        "Swift": "func subarraySumEqualsKBruteForce(numbers: [Int], target: Int) -> Int {\n    var subarrayCount = 0\n\n    // Iterate through possible start indices\n    for startIndex in 0..<numbers.count {\n        \n        var currentSum = 0\n\n        // Iterate through possible end indices for each start index\n        for endIndex in startIndex..<numbers.count {\n            currentSum += numbers[endIndex]\n            // Check if the current subarray sum equals target\n            if currentSum == target {\n                \n                subarrayCount += 1\n            }\n        }\n    }\n    return subarrayCount\n}\n",
+        "Ruby": "def subarray_sum_equals_k_brute_force(numbers, target):\n    subarray_count = 0\n\n    # Iterate through all possible start indices.\n    for start_index in range(len(numbers)):\n\n        current_sum = 0\n\n        # Iterate through all possible end indices for each start index.\n        for end_index in range(start_index, len(numbers)):\n            current_sum += numbers[end_index]\n\n            #Check if current sum matches target.\n            if current_sum == target:\n                subarray_count += 1\n\n    return subarray_count",
+        "PHP": "<?php\nfunction subarraySumEqualsKBruteForce(array $numbers, int $target):\nint {\n    $subarrayCount = 0;\n\n    // Iterate through possible start indices\n    for ($startIndex = 0; $startIndex < count($numbers); $startIndex++) {\n\n        //Iterate through possible end indices, starting from the current start index\n        for ($endIndex = $startIndex; $endIndex < count($numbers); $endIndex++) {\n            $currentSum = 0;\n\n            // Calculate the sum of the current subarray\n            for ($currentIndex = $startIndex; $currentIndex <= $endIndex; $currentIndex++) {\n                $currentSum += $numbers[$currentIndex];\n            }\n\n            // Check if the current subarray sum equals the target.\n            if ($currentSum === $target) {\n                $subarrayCount++;\n            }\n        }\n    }\n\n    return $subarrayCount;\n}\n?>"
+      }
+    },
+    "optimal": {
+      "overview": "Instead of checking every single group of numbers, we'll use a trick to keep track of sums we've already seen. This allows us to quickly determine if a group adding up to the target number exists without repetitive calculations. It's like remembering past results to avoid redoing work.",
+      "steps": [
+        "Start by going through the numbers one by one, and keep a running total of the sum so far.",
+        "Also, keep a record of all the sums you have seen so far, and how many times you've seen each one.",
+        "As you calculate each new sum, check if the difference between this sum and the target number is in your record. If it is, it means you've found a group that adds up to the target.",
+        "Increase the count of the current sum in your record.",
+        "Continue going through the numbers. The running sum and record will help you efficiently identify groups that meet your requirement."
+      ],
+      "bigO": {
+        "runtimeValue": "O(n)",
+        "runtimeExplanation": "The algorithm iterates through the input array of size n once to calculate the running sum. Inside the loop, it performs constant-time operations: checking for a value in the hash map and updating the hash map. The hash map operations (containsKey and put) take O(1) time on average. Therefore, the overall time complexity is dominated by the single pass through the array, resulting in O(n).",
+        "spaceValue": "O(N)",
+        "spaceExplanation": "The algorithm uses a record (likely a hash map or dictionary) to store the cumulative sums encountered so far and their frequencies. In the worst-case scenario, all N elements of the input array `nums` could have distinct cumulative sums, leading to N entries in the record. Therefore, the auxiliary space required to store this record grows linearly with the input size N. Thus the space complexity is O(N)."
+      },
+      "languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C++",
+        "C#",
+        "Go",
+        "Rust",
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "PHP"
+      ],
+      "code": {
+        "Python": "def subarray_sum_equals_k(numbers, target_value):\n    running_sum = 0\n    sum_frequency = {0: 1}\n    subarray_count = 0\n\n    for number in numbers:\n        running_sum += number\n\n        #Check if there is a prefix sum equal to running_sum - target_value\n        if (running_sum - target_value) in sum_frequency:\n\n            subarray_count += sum_frequency[running_sum - target_value]\n\n        # Store the frequency of the current running sum.\n        if running_sum in sum_frequency:\n            sum_frequency[running_sum] += 1\n        else:\n            sum_frequency[running_sum] = 1\n\n    # Return total number of subarrays found.\n    return subarray_count",
+        "JavaScript": "function subarraySumEqualsK(numbers, targetSum) {\n  let numberOfSubarrays = 0;\n  let currentSum = 0;\n  const prefixSumCounts = new Map();\n\n  // Initialize the map with a sum of 0 occurring once.\n  prefixSumCounts.set(0, 1);\n\n  for (let i = 0; i < numbers.length; i++) {\n    currentSum += numbers[i];\n\n    // Check if the difference between the current sum and the target exists.\n    if (prefixSumCounts.has(currentSum - targetSum)) {\n      numberOfSubarrays += prefixSumCounts.get(currentSum - targetSum);\n    }\n\n    // Update the count of the current sum in the map.\n    if (prefixSumCounts.has(currentSum)) {\n      prefixSumCounts.set(currentSum, prefixSumCounts.get(currentSum) + 1);\n    } else {\n      prefixSumCounts.set(currentSum, 1);\n    }\n  }\n\n  return numberOfSubarrays;\n}",
+        "TypeScript": "function subarraySumEqualsK(numbers: number[], targetSum: number): number {\n    let numberOfSubarrays = 0;\n    let currentSum = 0;\n    const sumFrequencyMap = new Map<number, number>();\n\n    sumFrequencyMap.set(0, 1);\n\n    for (const number of numbers) {\n      currentSum += number;\n\n      // Check if the difference exists in the map.\n      const difference = currentSum - targetSum;\n\n      if (sumFrequencyMap.has(difference)) {\n        numberOfSubarrays += sumFrequencyMap.get(difference)!;\n      }\n\n      // Update the frequency of the current sum in the map.\n      if (sumFrequencyMap.has(currentSum)) {\n        sumFrequencyMap.set(currentSum, sumFrequencyMap.get(currentSum)! + 1);\n      } else {\n        // Initialize the frequency of the current sum if not present.\n        sumFrequencyMap.set(currentSum, 1);\n\n      }\n    }\n\n    return numberOfSubarrays;\n  }",
+        "Java": "public class Solution {\n    public int subarraySum(int[] numbers, int targetSum) {\n        int numberOfSubarrays = 0;\n        int currentSum = 0;\n        java.util.Map<Integer, Integer> sumFrequencyMap = new java.util.HashMap<>();\n        sumFrequencyMap.put(0, 1); \n\n        for (int i = 0; i < numbers.length; i++) {\n            currentSum += numbers[i];\n\n            // Check if (currentSum - targetSum) exists.\n            if (sumFrequencyMap.containsKey(currentSum - targetSum)) {\n                numberOfSubarrays += sumFrequencyMap.get(currentSum - targetSum);\n            }\n\n            //Update the frequency of the current sum.\n            if (sumFrequencyMap.containsKey(currentSum)) {\n                sumFrequencyMap.put(currentSum, sumFrequencyMap.get(currentSum) + 1);\n            } else {\n                //First time seeing the current sum, initialize to 1.\n                sumFrequencyMap.put(currentSum, 1);\n            }\n        }\n\n        return numberOfSubarrays;\n    }\n}\n",
+        "C++": "#include <iostream>\n#include <vector>\n#include <unordered_map>\n\nint subarraySum(std::vector<int>& nums, int k) {\n    int count = 0;\n    int currentSum = 0;\n    std::unordered_map<int, int> sumFrequency;\n\n    sumFrequency[0] = 1;\n\n    for (int i = 0; i < nums.size(); ++i) {\n        currentSum += nums[i];\n\n        // Check if (currentSum - k) exists, meaning a subarray sums to k\n        if (sumFrequency.find(currentSum - k) != sumFrequency.end()) {\n\n            count += sumFrequency[currentSum - k];\n        }\n\n        // Update the frequency of the current sum\n        sumFrequency[currentSum]++;\n    }\n\n    return count;\n}\n",
+        "C#": "public class Solution\n{\n    public int SubarraySum(int[] numbers, int targetSum)\n    {\n        int count = 0;\n        int currentSum = 0;\n\n        // Store sum frequencies for efficient lookup.\n        Dictionary<int, int> sumFrequencies = new Dictionary<int, int>();\n        sumFrequencies[0] = 1;\n\n        for (int i = 0; i < numbers.Length; i++)\n        {\n            currentSum += numbers[i];\n\n            // Check if (currentSum - targetSum) exists.\n            if (sumFrequencies.ContainsKey(currentSum - targetSum))\n            {\n                count += sumFrequencies[currentSum - targetSum];\n            }\n\n            // Update frequency of the current sum.\n            if (sumFrequencies.ContainsKey(currentSum))\n            {\n                sumFrequencies[currentSum]++;\n            }\n            else\n            {\n                sumFrequencies[currentSum] = 1;\n            }\n        }\n\n        return count;\n    }\n}\n",
+        "Go": "package main\n\nfunc subarraySum(numbers []int, target int) int {\n\tsubarrayCount := 0\n\tcurrentSum := 0\n\n\t// Store prefix sums and their counts.\n\tsumFrequencies := make(map[int]int)\n\tsumFrequencies[0] = 1\n\n\tfor _, number := range numbers {\n\t\tcurrentSum += number\n\n\t\t// Check if a subarray exists that sums to target.\n\t\tdifference := currentSum - target\n\t\tif frequency, ok := sumFrequencies[difference]; ok {\n\t\t\tsubarrayCount += frequency\n\t\t}\n\n\t\t// Update the frequency of the current sum.\n\t\tsumFrequencies[currentSum]++\n\t}\n\n\treturn subarrayCount\n}\n",
+        "Rust": "use std::collections::HashMap;\n\nfn subarray_sum_equals_k(numbers: Vec<i32>, target: i32) -> i32 {\n    let mut count = 0;\n    let mut running_sum = 0;\n    let mut sum_frequency: HashMap<i32, i32> = HashMap::new();\n    // Initialize hashmap with 0 to account for subarrays starting at index 0\n    sum_frequency.insert(0, 1);\n\n    for number in numbers {\n        running_sum += number;\n        \n        // Check if the difference (running_sum - target) exists.\n        let complement = running_sum - target;\n        if sum_frequency.contains_key(&complement) {\n            count += sum_frequency.get(&complement).unwrap();\n        }\n\n        // Update the frequency of the current running sum.\n        let frequency = sum_frequency.entry(running_sum).or_insert(0);\n        *frequency += 1;\n    }\n\n    count\n}\n\n#[cfg(test)]\nmod tests {\n    use super::*;\n\n    #[test]\n    fn test_empty_array() {\n        assert_eq!(subarray_sum_equals_k(vec![], 0), 0);\n    }\n\n    #[test]\n    fn test_single_element_match() {\n        assert_eq!(subarray_sum_equals_k(vec![3], 3), 1);\n    }\n\n    #[test]\n    fn test_single_element_no_match() {\n        assert_eq!(subarray_sum_equals_k(vec![3], 5), 0);\n    }\n\n    #[test]\n    fn test_example_1() {\n        assert_eq!(subarray_sum_equals_k(vec![1, 1, 1], 2), 2);\n    }\n\n    #[test]\n    fn test_example_2() {\n        assert_eq!(subarray_sum_equals_k(vec![1, 2, 3], 3), 2);\n    }\n\n    #[test]\n    fn test_negative_numbers() {\n        assert_eq!(subarray_sum_equals_k(vec![1, -1, 0], 0), 3);\n    }\n\n    #[test]\n    fn test_all_zeros() {\n        assert_eq!(subarray_sum_equals_k(vec![0, 0, 0], 0), 6);\n    }\n\n    #[test]\n    fn test_large_array() {\n        let numbers = vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10];\n        assert_eq!(subarray_sum_equals_k(numbers, 15), 2);\n    }\n}",
+        "Kotlin": "fun subarraySum(numbers: IntArray, target: Int): Int {\n    var numberOfSubarrays = 0\n    var currentSum = 0\n\n    // Store sum frequencies to optimize search.\n    val sumFrequencies = mutableMapOf<Int, Int>()\n    sumFrequencies[0] = 1\n\n    for (number in numbers) {\n      currentSum += number\n\n      // Check if the difference exists to find a subarray.\n      val requiredSum = currentSum - target\n\n      if (sumFrequencies.containsKey(requiredSum)) {\n        numberOfSubarrays += sumFrequencies[requiredSum]!!\n      }\n\n      // Update the frequency of the current sum.\n      sumFrequencies[currentSum] = sumFrequencies.getOrDefault(currentSum, 0) + 1\n    }\n\n    return numberOfSubarrays\n  }",
+        "Swift": "func subarraySumEqualsK(numbers: [Int], target: Int) -> Int {\n    var numberOfSubarrays = 0\n    var currentSum = 0\n    var prefixSums = [0: 1]\n\n    for number in numbers {\n        currentSum += number\n\n        // Check if there's a prefix sum that, when subtracted,\n        // gives us the target value\n        if let count = prefixSums[currentSum - target] {\n            numberOfSubarrays += count\n        }\n\n        // Update the frequency of the current sum\n        prefixSums[currentSum, default: 0] += 1\n    }\n\n    return numberOfSubarrays\n}\n",
+        "Ruby": "def subarray_sum_equals_k(numbers, target_value):\n  current_sum = 0\n  sum_frequency = {0: 1}\n  subarray_count = 0\n\n  for number in numbers:\n    current_sum += number\n\n    # Key decision: Check if the difference exists\n    # If it does, a subarray summing to k exists.\n    if (current_sum - target_value) in sum_frequency:\n\n      subarray_count += sum_frequency[current_sum - target_value]\n\n    # Keep track of how many times each sum happens\n    # This is crucial for efficiently finding subarrays\n    if current_sum in sum_frequency:\n\n      sum_frequency[current_sum] += 1\n\n    else:\n      sum_frequency[current_sum] = 1\n\n  return subarray_count",
+        "PHP": "<?php\nfunction subarraySumEqualsK(array $numbers, int $targetSum): int {\n    $currentSum = 0;\n    $sumFrequency = [0 => 1];\n    $subarrayCount = 0;\n\n    foreach ($numbers as $number) {\n        $currentSum += $number;\n\n        // Check if a subarray exists that sums to targetSum.\n        if (isset($sumFrequency[$currentSum - $targetSum])) {\n            $subarrayCount += $sumFrequency[$currentSum - $targetSum];\n        }\n\n        // Store the frequency of the current sum.\n        if (!isset($sumFrequency[$currentSum])) {\n            $sumFrequency[$currentSum] = 0;\n        }\n\n        $sumFrequency[$currentSum]++;\n    }\n\n    return $subarrayCount;\n}\n?>"
+      }
+    }
+  }
+}

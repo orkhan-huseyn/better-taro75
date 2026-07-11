@@ -1,55 +1,55 @@
 [
   {
-    "name": "Arrays",
-    "count": 48
-  },
-  {
-    "name": "Strings",
-    "count": 19
-  },
-  {
-    "name": "Dynamic Programming",
-    "count": 14
+    "name": "Arrays & Hashing",
+    "count": 13
   },
   {
     "name": "Two Pointers",
-    "count": 12
-  },
-  {
-    "name": "Recursion",
-    "count": 10
-  },
-  {
-    "name": "Greedy Algorithms",
     "count": 9
   },
   {
-    "name": "Linked Lists",
+    "name": "Linked List",
     "count": 7
   },
   {
-    "name": "Stacks",
-    "count": 7
+    "name": "Dynamic Programming",
+    "count": 6
+  },
+  {
+    "name": "Math & Geometry",
+    "count": 6
+  },
+  {
+    "name": "Stack",
+    "count": 6
   },
   {
     "name": "Binary Search",
-    "count": 6
+    "count": 5
   },
   {
     "name": "Graphs",
     "count": 5
   },
   {
-    "name": "Sliding Windows",
+    "name": "Greedy",
+    "count": 5
+  },
+  {
+    "name": "Backtracking",
     "count": 4
   },
   {
-    "name": "Bit Manipulation",
-    "count": 3
+    "name": "Sliding Window",
+    "count": 4
   },
   {
-    "name": "Sorting",
-    "count": 1
+    "name": "Heap / Priority Queue",
+    "count": 2
+  },
+  {
+    "name": "Intervals",
+    "count": 2
   },
   {
     "name": "Trees",

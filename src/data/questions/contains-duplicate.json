@@ -1,1 +1,249 @@
-{"id":"FGCwqrvA8EoJB5u9RnWP","slug":"contains-duplicate","rank":57,"title":"Contains Duplicate","difficulty":"easy","topics":["Arrays"],"externalUrl":"https://www.leetcode.com/problems/contains-duplicate","numViews":428,"questionBody":"<p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears <strong>at least twice</strong> in the array, and return <code>false</code> if every element is distinct.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,2,3,1]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The element 1 occurs at the indices 0 and 3.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,2,3,4]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">false</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>All elements are distinct.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,1,1,3,3,4,3,2,4,2]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n</ul>\n","clarifyingQuestions":["What is the range of values for the integers in the input array?","Can the input array be empty or null?","Are we concerned with space complexity, or should I focus primarily on time complexity?","If the array contains duplicate values, should the function return after finding the first duplicate?","Can I assume the input will always be an array of integers, or could there be other data types present?"],"edgeCases":[{"edgeCase":"Null or empty input array","handling":"Return false immediately since an empty array cannot contain duplicates."},{"edgeCase":"Array with only one element","handling":"Return false because a single element cannot be a duplicate of itself."},{"edgeCase":"Array with all identical elements","handling":"The solution should correctly identify the presence of duplicates and return true."},{"edgeCase":"Array with a very large number of elements (performance)","handling":"Using a hash set provides O(n) time complexity which scales well for large inputs."},{"edgeCase":"Array containing only negative numbers","handling":"The solution should handle negative numbers correctly; a hash set works regardless of number sign."},{"edgeCase":"Array containing a mix of positive, negative, and zero values","handling":"The solution must correctly handle a mix of different number types without issues."},{"edgeCase":"Array contains integer overflow values (Integer.MAX_VALUE, Integer.MIN_VALUE)","handling":"The hash set should be able to store and compare extreme integer values correctly."},{"edgeCase":"Array contains duplicate entries of Integer.MAX_VALUE or Integer.MIN_VALUE","handling":"Hash set handles the duplicates of boundary integers correctly."}],"companies":[{"slug":"amazon","name":"Amazon","logo":"/logos/amazon.jpg"},{"slug":"microsoft","name":"Microsoft","logo":"/logos/microsoft.jpg"},{"slug":"google","name":"Google","logo":"/logos/google.jpg"},{"slug":"yahoo","name":"Yahoo","logo":"/logos/yahoo.jpg"},{"slug":"meta","name":"Meta","logo":"/logos/meta.jpg"},{"slug":"bloomberg-lp","name":"Bloomberg","logo":"/logos/bloomberg-lp.jpg"},{"slug":"apple","name":"Apple","logo":"/logos/apple.jpg"},{"slug":"uber","name":"Uber","logo":"/logos/uber.jpg"},{"slug":"nvidia","name":"NVIDIA","logo":"/logos/nvidia.jpg"},{"slug":"adobe","name":"Adobe","logo":"/logos/adobe.jpg"},{"slug":"netflix","name":"Netflix","logo":"/logos/netflix.jpg"},{"slug":"airbnb","name":"Airbnb","logo":"/logos/airbnb.jpg"},{"slug":"palantir","name":"Palantir","logo":"/logos/palantir.jpg"},{"slug":"zscaler","name":"Zscaler","logo":"/logos/zscaler.jpg"},{"slug":"oracle","name":"Oracle","logo":"/logos/oracle.jpg"},{"slug":"ibm","name":"IBM","logo":"/logos/ibm.jpg"},{"slug":"arista-networks","name":"Arista Networks","logo":"/logos/arista-networks.jpg"},{"slug":"paycom","name":"Paycom","logo":"/logos/paycom.jpg"},{"slug":"de-shaw","name":"De Shaw","logo":"/logos/de-shaw.jpg"},{"slug":"visa","name":"Visa","logo":"/logos/visa.png"}],"solutions":{"bruteForce":{"overview":"The brute force way to check for duplicates is very straightforward. It involves comparing each item in the collection to every other item. If we find two identical items, we know there's a duplicate.","steps":["Take the first item in the collection.","Compare this item to every other item in the collection.","If you find an item that is the same, you've found a duplicate and can stop.","If you go through the entire collection and don't find a match, move on to the second item.","Compare the second item to all the remaining items in the collection (excluding the first one, since it's already been checked).","Continue this process, checking each item against all the items that come after it.","If you reach the end without finding any matches, then there are no duplicates."],"bigO":{"runtimeValue":"O(n²)","runtimeExplanation":"The brute force approach compares each of the n elements in the input array to every other element. The outer loop iterates n times. The inner loop, in the worst case, iterates close to n times for each iteration of the outer loop. Therefore, the total number of comparisons is roughly proportional to n multiplied by n. This n * n operations means the algorithm has a time complexity of O(n²).","spaceValue":"O(1)","spaceExplanation":"The provided brute force algorithm for detecting duplicates only uses a few index variables to iterate through the input array. The number of index variables, such as those used for comparing elements, remains constant regardless of the size of the input array, denoted as N. No auxiliary data structures like hash maps, sets, or additional arrays are used to store intermediate data. Therefore, the space complexity is constant, independent of the input size N."},"languages":["Python","JavaScript","TypeScript","Java","C++","C#","Go","Rust","Kotlin","Swift","Ruby","PHP"],"code":{"Python":"def contains_duplicate_brute_force(numbers):\n    list_length = len(numbers)\n\n    for first_index in range(list_length):\n        first_number = numbers[first_index]\n\n        # Compare the first number with the rest of the numbers in the list\n        for second_index in range(first_index + 1, list_length):\n            second_number = numbers[second_index]\n\n            # Check if the numbers are the same\n            if first_number == second_number:\n                # Found a duplicate, so we can return True immediately\n                return True\n\n    # No duplicates were found after checking all pairs\n    return False","JavaScript":"function containsDuplicateBruteForce(numbers) {\n   const arrayLength = numbers.length;\n\n   for (let firstIndex = 0; firstIndex < arrayLength; firstIndex++) {\n       // Compare each number to the rest of the array\n\n       for (let secondIndex = firstIndex + 1; secondIndex < arrayLength; secondIndex++) {\n           // Starting secondIndex after firstIndex\n\n           if (numbers[firstIndex] === numbers[secondIndex]) {\n               // If numbers are equal, it's a duplicate.\n\n               return true;\n           }\n       }\n   }\n\n   // Reached end, no duplicate found\n   return false;\n","TypeScript":"function containsDuplicateBruteForce(numbers: number[]): boolean {\n  const arrayLength: number = numbers.length;\n\n  // Iterate through each number in the array\n  for (let firstIndex = 0; firstIndex < arrayLength; firstIndex++) {\n    // Compare current number with the remaining numbers\n    for (let secondIndex = firstIndex + 1; secondIndex < arrayLength; secondIndex++) {\n      // Check for duplicates, if found return true\n      if (numbers[firstIndex] === numbers[secondIndex]) {\n\n        return true;\n      }\n    }\n  }\n\n  // If no duplicates were found return false\n  return false;\n}","Java":"public class Solution {\n    public boolean containsDuplicate(int[] numbers) {\n        int arrayLength = numbers.length;\n\n        for (int firstIndex = 0; firstIndex < arrayLength; firstIndex++) {\n            // Iterate through the array, comparing each\n            // element to the rest of the array.\n\n            for (int secondIndex = firstIndex + 1; secondIndex < arrayLength; secondIndex++) {\n                // To avoid redundant comparisons, start\n                // the inner loop from the next element.\n\n                if (numbers[firstIndex] == numbers[secondIndex]) {\n                    // If any two elements are equal, it\n                    // means there's a duplicate.\n                    return true;\n                }\n            }\n        }\n\n        // If no duplicates were found after\n        // checking all pairs, return false.\n        return false;\n    }\n}\n","C++":"bool containsDuplicateBruteForce(std::vector<int>& numbers) {\n    for (size_t firstIndex = 0; firstIndex < numbers.size(); ++firstIndex) {\n\n        // For each number, compare with all subsequent numbers\n        for (size_t secondIndex = firstIndex + 1; secondIndex < numbers.size(); ++secondIndex) {\n            \n            // If duplicate is found, return true\n            if (numbers[firstIndex] == numbers[secondIndex]) {\n                return true;\n            }\n        }\n    }\n\n    // No duplicates found after checking all pairs\n    return false;\n}","C#":"public class Solution\n{\n\tpublic bool ContainsDuplicate(int[] numbers)\n\t{\n\t\tfor (int firstIndex = 0; firstIndex < numbers.Length; firstIndex++)\n\t\t{\n\t\t\t// For each number, compare it to all subsequent numbers\n\t\t\tfor (int secondIndex = firstIndex + 1; secondIndex < numbers.Length; secondIndex++)\n\t\t\t{\n\t\t\t\t// If a match is found, return true\n\t\t\t\tif (numbers[firstIndex] == numbers[secondIndex])\n\t\t\t\t{\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\n\t\t\t}\n\t\t}\n\n\t\t// If no duplicates are found, return false\n\t\treturn false;\n\t}\n}","Go":"package main\n\nfunc containsDuplicateBruteForce(numberList []int) bool {\n\t// Iterate through each number in the list\n\tfor firstIndex := 0; firstIndex < len(numberList); firstIndex++ {\n\t\t// Compare the current number to the rest of the list\n\t\tfor secondIndex := firstIndex + 1; secondIndex < len(numberList); secondIndex++ {\n\t\t\t// Check if the numbers are equal\n\t\t\tif numberList[firstIndex] == numberList[secondIndex] {\n\n\t\t\t\t// Duplicate found, return true\n\t\t\t\treturn true\n\t\t\t}\n\t\t}\n\t}\n\n\t// No duplicates found after comparing all numbers\n\treturn false\n}\n","Rust":"fn contains_duplicate_brute_force(numbers: Vec<i32>) -> bool {\n    let collection_size = numbers.len();\n\n    for first_index in 0..collection_size {\n        // Start comparison loop from the next element\n        for second_index in (first_index + 1)..collection_size {\n            // Check if elements at both indexes are the same\n            if numbers[first_index] == numbers[second_index] {\n                return true;\n            }\n        }\n    }\n\n    // No duplicates found after checking all possible pairs\n    return false;\n}\n","Kotlin":"fun containsDuplicateBruteForce(numbers: IntArray): Boolean {\n    for (firstIndex in numbers.indices) {\n        // Iterate through the array to check each number.\n\n        for (secondIndex in firstIndex + 1 until numbers.size) {\n            //Start the inner loop one index further to avoid re-checking.\n\n            if (numbers[firstIndex] == numbers[secondIndex]) {\n                // Found a duplicate, so return true.\n\n                return true\n            }\n        }\n    }\n    return false\n}","Swift":"func containsDuplicateBruteForce(numbers: [Int]) -> Bool {\n    // Iterate through each number in the array\n    for firstIndex in 0..<numbers.count {\n\n        // Compare the current number with the rest of the numbers in the array\n        for secondIndex in (firstIndex + 1)..<numbers.count {\n\n            // If two numbers are equal, it means a duplicate exists\n            if numbers[firstIndex] == numbers[secondIndex] {\n                return true\n            }\n        }\n    }\n\n    // If the loop finishes without finding duplicates, return false\n    return false\n}","Ruby":"def contains_duplicate_brute_force(numbers)\n  # Iterate through each number in the input array\n  numbers.each_with_index do |current_number, current_index|\n\n    # Compare the current number with the rest of the numbers\n    (current_index + 1).upto(numbers.length - 1) do |comparison_index|\n      # If a match is found, it's a duplicate\n      if current_number == numbers[comparison_index]\n        return true\n      end\n    end\n  end\n\n  # If the function hasn't returned by this point, no duplicates found\n  return false\nend\n","PHP":"<?php\nfunction containsDuplicateBruteForce(array $numbers): bool {\n\t$arrayLength = count($numbers);\n\n\tfor ($firstIndex = 0; $firstIndex < $arrayLength; $firstIndex++) {\n\t\t// Iterate through the rest of the array to check for duplicates\n\t\t\n\t\tfor ($secondIndex = $firstIndex + 1; $secondIndex < $arrayLength; $secondIndex++) {\n\t\t\t// If a duplicate is found return true.\n\t\t\t\n\t\t\tif ($numbers[$firstIndex] == $numbers[$secondIndex]) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t}\n\n\t// No duplicates were found.\n\t\n\treturn false;\n}\n?>"}},"optimal":{"overview":"The core idea is to efficiently remember if we've seen a number before. Instead of comparing each number to every other number, we use a tool to keep track of numbers we've already encountered, making the process much faster.","steps":["Imagine having a special notebook. We'll use this notebook to write down each number we see.","Start with the first number in the list.","Check if that number is already in our notebook. If it is, that means we've found a duplicate, and we're done!","If the number isn't in the notebook, write it down. This way, we'll remember we've seen it.","Move on to the next number in the list and repeat the process: check the notebook, and if it's new, add it.","Keep going until you find a duplicate or you reach the end of the list. If you reach the end without finding any duplicates, then there aren't any."],"bigO":{"runtimeValue":"O(n)","runtimeExplanation":"We iterate through the input array nums of size n once. For each number, we check if it exists in our \"notebook\" (a hash set in practice). Hash set lookups and insertions take constant time on average, O(1). Therefore, the dominant operation is iterating through the array once, which takes O(n) time. Thus, the overall time complexity is O(n).","spaceValue":"O(N)","spaceExplanation":"The provided solution uses a 'notebook' to remember numbers we've seen. This 'notebook' is essentially a data structure that stores elements from the input list. In the worst-case scenario, where all the elements in the input array are unique, the 'notebook' will store all N elements. Therefore, the auxiliary space required grows linearly with the input size N. This results in a space complexity of O(N)."},"languages":["Python","JavaScript","TypeScript","Java","C++","C#","Go","Rust","Kotlin","Swift","Ruby","PHP"],"code":{"Python":"def containsDuplicate(numbers):\n    seen_numbers = set()\n\n    for number in numbers:\n        # Check if the current number exists in seen_numbers.\n        if number in seen_numbers:\n\n            return True\n\n        # Add number to seen_numbers set.\n        seen_numbers.add(number)\n\n    return False","JavaScript":"function containsDuplicate(numbers) {\n  const numberSet = new Set();\n\n  // Iterate through each number in the input array.\n  for (let index = 0; index < numbers.length; index++) {\n    const currentNumber = numbers[index];\n\n    // Check if the number is already in the set.\n    if (numberSet.has(currentNumber)) {\n      return true; // Duplicate found.\n    }\n\n    // Add the current number to the set.\n    numberSet.add(currentNumber);\n  }\n\n  // No duplicates were found.\n  return false;\n}","TypeScript":"function containsDuplicate(numbers: number[]): boolean {\n  const numbersEncountered = new Set<number>();\n\n  for (let i = 0; i < numbers.length; i++) {\n    const currentNumber = numbers[i];\n\n    // Check if we've seen this number before.\n    if (numbersEncountered.has(currentNumber)) {\n      return true;\n    }\n\n    // Add the number to the set to track that we've seen it.\n    numbersEncountered.add(currentNumber);\n\n  }\n\n  return false;\n}\n","Java":"public class Solution {\n\n    public boolean containsDuplicate(int[] nums) {\n        java.util.HashSet<Integer> numberSet = new java.util.HashSet<>();\n\n        for (int i = 0; i < nums.length; i++) {\n            // Use HashSet to check for duplicates\n            if (numberSet.contains(nums[i])) {\n                return true;\n            }\n\n            // Add the number to the set\n            numberSet.add(nums[i]);\n\n        }\n\n        return false;\n    }\n}\n","C++":"#include <iostream>\n#include <vector>\n#include <unordered_set>\n\nbool containsDuplicate(std::vector<int>& numbers) {\n    std::unordered_set<int> seenNumbers;\n\n    for (int number : numbers) {\n        // Check if the current number exists\n        // in the hash set.\n        if (seenNumbers.count(number)) {\n            return true;\n        }\n\n        // Add the current number to the\n        // hash set, marking it as seen.\n        seenNumbers.insert(number);\n\n    }\n    // No duplicates were found after\n    // iterating through all numbers.\n    return false;\n}\n","C#":"public class Solution\n{\n    public bool ContainsDuplicate(int[] nums)\n    {\n        HashSet<int> numbersSeen = new HashSet<int>();\n\n        foreach (int number in nums)\n        {\n            // If the number is already present, return true\n            if (numbersSeen.Contains(number))\n            {\n                return true;\n            }\n\n            // Add number to the hash set to check for future duplicates\n            numbersSeen.Add(number);\n\n        }\n\n        return false;\n    }\n}\n","Go":"package main\n\nfunc containsDuplicate(numbers []int) bool {\n\tseenNumbers := make(map[int]bool)\n\n\tfor _, number := range numbers {\n\t\t// Check if the number has already been seen\n\t\tif seenNumbers[number] {\n\t\t\treturn true\n\t\t}\n\n\t\t// If the number is not in seenNumbers, add it.\n\t\tseenNumbers[number] = true\n\n\t}\n\n\t// If no duplicates were found, return false\n\treturn false\n}\n","Rust":"use std::collections::HashSet;\n\nfn contains_duplicate(numbers: Vec<i32>) -> bool {\n    let mut seen_numbers: HashSet<i32> = HashSet::new();\n\n    for number in numbers {\n        // Check if the number is already in the set.\n        if seen_numbers.contains(&number) {\n            return true;\n        }\n\n        // Insert the number into the set to track it.\n        seen_numbers.insert(number);\n\n    }\n\n    false\n}\n","Kotlin":"fun containsDuplicate(numbers: IntArray): Boolean {\n    val numberSet = mutableSetOf<Int>()\n\n    for (number in numbers) {\n      // If number is in set, it's a duplicate.\n      if (numberSet.contains(number)) {\n        return true\n      }\n\n      // Add the number to the set.\n      numberSet.add(number)\n    }\n\n    return false\n  }","Swift":"func containsDuplicate(numbers: [Int]) -> Bool {\n    var numberNotebook: Set<Int> = []\n\n    for number in numbers {\n        // Check if the current number exists in numberNotebook.\n        if numberNotebook.contains(number) {\n            return true\n        }\n\n        // If not, add the number to the numberNotebook.\n        numberNotebook.insert(number)\n\n    }\n\n    //If no duplicates are found after checking all numbers, return false.\n    return false\n}","Ruby":"def contains_duplicate(numbers)\n  seen_numbers = {}\n\n  numbers.each do |number|\n    # Check if the number is already present.\n    if seen_numbers[number]\n      return true\n    end\n\n    # Store the number to detect future duplicates.\n    seen_numbers[number] = true\n\n  end\n\n  # No duplicates found after checking all numbers.\n  return false\nend\n","PHP":"<?php\nfunction containsDuplicate(array $numberList): bool {\n\n  $numbersSeen = [];\n\n  foreach ($numberList as $number) {\n    // Check if the current number exists in our 'notebook'.\n    if (in_array($number, $numbersSeen, true)) {\n      return true;\n    }\n\n    // Store the number so we can look it up later.\n    $numbersSeen[] = $number;\n\n  }\n\n  // No duplicates found after traversing entire list.\n  return false;\n}\n?>"}}}}
+{
+  "id": "FGCwqrvA8EoJB5u9RnWP",
+  "slug": "contains-duplicate",
+  "rank": 57,
+  "title": "Contains Duplicate",
+  "difficulty": "easy",
+  "topics": [
+    "Arrays & Hashing"
+  ],
+  "externalUrl": "https://www.leetcode.com/problems/contains-duplicate",
+  "numViews": 428,
+  "questionBody": "<p>Given an integer array <code>nums</code>, return <code>true</code> if any value appears <strong>at least twice</strong> in the array, and return <code>false</code> if every element is distinct.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,2,3,1]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>The element 1 occurs at the indices 0 and 3.</p>\n</div>\n\n<p><strong class=\"example\">Example 2:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,2,3,4]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">false</span></p>\n\n<p><strong>Explanation:</strong></p>\n\n<p>All elements are distinct.</p>\n</div>\n\n<p><strong class=\"example\">Example 3:</strong></p>\n\n<div class=\"example-block\">\n<p><strong>Input:</strong> <span class=\"example-io\">nums = [1,1,1,3,3,4,3,2,4,2]</span></p>\n\n<p><strong>Output:</strong> <span class=\"example-io\">true</span></p>\n</div>\n\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>1 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-10<sup>9</sup> &lt;= nums[i] &lt;= 10<sup>9</sup></code></li>\n</ul>\n",
+  "clarifyingQuestions": [
+    "What is the range of values for the integers in the input array?",
+    "Can the input array be empty or null?",
+    "Are we concerned with space complexity, or should I focus primarily on time complexity?",
+    "If the array contains duplicate values, should the function return after finding the first duplicate?",
+    "Can I assume the input will always be an array of integers, or could there be other data types present?"
+  ],
+  "edgeCases": [
+    {
+      "edgeCase": "Null or empty input array",
+      "handling": "Return false immediately since an empty array cannot contain duplicates."
+    },
+    {
+      "edgeCase": "Array with only one element",
+      "handling": "Return false because a single element cannot be a duplicate of itself."
+    },
+    {
+      "edgeCase": "Array with all identical elements",
+      "handling": "The solution should correctly identify the presence of duplicates and return true."
+    },
+    {
+      "edgeCase": "Array with a very large number of elements (performance)",
+      "handling": "Using a hash set provides O(n) time complexity which scales well for large inputs."
+    },
+    {
+      "edgeCase": "Array containing only negative numbers",
+      "handling": "The solution should handle negative numbers correctly; a hash set works regardless of number sign."
+    },
+    {
+      "edgeCase": "Array containing a mix of positive, negative, and zero values",
+      "handling": "The solution must correctly handle a mix of different number types without issues."
+    },
+    {
+      "edgeCase": "Array contains integer overflow values (Integer.MAX_VALUE, Integer.MIN_VALUE)",
+      "handling": "The hash set should be able to store and compare extreme integer values correctly."
+    },
+    {
+      "edgeCase": "Array contains duplicate entries of Integer.MAX_VALUE or Integer.MIN_VALUE",
+      "handling": "Hash set handles the duplicates of boundary integers correctly."
+    }
+  ],
+  "companies": [
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "logo": "/logos/amazon.jpg"
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "logo": "/logos/microsoft.jpg"
+    },
+    {
+      "slug": "google",
+      "name": "Google",
+      "logo": "/logos/google.jpg"
+    },
+    {
+      "slug": "yahoo",
+      "name": "Yahoo",
+      "logo": "/logos/yahoo.jpg"
+    },
+    {
+      "slug": "meta",
+      "name": "Meta",
+      "logo": "/logos/meta.jpg"
+    },
+    {
+      "slug": "bloomberg-lp",
+      "name": "Bloomberg",
+      "logo": "/logos/bloomberg-lp.jpg"
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "logo": "/logos/apple.jpg"
+    },
+    {
+      "slug": "uber",
+      "name": "Uber",
+      "logo": "/logos/uber.jpg"
+    },
+    {
+      "slug": "nvidia",
+      "name": "NVIDIA",
+      "logo": "/logos/nvidia.jpg"
+    },
+    {
+      "slug": "adobe",
+      "name": "Adobe",
+      "logo": "/logos/adobe.jpg"
+    },
+    {
+      "slug": "netflix",
+      "name": "Netflix",
+      "logo": "/logos/netflix.jpg"
+    },
+    {
+      "slug": "airbnb",
+      "name": "Airbnb",
+      "logo": "/logos/airbnb.jpg"
+    },
+    {
+      "slug": "palantir",
+      "name": "Palantir",
+      "logo": "/logos/palantir.jpg"
+    },
+    {
+      "slug": "zscaler",
+      "name": "Zscaler",
+      "logo": "/logos/zscaler.jpg"
+    },
+    {
+      "slug": "oracle",
+      "name": "Oracle",
+      "logo": "/logos/oracle.jpg"
+    },
+    {
+      "slug": "ibm",
+      "name": "IBM",
+      "logo": "/logos/ibm.jpg"
+    },
+    {
+      "slug": "arista-networks",
+      "name": "Arista Networks",
+      "logo": "/logos/arista-networks.jpg"
+    },
+    {
+      "slug": "paycom",
+      "name": "Paycom",
+      "logo": "/logos/paycom.jpg"
+    },
+    {
+      "slug": "de-shaw",
+      "name": "De Shaw",
+      "logo": "/logos/de-shaw.jpg"
+    },
+    {
+      "slug": "visa",
+      "name": "Visa",
+      "logo": "/logos/visa.png"
+    }
+  ],
+  "solutions": {
+    "bruteForce": {
+      "overview": "The brute force way to check for duplicates is very straightforward. It involves comparing each item in the collection to every other item. If we find two identical items, we know there's a duplicate.",
+      "steps": [
+        "Take the first item in the collection.",
+        "Compare this item to every other item in the collection.",
+        "If you find an item that is the same, you've found a duplicate and can stop.",
+        "If you go through the entire collection and don't find a match, move on to the second item.",
+        "Compare the second item to all the remaining items in the collection (excluding the first one, since it's already been checked).",
+        "Continue this process, checking each item against all the items that come after it.",
+        "If you reach the end without finding any matches, then there are no duplicates."
+      ],
+      "bigO": {
+        "runtimeValue": "O(n²)",
+        "runtimeExplanation": "The brute force approach compares each of the n elements in the input array to every other element. The outer loop iterates n times. The inner loop, in the worst case, iterates close to n times for each iteration of the outer loop. Therefore, the total number of comparisons is roughly proportional to n multiplied by n. This n * n operations means the algorithm has a time complexity of O(n²).",
+        "spaceValue": "O(1)",
+        "spaceExplanation": "The provided brute force algorithm for detecting duplicates only uses a few index variables to iterate through the input array. The number of index variables, such as those used for comparing elements, remains constant regardless of the size of the input array, denoted as N. No auxiliary data structures like hash maps, sets, or additional arrays are used to store intermediate data. Therefore, the space complexity is constant, independent of the input size N."
+      },
+      "languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C++",
+        "C#",
+        "Go",
+        "Rust",
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "PHP"
+      ],
+      "code": {
+        "Python": "def contains_duplicate_brute_force(numbers):\n    list_length = len(numbers)\n\n    for first_index in range(list_length):\n        first_number = numbers[first_index]\n\n        # Compare the first number with the rest of the numbers in the list\n        for second_index in range(first_index + 1, list_length):\n            second_number = numbers[second_index]\n\n            # Check if the numbers are the same\n            if first_number == second_number:\n                # Found a duplicate, so we can return True immediately\n                return True\n\n    # No duplicates were found after checking all pairs\n    return False",
+        "JavaScript": "function containsDuplicateBruteForce(numbers) {\n   const arrayLength = numbers.length;\n\n   for (let firstIndex = 0; firstIndex < arrayLength; firstIndex++) {\n       // Compare each number to the rest of the array\n\n       for (let secondIndex = firstIndex + 1; secondIndex < arrayLength; secondIndex++) {\n           // Starting secondIndex after firstIndex\n\n           if (numbers[firstIndex] === numbers[secondIndex]) {\n               // If numbers are equal, it's a duplicate.\n\n               return true;\n           }\n       }\n   }\n\n   // Reached end, no duplicate found\n   return false;\n",
+        "TypeScript": "function containsDuplicateBruteForce(numbers: number[]): boolean {\n  const arrayLength: number = numbers.length;\n\n  // Iterate through each number in the array\n  for (let firstIndex = 0; firstIndex < arrayLength; firstIndex++) {\n    // Compare current number with the remaining numbers\n    for (let secondIndex = firstIndex + 1; secondIndex < arrayLength; secondIndex++) {\n      // Check for duplicates, if found return true\n      if (numbers[firstIndex] === numbers[secondIndex]) {\n\n        return true;\n      }\n    }\n  }\n\n  // If no duplicates were found return false\n  return false;\n}",
+        "Java": "public class Solution {\n    public boolean containsDuplicate(int[] numbers) {\n        int arrayLength = numbers.length;\n\n        for (int firstIndex = 0; firstIndex < arrayLength; firstIndex++) {\n            // Iterate through the array, comparing each\n            // element to the rest of the array.\n\n            for (int secondIndex = firstIndex + 1; secondIndex < arrayLength; secondIndex++) {\n                // To avoid redundant comparisons, start\n                // the inner loop from the next element.\n\n                if (numbers[firstIndex] == numbers[secondIndex]) {\n                    // If any two elements are equal, it\n                    // means there's a duplicate.\n                    return true;\n                }\n            }\n        }\n\n        // If no duplicates were found after\n        // checking all pairs, return false.\n        return false;\n    }\n}\n",
+        "C++": "bool containsDuplicateBruteForce(std::vector<int>& numbers) {\n    for (size_t firstIndex = 0; firstIndex < numbers.size(); ++firstIndex) {\n\n        // For each number, compare with all subsequent numbers\n        for (size_t secondIndex = firstIndex + 1; secondIndex < numbers.size(); ++secondIndex) {\n            \n            // If duplicate is found, return true\n            if (numbers[firstIndex] == numbers[secondIndex]) {\n                return true;\n            }\n        }\n    }\n\n    // No duplicates found after checking all pairs\n    return false;\n}",
+        "C#": "public class Solution\n{\n\tpublic bool ContainsDuplicate(int[] numbers)\n\t{\n\t\tfor (int firstIndex = 0; firstIndex < numbers.Length; firstIndex++)\n\t\t{\n\t\t\t// For each number, compare it to all subsequent numbers\n\t\t\tfor (int secondIndex = firstIndex + 1; secondIndex < numbers.Length; secondIndex++)\n\t\t\t{\n\t\t\t\t// If a match is found, return true\n\t\t\t\tif (numbers[firstIndex] == numbers[secondIndex])\n\t\t\t\t{\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\n\t\t\t}\n\t\t}\n\n\t\t// If no duplicates are found, return false\n\t\treturn false;\n\t}\n}",
+        "Go": "package main\n\nfunc containsDuplicateBruteForce(numberList []int) bool {\n\t// Iterate through each number in the list\n\tfor firstIndex := 0; firstIndex < len(numberList); firstIndex++ {\n\t\t// Compare the current number to the rest of the list\n\t\tfor secondIndex := firstIndex + 1; secondIndex < len(numberList); secondIndex++ {\n\t\t\t// Check if the numbers are equal\n\t\t\tif numberList[firstIndex] == numberList[secondIndex] {\n\n\t\t\t\t// Duplicate found, return true\n\t\t\t\treturn true\n\t\t\t}\n\t\t}\n\t}\n\n\t// No duplicates found after comparing all numbers\n\treturn false\n}\n",
+        "Rust": "fn contains_duplicate_brute_force(numbers: Vec<i32>) -> bool {\n    let collection_size = numbers.len();\n\n    for first_index in 0..collection_size {\n        // Start comparison loop from the next element\n        for second_index in (first_index + 1)..collection_size {\n            // Check if elements at both indexes are the same\n            if numbers[first_index] == numbers[second_index] {\n                return true;\n            }\n        }\n    }\n\n    // No duplicates found after checking all possible pairs\n    return false;\n}\n",
+        "Kotlin": "fun containsDuplicateBruteForce(numbers: IntArray): Boolean {\n    for (firstIndex in numbers.indices) {\n        // Iterate through the array to check each number.\n\n        for (secondIndex in firstIndex + 1 until numbers.size) {\n            //Start the inner loop one index further to avoid re-checking.\n\n            if (numbers[firstIndex] == numbers[secondIndex]) {\n                // Found a duplicate, so return true.\n\n                return true\n            }\n        }\n    }\n    return false\n}",
+        "Swift": "func containsDuplicateBruteForce(numbers: [Int]) -> Bool {\n    // Iterate through each number in the array\n    for firstIndex in 0..<numbers.count {\n\n        // Compare the current number with the rest of the numbers in the array\n        for secondIndex in (firstIndex + 1)..<numbers.count {\n\n            // If two numbers are equal, it means a duplicate exists\n            if numbers[firstIndex] == numbers[secondIndex] {\n                return true\n            }\n        }\n    }\n\n    // If the loop finishes without finding duplicates, return false\n    return false\n}",
+        "Ruby": "def contains_duplicate_brute_force(numbers)\n  # Iterate through each number in the input array\n  numbers.each_with_index do |current_number, current_index|\n\n    # Compare the current number with the rest of the numbers\n    (current_index + 1).upto(numbers.length - 1) do |comparison_index|\n      # If a match is found, it's a duplicate\n      if current_number == numbers[comparison_index]\n        return true\n      end\n    end\n  end\n\n  # If the function hasn't returned by this point, no duplicates found\n  return false\nend\n",
+        "PHP": "<?php\nfunction containsDuplicateBruteForce(array $numbers): bool {\n\t$arrayLength = count($numbers);\n\n\tfor ($firstIndex = 0; $firstIndex < $arrayLength; $firstIndex++) {\n\t\t// Iterate through the rest of the array to check for duplicates\n\t\t\n\t\tfor ($secondIndex = $firstIndex + 1; $secondIndex < $arrayLength; $secondIndex++) {\n\t\t\t// If a duplicate is found return true.\n\t\t\t\n\t\t\tif ($numbers[$firstIndex] == $numbers[$secondIndex]) {\n\t\t\t\treturn true;\n\t\t\t}\n\t\t}\n\t}\n\n\t// No duplicates were found.\n\t\n\treturn false;\n}\n?>"
+      }
+    },
+    "optimal": {
+      "overview": "The core idea is to efficiently remember if we've seen a number before. Instead of comparing each number to every other number, we use a tool to keep track of numbers we've already encountered, making the process much faster.",
+      "steps": [
+        "Imagine having a special notebook. We'll use this notebook to write down each number we see.",
+        "Start with the first number in the list.",
+        "Check if that number is already in our notebook. If it is, that means we've found a duplicate, and we're done!",
+        "If the number isn't in the notebook, write it down. This way, we'll remember we've seen it.",
+        "Move on to the next number in the list and repeat the process: check the notebook, and if it's new, add it.",
+        "Keep going until you find a duplicate or you reach the end of the list. If you reach the end without finding any duplicates, then there aren't any."
+      ],
+      "bigO": {
+        "runtimeValue": "O(n)",
+        "runtimeExplanation": "We iterate through the input array nums of size n once. For each number, we check if it exists in our \"notebook\" (a hash set in practice). Hash set lookups and insertions take constant time on average, O(1). Therefore, the dominant operation is iterating through the array once, which takes O(n) time. Thus, the overall time complexity is O(n).",
+        "spaceValue": "O(N)",
+        "spaceExplanation": "The provided solution uses a 'notebook' to remember numbers we've seen. This 'notebook' is essentially a data structure that stores elements from the input list. In the worst-case scenario, where all the elements in the input array are unique, the 'notebook' will store all N elements. Therefore, the auxiliary space required grows linearly with the input size N. This results in a space complexity of O(N)."
+      },
+      "languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C++",
+        "C#",
+        "Go",
+        "Rust",
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "PHP"
+      ],
+      "code": {
+        "Python": "def containsDuplicate(numbers):\n    seen_numbers = set()\n\n    for number in numbers:\n        # Check if the current number exists in seen_numbers.\n        if number in seen_numbers:\n\n            return True\n\n        # Add number to seen_numbers set.\n        seen_numbers.add(number)\n\n    return False",
+        "JavaScript": "function containsDuplicate(numbers) {\n  const numberSet = new Set();\n\n  // Iterate through each number in the input array.\n  for (let index = 0; index < numbers.length; index++) {\n    const currentNumber = numbers[index];\n\n    // Check if the number is already in the set.\n    if (numberSet.has(currentNumber)) {\n      return true; // Duplicate found.\n    }\n\n    // Add the current number to the set.\n    numberSet.add(currentNumber);\n  }\n\n  // No duplicates were found.\n  return false;\n}",
+        "TypeScript": "function containsDuplicate(numbers: number[]): boolean {\n  const numbersEncountered = new Set<number>();\n\n  for (let i = 0; i < numbers.length; i++) {\n    const currentNumber = numbers[i];\n\n    // Check if we've seen this number before.\n    if (numbersEncountered.has(currentNumber)) {\n      return true;\n    }\n\n    // Add the number to the set to track that we've seen it.\n    numbersEncountered.add(currentNumber);\n\n  }\n\n  return false;\n}\n",
+        "Java": "public class Solution {\n\n    public boolean containsDuplicate(int[] nums) {\n        java.util.HashSet<Integer> numberSet = new java.util.HashSet<>();\n\n        for (int i = 0; i < nums.length; i++) {\n            // Use HashSet to check for duplicates\n            if (numberSet.contains(nums[i])) {\n                return true;\n            }\n\n            // Add the number to the set\n            numberSet.add(nums[i]);\n\n        }\n\n        return false;\n    }\n}\n",
+        "C++": "#include <iostream>\n#include <vector>\n#include <unordered_set>\n\nbool containsDuplicate(std::vector<int>& numbers) {\n    std::unordered_set<int> seenNumbers;\n\n    for (int number : numbers) {\n        // Check if the current number exists\n        // in the hash set.\n        if (seenNumbers.count(number)) {\n            return true;\n        }\n\n        // Add the current number to the\n        // hash set, marking it as seen.\n        seenNumbers.insert(number);\n\n    }\n    // No duplicates were found after\n    // iterating through all numbers.\n    return false;\n}\n",
+        "C#": "public class Solution\n{\n    public bool ContainsDuplicate(int[] nums)\n    {\n        HashSet<int> numbersSeen = new HashSet<int>();\n\n        foreach (int number in nums)\n        {\n            // If the number is already present, return true\n            if (numbersSeen.Contains(number))\n            {\n                return true;\n            }\n\n            // Add number to the hash set to check for future duplicates\n            numbersSeen.Add(number);\n\n        }\n\n        return false;\n    }\n}\n",
+        "Go": "package main\n\nfunc containsDuplicate(numbers []int) bool {\n\tseenNumbers := make(map[int]bool)\n\n\tfor _, number := range numbers {\n\t\t// Check if the number has already been seen\n\t\tif seenNumbers[number] {\n\t\t\treturn true\n\t\t}\n\n\t\t// If the number is not in seenNumbers, add it.\n\t\tseenNumbers[number] = true\n\n\t}\n\n\t// If no duplicates were found, return false\n\treturn false\n}\n",
+        "Rust": "use std::collections::HashSet;\n\nfn contains_duplicate(numbers: Vec<i32>) -> bool {\n    let mut seen_numbers: HashSet<i32> = HashSet::new();\n\n    for number in numbers {\n        // Check if the number is already in the set.\n        if seen_numbers.contains(&number) {\n            return true;\n        }\n\n        // Insert the number into the set to track it.\n        seen_numbers.insert(number);\n\n    }\n\n    false\n}\n",
+        "Kotlin": "fun containsDuplicate(numbers: IntArray): Boolean {\n    val numberSet = mutableSetOf<Int>()\n\n    for (number in numbers) {\n      // If number is in set, it's a duplicate.\n      if (numberSet.contains(number)) {\n        return true\n      }\n\n      // Add the number to the set.\n      numberSet.add(number)\n    }\n\n    return false\n  }",
+        "Swift": "func containsDuplicate(numbers: [Int]) -> Bool {\n    var numberNotebook: Set<Int> = []\n\n    for number in numbers {\n        // Check if the current number exists in numberNotebook.\n        if numberNotebook.contains(number) {\n            return true\n        }\n\n        // If not, add the number to the numberNotebook.\n        numberNotebook.insert(number)\n\n    }\n\n    //If no duplicates are found after checking all numbers, return false.\n    return false\n}",
+        "Ruby": "def contains_duplicate(numbers)\n  seen_numbers = {}\n\n  numbers.each do |number|\n    # Check if the number is already present.\n    if seen_numbers[number]\n      return true\n    end\n\n    # Store the number to detect future duplicates.\n    seen_numbers[number] = true\n\n  end\n\n  # No duplicates found after checking all numbers.\n  return false\nend\n",
+        "PHP": "<?php\nfunction containsDuplicate(array $numberList): bool {\n\n  $numbersSeen = [];\n\n  foreach ($numberList as $number) {\n    // Check if the current number exists in our 'notebook'.\n    if (in_array($number, $numbersSeen, true)) {\n      return true;\n    }\n\n    // Store the number so we can look it up later.\n    $numbersSeen[] = $number;\n\n  }\n\n  // No duplicates found after traversing entire list.\n  return false;\n}\n?>"
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@
     "slug": "two-sum",
     "difficulty": "easy",
     "topics": [
-      "Arrays"
+      "Arrays & Hashing"
     ],
     "preview": "Find two numbers in a given array that add up to a specific target value, and return their indices. Essentially, you need to efficiently locate the pair that satisfies the sum requirement.",
     "companies": [
@@ -78,8 +78,7 @@
     "slug": "lru-cache",
     "difficulty": "medium",
     "topics": [
-      "Linked Lists",
-      "Dynamic Programming"
+      "Linked List"
     ],
     "preview": "Design a data structure that acts as a Least Recently Used (LRU) cache. Implement methods to get and put key-value pairs, evicting the least recently used entry when the cache is full.",
     "companies": [
@@ -164,8 +163,7 @@
     "slug": "merge-intervals",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Sorting"
+      "Intervals"
     ],
     "preview": "You are given a collection of intervals. Merge all overlapping intervals into a single interval and return the result.",
     "companies": [
@@ -241,8 +239,7 @@
     "slug": "best-time-to-buy-and-sell-stock",
     "difficulty": "easy",
     "topics": [
-      "Arrays",
-      "Dynamic Programming"
+      "Sliding Window"
     ],
     "preview": "You're given daily stock prices. Find the maximum profit you can make by buying and selling the stock once. You must buy before you sell.",
     "companies": [
@@ -310,9 +307,7 @@
     "slug": "longest-substring-without-repeating-characters",
     "difficulty": "medium",
     "topics": [
-      "Strings",
-      "Two Pointers",
-      "Sliding Windows"
+      "Sliding Window"
     ],
     "preview": "Find the length of the longest substring within a given string that contains no repeating characters. The substring must be contiguous.",
     "companies": [
@@ -381,8 +376,7 @@
     "slug": "valid-parentheses",
     "difficulty": "easy",
     "topics": [
-      "Strings",
-      "Stacks"
+      "Stack"
     ],
     "preview": "Determine if a string containing parentheses is valid. A valid string has matching and properly nested opening and closing parentheses.",
     "companies": [
@@ -448,8 +442,7 @@
     "slug": "number-of-islands",
     "difficulty": "medium",
     "topics": [
-      "Graphs",
-      "Arrays"
+      "Graphs"
     ],
     "preview": "Given a grid representing land and water, count the number of distinct islands. An island is formed by connected land cells.",
     "companies": [
@@ -528,8 +521,7 @@
     "slug": "group-anagrams",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Strings"
+      "Arrays & Hashing"
     ],
     "preview": "Given a list of words, group together all the anagrams. Anagrams are words that contain the same letters rearranged.",
     "companies": [
@@ -597,10 +589,7 @@
     "slug": "trapping-rain-water",
     "difficulty": "hard",
     "topics": [
-      "Arrays",
-      "Two Pointers",
-      "Dynamic Programming",
-      "Stacks"
+      "Two Pointers"
     ],
     "preview": "Given an array representing the height of bars, calculate how much water can be trapped between them after rain. Think about finding the maximum height to the left and right of each bar.",
     "companies": [
@@ -659,7 +648,6 @@
     "slug": "longest-palindromic-substring",
     "difficulty": "medium",
     "topics": [
-      "Strings",
       "Dynamic Programming"
     ],
     "preview": "Find the longest palindromic substring within a given string. A palindromic substring reads the same forwards and backward.",
@@ -717,8 +705,7 @@
     "slug": "top-k-frequent-elements",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Greedy Algorithms"
+      "Arrays & Hashing"
     ],
     "preview": "Find the k most frequent elements in a given array of numbers. Return the top k elements based on their frequency.",
     "companies": [
@@ -774,7 +761,6 @@
     "slug": "median-of-two-sorted-arrays",
     "difficulty": "hard",
     "topics": [
-      "Arrays",
       "Binary Search"
     ],
     "preview": "Find the median of two sorted arrays. The arrays can be of different sizes, and you should aim for an efficient solution.",
@@ -823,7 +809,6 @@
     "slug": "3sum",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Two Pointers"
     ],
     "preview": "Find all unique triplets in an array that sum to zero. You'll need to consider the potential for duplicate numbers and avoid duplicate triplets in your solution.",
@@ -874,9 +859,7 @@
     "slug": "subarray-sum-equals-k",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Sliding Windows",
-      "Dynamic Programming"
+      "Arrays & Hashing"
     ],
     "preview": "Determine the total number of continuous subarrays within a given array that sum up to a specific target value, k.",
     "companies": [
@@ -925,9 +908,7 @@
     "slug": "merge-k-sorted-lists",
     "difficulty": "hard",
     "topics": [
-      "Linked Lists",
-      "Arrays",
-      "Greedy Algorithms"
+      "Linked List"
     ],
     "preview": "You are given k sorted lists. Combine all of their elements into a single sorted list and return it.",
     "companies": [
@@ -981,8 +962,7 @@
     "slug": "longest-common-prefix",
     "difficulty": "easy",
     "topics": [
-      "Arrays",
-      "Strings"
+      "Arrays & Hashing"
     ],
     "preview": "Find the longest string that is a prefix of all strings in a given array. If no common prefix exists, return an empty string.",
     "companies": [
@@ -1029,7 +1009,6 @@
     "slug": "search-in-rotated-sorted-array",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Binary Search"
     ],
     "preview": "You're given a sorted array that has been rotated, and a target value. Find the index of the target value in the rotated array, or return -1 if it's not present.",
@@ -1081,8 +1060,7 @@
     "slug": "maximum-subarray",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Dynamic Programming"
+      "Greedy"
     ],
     "preview": "Find the contiguous subarray within a given array of numbers which has the largest sum. Return the sum of this subarray.",
     "companies": [
@@ -1137,7 +1115,7 @@
     "slug": "rotate-image",
     "difficulty": "medium",
     "topics": [
-      "Arrays"
+      "Math & Geometry"
     ],
     "preview": "You are given a square matrix representing an image. Rotate the image by 90 degrees clockwise in-place.",
     "companies": [
@@ -1182,7 +1160,7 @@
     "slug": "spiral-matrix",
     "difficulty": "medium",
     "topics": [
-      "Arrays"
+      "Math & Geometry"
     ],
     "preview": "Traverse a given matrix in a spiral pattern, returning all elements in the order you visit them. Essentially, walk around the matrix layer by layer, adding elements to a list.",
     "companies": [
@@ -1230,7 +1208,7 @@
     "slug": "add-two-numbers",
     "difficulty": "medium",
     "topics": [
-      "Linked Lists"
+      "Linked List"
     ],
     "preview": "You are given two linked lists, each representing a non-negative integer. Add the two numbers and return the sum as a linked list.",
     "companies": [
@@ -1267,8 +1245,7 @@
     "slug": "kth-largest-element-in-an-array",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Two Pointers"
+      "Heap / Priority Queue"
     ],
     "preview": "Find the kth largest element in an unsorted array. Note that it is the kth largest element in sorted order, not the kth distinct element.",
     "companies": [
@@ -1314,8 +1291,7 @@
     "slug": "generate-parentheses",
     "difficulty": "medium",
     "topics": [
-      "Recursion",
-      "Strings"
+      "Backtracking"
     ],
     "preview": "Given a number 'n', generate all possible well-formed (balanced) parentheses strings of length 2*n. For instance, if n=3, you need to create all valid combinations like '((()))', '(()())', etc.",
     "companies": [
@@ -1358,7 +1334,6 @@
     "slug": "rotting-oranges",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Graphs"
     ],
     "preview": "You are given a grid of oranges, some fresh, some rotten.  Rotten oranges contaminate adjacent fresh oranges; find the minimum time until all oranges are rotten.",
@@ -1405,7 +1380,6 @@
     "slug": "find-first-and-last-position-of-element-in-sorted-array",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Binary Search"
     ],
     "preview": "Given a sorted array, find the first and last position of a given target value. If the target is not found, return [-1, -1].",
@@ -1445,7 +1419,6 @@
     "slug": "merge-sorted-array",
     "difficulty": "easy",
     "topics": [
-      "Arrays",
       "Two Pointers"
     ],
     "preview": "You are given two sorted integer arrays. Merge the second array into the first one, maintaining the sorted order.",
@@ -1489,7 +1462,7 @@
     "slug": "roman-to-integer",
     "difficulty": "easy",
     "topics": [
-      "Strings"
+      "Math & Geometry"
     ],
     "preview": "Convert a Roman numeral string into its corresponding integer value. The input string will represent a valid Roman numeral.",
     "companies": [
@@ -1529,7 +1502,6 @@
     "slug": "house-robber",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Dynamic Programming"
     ],
     "preview": "You are a robber planning to rob houses along a street. Maximize your loot, but be careful - adjacent houses have connected security systems that will trigger an alarm if you rob them both.",
@@ -1579,7 +1551,7 @@
     "slug": "palindrome-number",
     "difficulty": "easy",
     "topics": [
-      "Bit Manipulation"
+      "Math & Geometry"
     ],
     "preview": "Determine whether an integer is a palindrome. That is, it reads the same forwards and backward.",
     "companies": [
@@ -1613,7 +1585,6 @@
     "slug": "move-zeroes",
     "difficulty": "easy",
     "topics": [
-      "Arrays",
       "Two Pointers"
     ],
     "preview": "Given an array, rearrange it so that all zeros are moved to the end while maintaining the relative order of the non-zero elements.",
@@ -1657,9 +1628,7 @@
     "slug": "container-with-most-water",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Two Pointers",
-      "Greedy Algorithms"
+      "Two Pointers"
     ],
     "preview": "You are given an array representing the heights of vertical lines. Find two lines that, together with the x-axis, form a container that holds the most water.",
     "companies": [
@@ -1706,9 +1675,7 @@
     "slug": "meeting-rooms-ii",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Greedy Algorithms",
-      "Dynamic Programming"
+      "Intervals"
     ],
     "preview": "You are given a list of meeting time intervals. Determine the minimum number of conference rooms required to accommodate all the meetings without any overlap.",
     "companies": [
@@ -1804,7 +1771,7 @@
     "slug": "valid-anagram",
     "difficulty": "easy",
     "topics": [
-      "Strings"
+      "Arrays & Hashing"
     ],
     "preview": "Determine if two strings are anagrams of each other, meaning they contain the same characters in a different order. You need to check if one string can be rearranged to form the other.",
     "companies": [
@@ -1845,7 +1812,7 @@
     "slug": "product-of-array-except-self",
     "difficulty": "medium",
     "topics": [
-      "Arrays"
+      "Arrays & Hashing"
     ],
     "preview": "Calculate a new array where each element is the product of all numbers in the original array, excluding the number at that index. Do this efficiently without using division.",
     "companies": [
@@ -1892,7 +1859,7 @@
     "slug": "longest-consecutive-sequence",
     "difficulty": "medium",
     "topics": [
-      "Arrays"
+      "Arrays & Hashing"
     ],
     "preview": "Given an unsorted array of integers, find the length of the longest consecutive elements sequence. These consecutive numbers do not need to be adjacent in the original array.",
     "companies": [
@@ -1937,7 +1904,6 @@
     "slug": "koko-eating-bananas",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Binary Search"
     ],
     "preview": "Koko wants to eat all the bananas in some piles within a certain time. Find the minimum eating speed that allows her to finish on time.",
@@ -1982,8 +1948,7 @@
     "slug": "jump-game",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Greedy Algorithms"
+      "Greedy"
     ],
     "preview": "You are given an array where each element represents your maximum jump length at that position. Determine if you can reach the last index starting from the first index.",
     "companies": [
@@ -2023,7 +1988,7 @@
     "slug": "integer-to-roman",
     "difficulty": "medium",
     "topics": [
-      "Strings"
+      "Math & Geometry"
     ],
     "preview": "Convert a given integer into its Roman numeral representation. You need to understand the mapping between integer values and Roman symbols to perform the conversion accurately.",
     "companies": [
@@ -2066,8 +2031,7 @@
     "slug": "course-schedule",
     "difficulty": "medium",
     "topics": [
-      "Graphs",
-      "Recursion"
+      "Graphs"
     ],
     "preview": "Determine if it is possible to finish all courses given prerequisite relationships between them. Essentially, detect if a cycle exists in the course dependencies.",
     "companies": [
@@ -2115,8 +2079,7 @@
     "slug": "minimum-window-substring",
     "difficulty": "hard",
     "topics": [
-      "Strings",
-      "Sliding Windows"
+      "Sliding Window"
     ],
     "preview": "Find the smallest substring within a larger string that contains all the characters of a target string. You need to locate the minimum window that satisfies this condition.",
     "companies": [
@@ -2156,8 +2119,7 @@
     "slug": "reverse-linked-list",
     "difficulty": "easy",
     "topics": [
-      "Linked Lists",
-      "Recursion"
+      "Linked List"
     ],
     "preview": "You are given the head of a singly linked list. Reverse the list and return the new head.",
     "companies": [
@@ -2197,8 +2159,7 @@
     "slug": "next-permutation",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Two Pointers"
+      "Greedy"
     ],
     "preview": "Given a sequence of numbers, find the next lexicographically greater permutation of the numbers. If no greater permutation exists, rearrange the numbers into the smallest possible permutation (ascending order).",
     "companies": [
@@ -2234,8 +2195,7 @@
     "slug": "sliding-window-maximum",
     "difficulty": "hard",
     "topics": [
-      "Arrays",
-      "Sliding Windows"
+      "Sliding Window"
     ],
     "preview": "Find the maximum value within each sliding window of a given size as it moves across an array.",
     "companies": [
@@ -2280,8 +2240,7 @@
     "slug": "course-schedule-ii",
     "difficulty": "medium",
     "topics": [
-      "Graphs",
-      "Dynamic Programming"
+      "Graphs"
     ],
     "preview": "You're given a list of courses and their prerequisites. Determine a valid order in which you can take all the courses, respecting the dependencies. If it's impossible to finish all courses, indicate that.",
     "companies": [
@@ -2330,7 +2289,7 @@
     "slug": "merge-two-sorted-lists",
     "difficulty": "easy",
     "topics": [
-      "Linked Lists"
+      "Linked List"
     ],
     "preview": "You're given two sorted lists. Combine them into a single sorted list containing all elements from both original lists.",
     "companies": [
@@ -2374,7 +2333,6 @@
     "slug": "valid-palindrome",
     "difficulty": "easy",
     "topics": [
-      "Strings",
       "Two Pointers"
     ],
     "preview": "Determine if a given string is a palindrome, considering only alphanumeric characters and ignoring cases. Essentially, check if the string reads the same forwards and backward after removing non-alphanumeric characters and converting to lowercase.",
@@ -2413,7 +2371,6 @@
     "slug": "remove-duplicates-from-sorted-array",
     "difficulty": "easy",
     "topics": [
-      "Arrays",
       "Two Pointers"
     ],
     "preview": "Given a sorted array, remove the duplicate elements in-place such that each unique element appears only once. Return the new length of the array.",
@@ -2447,7 +2404,6 @@
     "slug": "find-peak-element",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
       "Binary Search"
     ],
     "preview": "Find a peak element in an array, where a peak is greater than its neighbors. You only need to return the index of any one peak element if multiple exist.",
@@ -2486,8 +2442,7 @@
     "slug": "word-ladder",
     "difficulty": "hard",
     "topics": [
-      "Graphs",
-      "Strings"
+      "Graphs"
     ],
     "preview": "Transform one word into another, one letter at a time, using only words from a given dictionary. Find the shortest sequence of words to reach the target.",
     "companies": [
@@ -2529,8 +2484,7 @@
     "slug": "best-time-to-buy-and-sell-stock-ii",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Greedy Algorithms"
+      "Arrays & Hashing"
     ],
     "preview": "Maximize your profit by buying and selling a stock multiple times. You're given an array representing stock prices, and can make as many transactions as you want.",
     "companies": [
@@ -2568,9 +2522,7 @@
     "slug": "subsets",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Recursion",
-      "Bit Manipulation"
+      "Backtracking"
     ],
     "preview": "Given a set of distinct integers, your task is to generate all possible subsets (the power set). The solution should not contain duplicate subsets.",
     "companies": [
@@ -2605,7 +2557,7 @@
     "slug": "rotate-array",
     "difficulty": "medium",
     "topics": [
-      "Arrays"
+      "Two Pointers"
     ],
     "preview": "Given an array, rotate the elements to the right by a specified number of steps. The goal is to modify the original array in-place with the rotated elements.",
     "companies": [
@@ -2647,7 +2599,7 @@
     "slug": "min-stack",
     "difficulty": "medium",
     "topics": [
-      "Stacks"
+      "Stack"
     ],
     "preview": "Design a stack that supports push, pop, top, and retrieving the minimum element in constant time. You need to implement a stack with an additional function to efficiently get the minimum value.",
     "companies": [
@@ -2685,7 +2637,6 @@
     "slug": "word-break",
     "difficulty": "medium",
     "topics": [
-      "Strings",
       "Dynamic Programming"
     ],
     "preview": "Determine if a given string can be segmented into a space-separated sequence of words from a dictionary. You are given a string and a dictionary of words; can you break the string down using words from the dictionary?",
@@ -2728,8 +2679,7 @@
     "slug": "word-search",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Recursion"
+      "Backtracking"
     ],
     "preview": "Determine if a given word can be constructed from letters in a 2D board, where letters can be used horizontally or vertically. Each letter can only be used once in the word.",
     "companies": [
@@ -2772,7 +2722,7 @@
     "slug": "contains-duplicate",
     "difficulty": "easy",
     "topics": [
-      "Arrays"
+      "Arrays & Hashing"
     ],
     "preview": "Determine if any value appears at least twice in an array of numbers. Return true if duplicates exist; otherwise, return false.",
     "companies": [
@@ -2808,8 +2758,6 @@
     "slug": "longest-increasing-subsequence",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Binary Search",
       "Dynamic Programming"
     ],
     "preview": "Find the length of the longest strictly increasing subsequence within a given array of numbers. A subsequence doesn't need to be contiguous, but the elements must maintain their original order.",
@@ -2852,9 +2800,7 @@
     "slug": "reorganize-string",
     "difficulty": "medium",
     "topics": [
-      "Strings",
-      "Greedy Algorithms",
-      "Arrays"
+      "Heap / Priority Queue"
     ],
     "preview": "Rearrange the characters in a given string such that no two adjacent characters are the same. If such an arrangement is possible, return it; otherwise, return an empty string.",
     "companies": [
@@ -2931,8 +2877,6 @@
     "slug": "string-compression",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Strings",
       "Two Pointers"
     ],
     "preview": "Compress a given string by replacing consecutive repeating characters with the character followed by the count of repetitions. If the compressed string isn't shorter, return the original.",
@@ -2978,8 +2922,7 @@
     "slug": "sort-colors",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Two Pointers"
+      "Arrays & Hashing"
     ],
     "preview": "You're given an array containing only 0s, 1s, and 2s. Sort the array in place so that elements of the same value are grouped together.",
     "companies": [
@@ -3021,8 +2964,7 @@
     "slug": "jump-game-ii",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Greedy Algorithms"
+      "Greedy"
     ],
     "preview": "You are given an array where each element represents the maximum jump length from that position. Find the minimum number of jumps required to reach the last index.",
     "companies": [
@@ -3061,9 +3003,7 @@
     "slug": "decode-string",
     "difficulty": "medium",
     "topics": [
-      "Strings",
-      "Stacks",
-      "Recursion"
+      "Stack"
     ],
     "preview": "The problem involves decoding a string that follows a specific encoding rule: k[encoded_string], where the encoded_string inside the square brackets is repeated exactly k times. Your task is to decode the string and return the decoded string.",
     "companies": [
@@ -3105,8 +3045,7 @@
     "slug": "binary-tree-maximum-path-sum",
     "difficulty": "hard",
     "topics": [
-      "Trees",
-      "Recursion"
+      "Trees"
     ],
     "preview": "Find the maximum sum of any path in a binary tree, where a path can start and end at any node. The path must contain at least one node.",
     "companies": [
@@ -3147,9 +3086,7 @@
     "slug": "copy-list-with-random-pointer",
     "difficulty": "medium",
     "topics": [
-      "Linked Lists",
-      "Recursion",
-      "Arrays"
+      "Linked List"
     ],
     "preview": "You're given a linked list where each node has a regular 'next' pointer and a 'random' pointer. Create a deep copy of this list, preserving both the next and random pointer relationships.",
     "companies": [
@@ -3186,7 +3123,7 @@
     "slug": "valid-sudoku",
     "difficulty": "medium",
     "topics": [
-      "Arrays"
+      "Arrays & Hashing"
     ],
     "preview": "Determine if a given 9x9 Sudoku board is valid. Check if each row, column, and 3x3 subgrid contains the digits 1-9 without repetition.",
     "companies": [
@@ -3227,8 +3164,7 @@
     "slug": "letter-combinations-of-a-phone-number",
     "difficulty": "medium",
     "topics": [
-      "Strings",
-      "Recursion"
+      "Backtracking"
     ],
     "preview": "Given a string of digits, return all possible letter combinations that the number could represent, using the typical phone keypad mapping. The goal is to generate all valid combinations in any order.",
     "companies": [
@@ -3272,8 +3208,7 @@
     "slug": "daily-temperatures",
     "difficulty": "medium",
     "topics": [
-      "Arrays",
-      "Stacks"
+      "Stack"
     ],
     "preview": "Given a list of daily temperatures, find how many days you have to wait until a warmer temperature. Return a list where each element represents the waiting days for each day's temperature.",
     "companies": [
@@ -3316,8 +3251,7 @@
     "slug": "candy",
     "difficulty": "hard",
     "topics": [
-      "Arrays",
-      "Greedy Algorithms"
+      "Greedy"
     ],
     "preview": "Distribute candies to children standing in a line such that each child with a higher rating gets more candies than their neighbors. Find the minimum number of candies needed.",
     "companies": [
@@ -3351,8 +3285,7 @@
     "slug": "powx-n",
     "difficulty": "medium",
     "topics": [
-      "Recursion",
-      "Bit Manipulation"
+      "Math & Geometry"
     ],
     "preview": "Calculate x raised to the power of n. Be mindful of potential edge cases and optimize for efficiency, as a naive approach might not be sufficient.",
     "companies": [
@@ -3386,9 +3319,7 @@
     "slug": "lfu-cache",
     "difficulty": "hard",
     "topics": [
-      "Linked Lists",
-      "Arrays",
-      "Dynamic Programming"
+      "Linked List"
     ],
     "preview": "Design and implement a Least Frequently Used (LFU) cache. The cache should efficiently store key-value pairs, evicting the least frequently used items when it reaches capacity.",
     "companies": [
@@ -3425,8 +3356,7 @@
     "slug": "simplify-path",
     "difficulty": "medium",
     "topics": [
-      "Strings",
-      "Stacks"
+      "Stack"
     ],
     "preview": "Given an absolute file path (Unix style), simplify it by resolving redundant separators, directory names, and navigating back up the directory structure. Return the simplified canonical path.",
     "companies": [
@@ -3461,8 +3391,7 @@
     "slug": "basic-calculator",
     "difficulty": "hard",
     "topics": [
-      "Stacks",
-      "Strings"
+      "Stack"
     ],
     "preview": "Implement a basic calculator to evaluate a simple expression string. The expression can contain parentheses, addition, and subtraction.",
     "companies": [
@@ -3501,7 +3430,7 @@
     "slug": "majority-element",
     "difficulty": "easy",
     "topics": [
-      "Arrays"
+      "Arrays & Hashing"
     ],
     "preview": "Find the element that appears more than n/2 times in a given array of size n. Essentially, you need to identify the majority element.",
     "companies": [

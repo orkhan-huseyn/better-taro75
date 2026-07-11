@@ -1,1 +1,300 @@
-{"id":"PEg6sD6ysOSB0DEyAKFb","slug":"product-of-array-except-self","rank":35,"title":"Product of Array Except Self","difficulty":"medium","topics":["Arrays"],"externalUrl":"https://www.leetcode.com/problems/product-of-array-except-self","numViews":618,"questionBody":"<p>Given an integer array <code>nums</code>, return <em>an array</em> <code>answer</code> <em>such that</em> <code>answer[i]</code> <em>is equal to the product of all the elements of</em> <code>nums</code> <em>except</em> <code>nums[i]</code>.</p>\n\n<p>The product of any prefix or suffix of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</p>\n\n<p>You must write an algorithm that runs in&nbsp;<code>O(n)</code>&nbsp;time and without using the division operation.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3,4]\n<strong>Output:</strong> [24,12,8,6]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [-1,1,0,-3,3]\n<strong>Output:</strong> [0,0,9,0,0]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-30 &lt;= nums[i] &lt;= 30</code></li>\n\t<li>The input is generated such that <code>answer[i]</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong>&nbsp;Can you solve the problem in <code>O(1)</code>&nbsp;extra&nbsp;space complexity? (The output array <strong>does not</strong> count as extra space for space complexity analysis.)</p>\n","clarifyingQuestions":["What is the expected size range of the input array `nums`?","Can the input array `nums` contain zero or negative numbers?","Is the input array `nums` guaranteed to fit within the memory constraints?","If there are multiple zeros in the input array, what should the output array contain?","Is the input array mutable, or should I treat it as immutable?"],"edgeCases":[{"edgeCase":"Null or empty input array","handling":"Return an empty array or throw an IllegalArgumentException as the problem has no valid output for this input."},{"edgeCase":"Array with a single element","handling":"Return an array containing only the value 1, as the product of elements excluding the single element is 1."},{"edgeCase":"Array with two elements","handling":"Calculate the products and return accordingly in a new array."},{"edgeCase":"Array contains a single zero","handling":"All other elements in the result array will be zero, except the element at the index of the zero, which will be the product of all other non-zero elements."},{"edgeCase":"Array contains multiple zeros","handling":"The entire result array should be filled with zeros since the product of the array excluding any element will always be zero."},{"edgeCase":"Array with large numbers potentially leading to integer overflow","handling":"Use long data type to store intermediate products, or if forbidden by the problem statement, implement overflow detection and handle it appropriately."},{"edgeCase":"Array contains negative numbers","handling":"The algorithm should correctly handle negative numbers by multiplying them into the prefix and suffix products."},{"edgeCase":"Large array size affecting time complexity","handling":"The solution should aim for O(n) time complexity to handle large arrays efficiently; solutions with nested loops would be unacceptable."}],"companies":[{"slug":"amazon","name":"Amazon","logo":"/logos/amazon.jpg"},{"slug":"bloomberg-lp","name":"Bloomberg","logo":"/logos/bloomberg-lp.jpg"},{"slug":"microsoft","name":"Microsoft","logo":"/logos/microsoft.jpg"},{"slug":"google","name":"Google","logo":"/logos/google.jpg"},{"slug":"uber","name":"Uber","logo":"/logos/uber.jpg"},{"slug":"meta","name":"Meta","logo":"/logos/meta.jpg"},{"slug":"apple","name":"Apple","logo":"/logos/apple.jpg"},{"slug":"yahoo","name":"Yahoo","logo":"/logos/yahoo.jpg"},{"slug":"nvidia","name":"NVIDIA","logo":"/logos/nvidia.jpg"},{"slug":"snap","name":"Snap","logo":"/logos/snap.png"},{"slug":"adobe","name":"Adobe","logo":"/logos/adobe.jpg"},{"slug":"tiktok","name":"TikTok","logo":"/logos/tiktok.png"},{"slug":"ebay","name":"eBay","logo":"/logos/ebay.jpg"},{"slug":"walmart","name":"Walmart","logo":"/logos/walmart.jpg"},{"slug":"ripple","name":"Ripple","logo":"/logos/ripple.jpg"},{"slug":"paypal","name":"PayPal","logo":"/logos/paypal.jpg"},{"slug":"lyft","name":"Lyft","logo":"/logos/lyft.jpg"},{"slug":"oracle","name":"Oracle","logo":"/logos/oracle.jpg"},{"slug":"intuit","name":"Intuit","logo":"/logos/intuit.jpg"},{"slug":"autodesk","name":"Autodesk","logo":"/logos/autodesk.jpg"},{"slug":"salesforce","name":"Salesforce","logo":"/logos/salesforce.png"},{"slug":"nutanix","name":"Nutanix","logo":"/logos/nutanix.jpg"},{"slug":"ibm","name":"IBM","logo":"/logos/ibm.jpg"},{"slug":"goldman-sachs","name":"Goldman Sachs","logo":"/logos/goldman-sachs.jpg"},{"slug":"disney","name":"Disney","logo":"/logos/disney.jpg"},{"slug":"zomato","name":"Zomato","logo":"/logos/zomato.jpg"},{"slug":"intel","name":"Intel","logo":"/logos/intel.jpg"},{"slug":"flipkart","name":"Flipkart","logo":"/logos/flipkart.jpg"},{"slug":"docusign","name":"DocuSign","logo":"/logos/docusign.jpg"},{"slug":"cisco","name":"Cisco","logo":"/logos/cisco.jpg"},{"slug":"asana","name":"Asana","logo":"/logos/asana.jpg"}],"solutions":{"bruteForce":{"overview":"The brute-force way to solve this problem is pretty straightforward. For each position in the final answer, we'll calculate the product of all the other numbers in the original set. We will do this for every position.","steps":["For the first position, multiply all the numbers together, *except* for the number that's originally in the first position.","Put that product in the first position of a new result.","Now, do the same thing for the second position. Multiply all the numbers together, skipping the one that was originally in the second position.","Put that product in the second position of the result.","Keep repeating this process. For each position, calculate the product of all other numbers and put that product in the corresponding position of the result.","Once you've done this for every single position, you'll have your final result."],"bigO":{"runtimeValue":"O(n²)","runtimeExplanation":"The provided solution iterates through the input array of size n. For each element, it calculates the product of all other elements, requiring another iteration of approximately n operations. Thus, the overall complexity is derived from performing an n operation for each of the n elements in the input array. This results in approximately n * n operations, which simplifies to O(n²).","spaceValue":"O(1)","spaceExplanation":"The provided algorithm calculates each element of the result array individually, without retaining temporary collections of items. The steps describe overwriting a single position in a result with a calculated product, without referring to intermediate data structures. The algorithm has no reliance on extra data structures that scale with the size of the input array. Since the space usage does not grow with input size (N), the space complexity is constant."},"languages":["Python","JavaScript","TypeScript","Java","C++","C#","Go","Rust","Kotlin","Swift","Ruby","PHP"],"code":{"Python":"def product_of_array_except_self_brute_force(numbers):\n    number_of_elements = len(numbers)\n    result_array = [1] * number_of_elements\n\n    for index in range(number_of_elements):\n        product = 1\n\n        # Iterate through the array to calc. product of all other numbers.\n        for second_index in range(number_of_elements):\n            if index != second_index:\n                product *= numbers[second_index]\n\n        # Store the product at the current index.\n        result_array[index] = product\n\n    return result_array","JavaScript":"function productOfArrayExceptSelfBruteForce(numbers) {\n  const numbersLength = numbers.length;\n  const result = new Array(numbersLength);\n\n  for (let currentIndex = 0; currentIndex < numbersLength; currentIndex++) {\n    let currentProduct = 1;\n\n    // Calculate the product of all elements except the one at currentIndex\n    for (let otherIndex = 0; otherIndex < numbersLength; otherIndex++) {\n      if (currentIndex !== otherIndex) {\n\n        // Exclude the current element from the product\n        currentProduct *= numbers[otherIndex];\n      }\n    }\n\n    // Store the product in the result array\n    result[currentIndex] = currentProduct;\n  }\n\n  return result;\n}","TypeScript":"function productExceptSelfBruteForce(numbers: number[]): number[] {\n    const arrayLength: number = numbers.length;\n    const result: number[] = new Array(arrayLength);\n\n    for (let index = 0; index < arrayLength; index++) {\n      // Calculate product of all elements excluding current element.\n\n      let currentProduct: number = 1;\n\n      for (let productIndex = 0; productIndex < arrayLength; productIndex++) {\n\n        if (index !== productIndex) {\n          currentProduct *= numbers[productIndex];\n        }\n      }\n\n      // Store the product in result array\n\n      result[index] = currentProduct;\n    }\n\n    return result;\n  }","Java":"public class Solution {\n    public int[] productExceptSelfBruteForce(int[] numbers) {\n        int numberOfElements = numbers.length;\n        int[] result = new int[numberOfElements];\n\n        for (int i = 0; i < numberOfElements; i++) {\n            int productOfOtherElements = 1;\n\n            // Calculate product skipping element at current index\n\n            for (int j = 0; j < numberOfElements; j++) {\n                if (i != j) {\n                    productOfOtherElements *= numbers[j];\n                }\n            }\n\n            // Store the product in result array\n\n            result[i] = productOfOtherElements;\n\n        }\n\n        return result;\n    }\n}\n","C++":"#include <iostream>\n#include <vector>\n\nstd::vector<int> productExceptSelfBruteForce(const std::vector<int>& numbers) {\n    int numberOfElements = numbers.size();\n    std::vector<int> result(numberOfElements, 1);\n\n    // Iterate through each position to calculate the product for that position\n    for (int currentIndex = 0; currentIndex < numberOfElements; ++currentIndex) {\n        int currentProduct = 1;\n\n        // Iterate through all numbers to get the product, skipping current index\n        for (int otherIndex = 0; otherIndex < numberOfElements; ++otherIndex) {\n            if (currentIndex != otherIndex) {\n                currentProduct *= numbers[otherIndex];\n            }\n        }\n        // Store the current product in the corresponding position in the result\n        result[currentIndex] = currentProduct;\n    }\n\n    return result;\n}\n","C#":"public class Solution\n{\n    public int[] ProductExceptSelfBruteForce(int[] numbers)\n    {\n        int arrayLength = numbers.Length;\n        int[] result = new int[arrayLength];\n\n        for (int i = 0; i < arrayLength; i++)\n        {\n            int currentProduct = 1;\n\n            // Need to calculate product excluding element at current index.\n            for (int j = 0; j < arrayLength; j++)\n            {\n                if (i != j)\n                {\n                    currentProduct *= numbers[j];\n                }\n            }\n\n            result[i] = currentProduct;\n        }\n\n        return result;\n    }\n}\n","Go":"package main\n\nfunc productExceptSelfBruteForce(numbers []int) []int {\n\tlengthOfNumbers := len(numbers)\n\tresult := make([]int, lengthOfNumbers)\n\n\tfor index := 0; index < lengthOfNumbers; index++ {\n\t\tproductForPosition := 1\n\n\t\t// Iterate through the array, excluding the current index.\n\t\tfor otherIndex := 0; otherIndex < lengthOfNumbers; otherIndex++ {\n\t\t\tif index == otherIndex {\n\t\t\t\tcontinue\n\t\t\t}\n\n\t\t\tproductForPosition *= numbers[otherIndex]\n\t\t}\n\n\t\t// Store the product in the corresponding result position.\n\t\tresult[index] = productForPosition\n\t}\n\n\treturn result\n}\n","Rust":"fn product_except_self_brute_force(numbers: Vec<i32>) -> Vec<i32> {\n    let array_length = numbers.len();\n    let mut result_array: Vec<i32> = vec![0; array_length];\n\n    for current_index in 0..array_length {\n      // Need to calculate product excluding element at current_index\n      let mut current_product = 1;\n      for other_index in 0..array_length {\n        if current_index != other_index {\n          current_product *= numbers[other_index];\n        }\n      }\n\n      // Store computed product in result_array\n      result_array[current_index] = current_product;\n    }\n\n    result_array\n  }","Kotlin":"fun productOfArrayExceptSelfBruteForce(numbers: IntArray): IntArray {\n    val lengthOfInputArray = numbers.size\n    val resultantArray = IntArray(lengthOfInputArray) \n\n    for (index in 0 until lengthOfInputArray) {\n      var productForCurrentIndex = 1\n\n      // Calculate product of all elements except the one at current index.\n      for (otherIndex in 0 until lengthOfInputArray) {\n        if (index != otherIndex) {\n          productForCurrentIndex *= numbers[otherIndex]\n        }\n      }\n\n      // Store the product in the corresponding index of result array.\n      resultantArray[index] = productForCurrentIndex\n    }\n\n    return resultantArray\n  }","Swift":"func productOfArrayExceptSelfBruteForce(numbers: [Int]) -> [Int] {\n    let numberOfElements = numbers.count\n    var result: [Int] = Array(repeating: 0, count: numberOfElements)\n\n    for index in 0..<numberOfElements {\n        var product = 1\n\n        // Calculate the product of all elements except the one at the current index.\n        for innerIndex in 0..<numberOfElements {\n            if index != innerIndex {\n                product *= numbers[innerIndex]\n            }\n        }\n\n        // Store the calculated product in the corresponding position.\n        result[index] = product\n    }\n\n    return result\n}","Ruby":"def product_except_self_brute_force(numbers)\n  number_count = numbers.length\n  result = Array.new(number_count)\n\n  for current_index in 0...number_count\n    product = 1\n\n    # Iterate through all indices to calculate product\n\n    for other_index in 0...number_count\n      if current_index != other_index\n        product *= numbers[other_index]\n      end\n    end\n\n    # Assign the calculated product to result array\n\n    result[current_index] = product\n  end\n\n  return result\nend","PHP":"<?php\nfunction productOfArrayExceptSelfBruteForce(array $numbers): array\n{\n    $length = count($numbers);\n    $result = [];\n\n    for ($i = 0; $i < $length; $i++) {\n        $product = 1;\n\n        // Calculate the product of all numbers except the current one\n        for ($j = 0; $j < $length; $j++) {\n            if ($i !== $j) {\n\n                //This step calculates the running product\n                $product *= $numbers[$j];\n            }\n        }\n\n        $result[$i] = $product;\n    }\n\n    return $result;\n}\n\n?>"}},"optimal":{"overview":"The efficient way to solve this problem avoids recalculating products repeatedly. Instead, it smartly builds up the answer by calculating prefix and suffix products. This approach reduces a lot of unnecessary work and gives you the final answer much faster.","steps":["First, calculate the product of all the numbers *before* each position. Store these in a new list.","Next, calculate the product of all the numbers *after* each position. Store these in another new list.","Finally, to get the result for each position, simply multiply the product of numbers before it with the product of numbers after it. This gives you the product of all numbers except the number at that position."],"bigO":{"runtimeValue":"O(n)","runtimeExplanation":"The algorithm iterates through the input array nums of size n three times. The first iteration calculates prefix products, the second calculates suffix products, and the third calculates the final result by multiplying corresponding prefix and suffix products. Each of these iterations performs a constant amount of work for each element in nums. Since the number of operations grows linearly with the input size n, the time complexity is O(n).","spaceValue":"O(N)","spaceExplanation":"The algorithm creates two new lists to store prefix products and suffix products respectively. Both the prefix products list and the suffix products list each have a size equal to the number of elements in the input array (N). Therefore, the auxiliary space required is proportional to the size of the input, resulting in O(N) space complexity."},"languages":["Python","JavaScript","TypeScript","Java","C++","C#","Go","Rust","Kotlin","Swift","Ruby","PHP"],"code":{"Python":"def product_except_self(numbers):\n    number_count = len(numbers)\n    prefix_products = [1] * number_count\n    suffix_products = [1] * number_count\n    result = [1] * number_count\n\n    # Calculate prefix products.\n    # Each element is the product of all elements before it.\n    for i in range(1, number_count):\n        prefix_products[i] = prefix_products[i - 1] * numbers[i - 1]\n\n    # Calculate suffix products.\n    # Each element is the product of all elements after it.\n    for i in range(number_count - 2, -1, -1):\n        suffix_products[i] = suffix_products[i + 1] * numbers[i + 1]\n\n    # Calculate the final result by multiplying prefix and suffix products.\n    for i in range(number_count):\n        result[i] = prefix_products[i] * suffix_products[i]\n\n    return result","JavaScript":"function productExceptSelf(numbers) {\n  const numberOfElements = numbers.length;\n  const productsBefore = new Array(numberOfElements).fill(1);\n  const productsAfter = new Array(numberOfElements).fill(1);\n  const result = new Array(numberOfElements).fill(1);\n\n  let runningProduct = 1;\n\n  // Calculate products before each element.\n  for (let i = 0; i < numberOfElements; i++) {\n    productsBefore[i] = runningProduct;\n    runningProduct *= numbers[i];\n  }\n\n  runningProduct = 1;\n\n  // Calculate products after each element.\n  for (let i = numberOfElements - 1; i >= 0; i--) {\n    productsAfter[i] = runningProduct;\n    runningProduct *= numbers[i];\n  }\n\n  // We multiply prefix and suffix products.\n  for (let i = 0; i < numberOfElements; i++) {\n    result[i] = productsBefore[i] * productsAfter[i];\n  }\n\n  return result;\n}\n","TypeScript":"function productExceptSelf(numbers: number[]): number[] {\n    const numberOfElements: number = numbers.length;\n    const prefixProducts: number[] = new Array(numberOfElements).fill(1);\n    const suffixProducts: number[] = new Array(numberOfElements).fill(1);\n    const result: number[] = new Array(numberOfElements).fill(1);\n\n    // Calculate prefix products.\n    // Each element is the product of all before it.\n    for (let index = 1; index < numberOfElements; index++) {\n      prefixProducts[index] = prefixProducts[index - 1] * numbers[index - 1];\n    }\n\n    // Calculate suffix products.\n    // Each element is the product of all after it.\n    for (let index = numberOfElements - 2; index >= 0; index--) {\n      suffixProducts[index] = suffixProducts[index + 1] * numbers[index + 1];\n    }\n\n    // Calculate the final result.\n    // Multiply prefix and suffix products.\n    for (let index = 0; index < numberOfElements; index++) {\n      result[index] = prefixProducts[index] * suffixProducts[index];\n    }\n\n    return result;\n  }","Java":"public class Solution {\n    public int[] productExceptSelf(int[] nums) {\n        int numberOfElements = nums.length;\n        int[] prefixProducts = new int[numberOfElements];\n        int[] suffixProducts = new int[numberOfElements];\n        int[] result = new int[numberOfElements];\n\n        // Calculate prefix products\n        prefixProducts[0] = 1;\n        for (int i = 1; i < numberOfElements; i++) {\n            prefixProducts[i] = prefixProducts[i - 1] * nums[i - 1];\n        }\n\n        // Calculate suffix products\n        suffixProducts[numberOfElements - 1] = 1;\n        for (int i = numberOfElements - 2; i >= 0; i--) {\n            suffixProducts[i] = suffixProducts[i + 1] * nums[i + 1];\n        }\n\n        // Multiply prefix and suffix products to get the final result\n        for (int i = 0; i < numberOfElements; i++) {\n            result[i] = prefixProducts[i] * suffixProducts[i];\n        }\n\n        return result;\n    }\n}\n","C++":"#include <vector>\n\nstd::vector<int> productExceptSelf(std::vector<int>& numbers) {\n    int numberOfElements = numbers.size();\n    std::vector<int> prefixProducts(numberOfElements, 1);\n    std::vector<int> suffixProducts(numberOfElements, 1);\n    std::vector<int> result(numberOfElements);\n\n    // Calculate prefix products\n    // Prefix product at i is product of all elements before i\n    for (int i = 1; i < numberOfElements; ++i) {\n        prefixProducts[i] = prefixProducts[i - 1] * numbers[i - 1];\n    }\n\n    // Calculate suffix products\n    // Suffix product at i is product of all elements after i\n    for (int i = numberOfElements - 2; i >= 0; --i) {\n        suffixProducts[i] = suffixProducts[i + 1] * numbers[i + 1];\n    }\n\n    // Calculate the final result\n    // Product at i is product of prefix and suffix products\n    for (int i = 0; i < numberOfElements; ++i) {\n        result[i] = prefixProducts[i] * suffixProducts[i];\n    }\n\n    return result;\n}\n","C#":"using System;\n\npublic class Solution\n{\n    public int[] ProductExceptSelf(int[] numbers)\n    {\n        int numberOfElements = numbers.Length;\n        int[] prefixProducts = new int[numberOfElements];\n        int[] suffixProducts = new int[numberOfElements];\n        int[] result = new int[numberOfElements];\n\n        // Calculate prefix products.\n        prefixProducts[0] = 1;\n        for (int i = 1; i < numberOfElements; i++)\n        {\n            prefixProducts[i] = prefixProducts[i - 1] * numbers[i - 1];\n        }\n\n        // Calculate suffix products.\n        suffixProducts[numberOfElements - 1] = 1;\n        for (int i = numberOfElements - 2; i >= 0; i--)\n        {\n            suffixProducts[i] = suffixProducts[i + 1] * numbers[i + 1];\n        }\n\n        // Calculate final result by multiplying prefix and suffix products.\n        for (int i = 0; i < numberOfElements; i++)\n        {\n            result[i] = prefixProducts[i] * suffixProducts[i];\n        }\n\n        return result;\n    }\n}\n","Go":"package main\n\nfunc productExceptSelf(numbers []int) []int {\n\tarrayLength := len(numbers)\n\n\tprefixProducts := make([]int, arrayLength)\n\tsuffixProducts := make([]int, arrayLength)\n\tresultArray := make([]int, arrayLength)\n\n\tprefixProducts[0] = 1\n\t// Calculate prefix products.\n\tfor i := 1; i < arrayLength; i++ {\n\t\tprefixProducts[i] = prefixProducts[i-1] * numbers[i-1]\n\t}\n\n\tsuffixProducts[arrayLength-1] = 1\n\t// Calculate suffix products.\n\tfor i := arrayLength - 2; i >= 0; i-- {\n\t\tsuffixProducts[i] = suffixProducts[i+1] * numbers[i+1]\n\t}\n\n\t// Calculate final result by multiplying prefix and suffix products.\n\tfor i := 0; i < arrayLength; i++ {\n\t\tresultArray[i] = prefixProducts[i] * suffixProducts[i]\n\t}\n\n\treturn resultArray\n}\n","Rust":"pub fn product_except_self(numbers: Vec<i32>) -> Vec<i32> {\n    let number_of_elements = numbers.len();\n    let mut prefix_products: Vec<i32> = vec![0; number_of_elements];\n    let mut suffix_products: Vec<i32> = vec![0; number_of_elements];\n    let mut results: Vec<i32> = vec![0; number_of_elements];\n\n    // Calculate prefix products.\n    prefix_products[0] = 1;\n    for i in 1..number_of_elements {\n        prefix_products[i] = prefix_products[i - 1] * numbers[i - 1];\n    }\n\n    // Calculate suffix products.\n    suffix_products[number_of_elements - 1] = 1;\n    for i in (0..number_of_elements - 1).rev() {\n        suffix_products[i] = suffix_products[i + 1] * numbers[i + 1];\n    }\n\n    // Multiply prefix and suffix products to get the final result.\n    // This avoids division and handles zero values correctly.\n    for i in 0..number_of_elements {\n        results[i] = prefix_products[i] * suffix_products[i];\n    }\n\n    results\n  }","Kotlin":"fun productExceptSelf(numbers: IntArray): IntArray {\n    val arrayLength = numbers.size\n    val prefixProducts = IntArray(arrayLength) { 1 }\n    val suffixProducts = IntArray(arrayLength) { 1 }\n    val result = IntArray(arrayLength)\n\n    // Calculate prefix products\n    for (index in 1 until arrayLength) {\n      prefixProducts[index] = prefixProducts[index - 1] * numbers[index - 1]\n    }\n\n    // Calculate suffix products\n    for (index in arrayLength - 2 downTo 0) {\n      suffixProducts[index] = suffixProducts[index + 1] * numbers[index + 1]\n    }\n\n    // Need to multiply prefix and suffix to get result.\n    for (index in 0 until arrayLength) {\n      result[index] = prefixProducts[index] * suffixProducts[index]\n    }\n\n    return result\n  }","Swift":"func productExceptSelf(numbers: [Int]) -> [Int] {\n    let numberOfElements = numbers.count\n    var prefixProducts = Array(repeating: 1, count: numberOfElements)\n    var suffixProducts = Array(repeating: 1, count: numberOfElements)\n    var result = Array(repeating: 1, count: numberOfElements)\n\n    // Calculate prefix products.\n    // This is needed to get product before each element.\n    for i in 1..<numberOfElements {\n        prefixProducts[i] = prefixProducts[i - 1] * numbers[i - 1]\n    }\n\n    // Calculate suffix products.\n    // This is needed to get product after each element.\n    for i in (0..<numberOfElements - 1).reversed() {\n        suffixProducts[i] = suffixProducts[i + 1] * numbers[i + 1]\n    }\n\n    // Multiply prefix and suffix products to get the final result.\n    for i in 0..<numberOfElements {\n        result[i] = prefixProducts[i] * suffixProducts[i]\n    }\n\n    return result\n}\n","Ruby":"def product_except_self(numbers)\n  number_of_elements = numbers.length\n  prefix_products = Array.new(number_of_elements, 1)\n  suffix_products = Array.new(number_of_elements, 1)\n  result = Array.new(number_of_elements)\n\n  # Calculate prefix products.\n  for i in 1...number_of_elements\n    prefix_products[i] = prefix_products[i - 1] * numbers[i - 1]\n  end\n\n  # Calculate suffix products.\n  # Iterate backwards to calculate products after the current index.\n  for i in (number_of_elements - 2).downto(0)\n    suffix_products[i] = suffix_products[i + 1] * numbers[i + 1]\n  end\n\n  # Calculate the final result.\n  # Multiply corresponding prefix and suffix products.\n  for i in 0...number_of_elements\n    result[i] = prefix_products[i] * suffix_products[i]\n  end\n\n  result\nend\n","PHP":"<?php\nfunction productExceptSelf(array $numbers): array {\n    $arrayLength = count($numbers);\n    $prefixProducts = array_fill(0, $arrayLength, 1);\n    $suffixProducts = array_fill(0, $arrayLength, 1);\n    $result = array_fill(0, $arrayLength, 1);\n\n    // Calculate prefix products.\n    // This helps accumulate products from the left.\n    for ($i = 1; $i < $arrayLength; $i++) {\n        $prefixProducts[$i] = $prefixProducts[$i - 1] * $numbers[$i - 1];\n    }\n\n    // Calculate suffix products.\n    // Accumulates products from the right end of the array.\n    for ($i = $arrayLength - 2; $i >= 0; $i--) {\n        $suffixProducts[$i] = $suffixProducts[$i + 1] * $numbers[$i + 1];\n    }\n\n    // Calculate the final result by multiplying prefix and suffix products.\n    // Combines left and right products excluding the current element.\n    for ($i = 0; $i < $arrayLength; $i++) {\n        $result[$i] = $prefixProducts[$i] * $suffixProducts[$i];\n    }\n\n    return $result;\n}\n?>"}}}}
+{
+  "id": "PEg6sD6ysOSB0DEyAKFb",
+  "slug": "product-of-array-except-self",
+  "rank": 35,
+  "title": "Product of Array Except Self",
+  "difficulty": "medium",
+  "topics": [
+    "Arrays & Hashing"
+  ],
+  "externalUrl": "https://www.leetcode.com/problems/product-of-array-except-self",
+  "numViews": 618,
+  "questionBody": "<p>Given an integer array <code>nums</code>, return <em>an array</em> <code>answer</code> <em>such that</em> <code>answer[i]</code> <em>is equal to the product of all the elements of</em> <code>nums</code> <em>except</em> <code>nums[i]</code>.</p>\n\n<p>The product of any prefix or suffix of <code>nums</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</p>\n\n<p>You must write an algorithm that runs in&nbsp;<code>O(n)</code>&nbsp;time and without using the division operation.</p>\n\n<p>&nbsp;</p>\n<p><strong class=\"example\">Example 1:</strong></p>\n<pre><strong>Input:</strong> nums = [1,2,3,4]\n<strong>Output:</strong> [24,12,8,6]\n</pre><p><strong class=\"example\">Example 2:</strong></p>\n<pre><strong>Input:</strong> nums = [-1,1,0,-3,3]\n<strong>Output:</strong> [0,0,9,0,0]\n</pre>\n<p>&nbsp;</p>\n<p><strong>Constraints:</strong></p>\n\n<ul>\n\t<li><code>2 &lt;= nums.length &lt;= 10<sup>5</sup></code></li>\n\t<li><code>-30 &lt;= nums[i] &lt;= 30</code></li>\n\t<li>The input is generated such that <code>answer[i]</code> is <strong>guaranteed</strong> to fit in a <strong>32-bit</strong> integer.</li>\n</ul>\n\n<p>&nbsp;</p>\n<p><strong>Follow up:</strong>&nbsp;Can you solve the problem in <code>O(1)</code>&nbsp;extra&nbsp;space complexity? (The output array <strong>does not</strong> count as extra space for space complexity analysis.)</p>\n",
+  "clarifyingQuestions": [
+    "What is the expected size range of the input array `nums`?",
+    "Can the input array `nums` contain zero or negative numbers?",
+    "Is the input array `nums` guaranteed to fit within the memory constraints?",
+    "If there are multiple zeros in the input array, what should the output array contain?",
+    "Is the input array mutable, or should I treat it as immutable?"
+  ],
+  "edgeCases": [
+    {
+      "edgeCase": "Null or empty input array",
+      "handling": "Return an empty array or throw an IllegalArgumentException as the problem has no valid output for this input."
+    },
+    {
+      "edgeCase": "Array with a single element",
+      "handling": "Return an array containing only the value 1, as the product of elements excluding the single element is 1."
+    },
+    {
+      "edgeCase": "Array with two elements",
+      "handling": "Calculate the products and return accordingly in a new array."
+    },
+    {
+      "edgeCase": "Array contains a single zero",
+      "handling": "All other elements in the result array will be zero, except the element at the index of the zero, which will be the product of all other non-zero elements."
+    },
+    {
+      "edgeCase": "Array contains multiple zeros",
+      "handling": "The entire result array should be filled with zeros since the product of the array excluding any element will always be zero."
+    },
+    {
+      "edgeCase": "Array with large numbers potentially leading to integer overflow",
+      "handling": "Use long data type to store intermediate products, or if forbidden by the problem statement, implement overflow detection and handle it appropriately."
+    },
+    {
+      "edgeCase": "Array contains negative numbers",
+      "handling": "The algorithm should correctly handle negative numbers by multiplying them into the prefix and suffix products."
+    },
+    {
+      "edgeCase": "Large array size affecting time complexity",
+      "handling": "The solution should aim for O(n) time complexity to handle large arrays efficiently; solutions with nested loops would be unacceptable."
+    }
+  ],
+  "companies": [
+    {
+      "slug": "amazon",
+      "name": "Amazon",
+      "logo": "/logos/amazon.jpg"
+    },
+    {
+      "slug": "bloomberg-lp",
+      "name": "Bloomberg",
+      "logo": "/logos/bloomberg-lp.jpg"
+    },
+    {
+      "slug": "microsoft",
+      "name": "Microsoft",
+      "logo": "/logos/microsoft.jpg"
+    },
+    {
+      "slug": "google",
+      "name": "Google",
+      "logo": "/logos/google.jpg"
+    },
+    {
+      "slug": "uber",
+      "name": "Uber",
+      "logo": "/logos/uber.jpg"
+    },
+    {
+      "slug": "meta",
+      "name": "Meta",
+      "logo": "/logos/meta.jpg"
+    },
+    {
+      "slug": "apple",
+      "name": "Apple",
+      "logo": "/logos/apple.jpg"
+    },
+    {
+      "slug": "yahoo",
+      "name": "Yahoo",
+      "logo": "/logos/yahoo.jpg"
+    },
+    {
+      "slug": "nvidia",
+      "name": "NVIDIA",
+      "logo": "/logos/nvidia.jpg"
+    },
+    {
+      "slug": "snap",
+      "name": "Snap",
+      "logo": "/logos/snap.png"
+    },
+    {
+      "slug": "adobe",
+      "name": "Adobe",
+      "logo": "/logos/adobe.jpg"
+    },
+    {
+      "slug": "tiktok",
+      "name": "TikTok",
+      "logo": "/logos/tiktok.png"
+    },
+    {
+      "slug": "ebay",
+      "name": "eBay",
+      "logo": "/logos/ebay.jpg"
+    },
+    {
+      "slug": "walmart",
+      "name": "Walmart",
+      "logo": "/logos/walmart.jpg"
+    },
+    {
+      "slug": "ripple",
+      "name": "Ripple",
+      "logo": "/logos/ripple.jpg"
+    },
+    {
+      "slug": "paypal",
+      "name": "PayPal",
+      "logo": "/logos/paypal.jpg"
+    },
+    {
+      "slug": "lyft",
+      "name": "Lyft",
+      "logo": "/logos/lyft.jpg"
+    },
+    {
+      "slug": "oracle",
+      "name": "Oracle",
+      "logo": "/logos/oracle.jpg"
+    },
+    {
+      "slug": "intuit",
+      "name": "Intuit",
+      "logo": "/logos/intuit.jpg"
+    },
+    {
+      "slug": "autodesk",
+      "name": "Autodesk",
+      "logo": "/logos/autodesk.jpg"
+    },
+    {
+      "slug": "salesforce",
+      "name": "Salesforce",
+      "logo": "/logos/salesforce.png"
+    },
+    {
+      "slug": "nutanix",
+      "name": "Nutanix",
+      "logo": "/logos/nutanix.jpg"
+    },
+    {
+      "slug": "ibm",
+      "name": "IBM",
+      "logo": "/logos/ibm.jpg"
+    },
+    {
+      "slug": "goldman-sachs",
+      "name": "Goldman Sachs",
+      "logo": "/logos/goldman-sachs.jpg"
+    },
+    {
+      "slug": "disney",
+      "name": "Disney",
+      "logo": "/logos/disney.jpg"
+    },
+    {
+      "slug": "zomato",
+      "name": "Zomato",
+      "logo": "/logos/zomato.jpg"
+    },
+    {
+      "slug": "intel",
+      "name": "Intel",
+      "logo": "/logos/intel.jpg"
+    },
+    {
+      "slug": "flipkart",
+      "name": "Flipkart",
+      "logo": "/logos/flipkart.jpg"
+    },
+    {
+      "slug": "docusign",
+      "name": "DocuSign",
+      "logo": "/logos/docusign.jpg"
+    },
+    {
+      "slug": "cisco",
+      "name": "Cisco",
+      "logo": "/logos/cisco.jpg"
+    },
+    {
+      "slug": "asana",
+      "name": "Asana",
+      "logo": "/logos/asana.jpg"
+    }
+  ],
+  "solutions": {
+    "bruteForce": {
+      "overview": "The brute-force way to solve this problem is pretty straightforward. For each position in the final answer, we'll calculate the product of all the other numbers in the original set. We will do this for every position.",
+      "steps": [
+        "For the first position, multiply all the numbers together, *except* for the number that's originally in the first position.",
+        "Put that product in the first position of a new result.",
+        "Now, do the same thing for the second position. Multiply all the numbers together, skipping the one that was originally in the second position.",
+        "Put that product in the second position of the result.",
+        "Keep repeating this process. For each position, calculate the product of all other numbers and put that product in the corresponding position of the result.",
+        "Once you've done this for every single position, you'll have your final result."
+      ],
+      "bigO": {
+        "runtimeValue": "O(n²)",
+        "runtimeExplanation": "The provided solution iterates through the input array of size n. For each element, it calculates the product of all other elements, requiring another iteration of approximately n operations. Thus, the overall complexity is derived from performing an n operation for each of the n elements in the input array. This results in approximately n * n operations, which simplifies to O(n²).",
+        "spaceValue": "O(1)",
+        "spaceExplanation": "The provided algorithm calculates each element of the result array individually, without retaining temporary collections of items. The steps describe overwriting a single position in a result with a calculated product, without referring to intermediate data structures. The algorithm has no reliance on extra data structures that scale with the size of the input array. Since the space usage does not grow with input size (N), the space complexity is constant."
+      },
+      "languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C++",
+        "C#",
+        "Go",
+        "Rust",
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "PHP"
+      ],
+      "code": {
+        "Python": "def product_of_array_except_self_brute_force(numbers):\n    number_of_elements = len(numbers)\n    result_array = [1] * number_of_elements\n\n    for index in range(number_of_elements):\n        product = 1\n\n        # Iterate through the array to calc. product of all other numbers.\n        for second_index in range(number_of_elements):\n            if index != second_index:\n                product *= numbers[second_index]\n\n        # Store the product at the current index.\n        result_array[index] = product\n\n    return result_array",
+        "JavaScript": "function productOfArrayExceptSelfBruteForce(numbers) {\n  const numbersLength = numbers.length;\n  const result = new Array(numbersLength);\n\n  for (let currentIndex = 0; currentIndex < numbersLength; currentIndex++) {\n    let currentProduct = 1;\n\n    // Calculate the product of all elements except the one at currentIndex\n    for (let otherIndex = 0; otherIndex < numbersLength; otherIndex++) {\n      if (currentIndex !== otherIndex) {\n\n        // Exclude the current element from the product\n        currentProduct *= numbers[otherIndex];\n      }\n    }\n\n    // Store the product in the result array\n    result[currentIndex] = currentProduct;\n  }\n\n  return result;\n}",
+        "TypeScript": "function productExceptSelfBruteForce(numbers: number[]): number[] {\n    const arrayLength: number = numbers.length;\n    const result: number[] = new Array(arrayLength);\n\n    for (let index = 0; index < arrayLength; index++) {\n      // Calculate product of all elements excluding current element.\n\n      let currentProduct: number = 1;\n\n      for (let productIndex = 0; productIndex < arrayLength; productIndex++) {\n\n        if (index !== productIndex) {\n          currentProduct *= numbers[productIndex];\n        }\n      }\n\n      // Store the product in result array\n\n      result[index] = currentProduct;\n    }\n\n    return result;\n  }",
+        "Java": "public class Solution {\n    public int[] productExceptSelfBruteForce(int[] numbers) {\n        int numberOfElements = numbers.length;\n        int[] result = new int[numberOfElements];\n\n        for (int i = 0; i < numberOfElements; i++) {\n            int productOfOtherElements = 1;\n\n            // Calculate product skipping element at current index\n\n            for (int j = 0; j < numberOfElements; j++) {\n                if (i != j) {\n                    productOfOtherElements *= numbers[j];\n                }\n            }\n\n            // Store the product in result array\n\n            result[i] = productOfOtherElements;\n\n        }\n\n        return result;\n    }\n}\n",
+        "C++": "#include <iostream>\n#include <vector>\n\nstd::vector<int> productExceptSelfBruteForce(const std::vector<int>& numbers) {\n    int numberOfElements = numbers.size();\n    std::vector<int> result(numberOfElements, 1);\n\n    // Iterate through each position to calculate the product for that position\n    for (int currentIndex = 0; currentIndex < numberOfElements; ++currentIndex) {\n        int currentProduct = 1;\n\n        // Iterate through all numbers to get the product, skipping current index\n        for (int otherIndex = 0; otherIndex < numberOfElements; ++otherIndex) {\n            if (currentIndex != otherIndex) {\n                currentProduct *= numbers[otherIndex];\n            }\n        }\n        // Store the current product in the corresponding position in the result\n        result[currentIndex] = currentProduct;\n    }\n\n    return result;\n}\n",
+        "C#": "public class Solution\n{\n    public int[] ProductExceptSelfBruteForce(int[] numbers)\n    {\n        int arrayLength = numbers.Length;\n        int[] result = new int[arrayLength];\n\n        for (int i = 0; i < arrayLength; i++)\n        {\n            int currentProduct = 1;\n\n            // Need to calculate product excluding element at current index.\n            for (int j = 0; j < arrayLength; j++)\n            {\n                if (i != j)\n                {\n                    currentProduct *= numbers[j];\n                }\n            }\n\n            result[i] = currentProduct;\n        }\n\n        return result;\n    }\n}\n",
+        "Go": "package main\n\nfunc productExceptSelfBruteForce(numbers []int) []int {\n\tlengthOfNumbers := len(numbers)\n\tresult := make([]int, lengthOfNumbers)\n\n\tfor index := 0; index < lengthOfNumbers; index++ {\n\t\tproductForPosition := 1\n\n\t\t// Iterate through the array, excluding the current index.\n\t\tfor otherIndex := 0; otherIndex < lengthOfNumbers; otherIndex++ {\n\t\t\tif index == otherIndex {\n\t\t\t\tcontinue\n\t\t\t}\n\n\t\t\tproductForPosition *= numbers[otherIndex]\n\t\t}\n\n\t\t// Store the product in the corresponding result position.\n\t\tresult[index] = productForPosition\n\t}\n\n\treturn result\n}\n",
+        "Rust": "fn product_except_self_brute_force(numbers: Vec<i32>) -> Vec<i32> {\n    let array_length = numbers.len();\n    let mut result_array: Vec<i32> = vec![0; array_length];\n\n    for current_index in 0..array_length {\n      // Need to calculate product excluding element at current_index\n      let mut current_product = 1;\n      for other_index in 0..array_length {\n        if current_index != other_index {\n          current_product *= numbers[other_index];\n        }\n      }\n\n      // Store computed product in result_array\n      result_array[current_index] = current_product;\n    }\n\n    result_array\n  }",
+        "Kotlin": "fun productOfArrayExceptSelfBruteForce(numbers: IntArray): IntArray {\n    val lengthOfInputArray = numbers.size\n    val resultantArray = IntArray(lengthOfInputArray) \n\n    for (index in 0 until lengthOfInputArray) {\n      var productForCurrentIndex = 1\n\n      // Calculate product of all elements except the one at current index.\n      for (otherIndex in 0 until lengthOfInputArray) {\n        if (index != otherIndex) {\n          productForCurrentIndex *= numbers[otherIndex]\n        }\n      }\n\n      // Store the product in the corresponding index of result array.\n      resultantArray[index] = productForCurrentIndex\n    }\n\n    return resultantArray\n  }",
+        "Swift": "func productOfArrayExceptSelfBruteForce(numbers: [Int]) -> [Int] {\n    let numberOfElements = numbers.count\n    var result: [Int] = Array(repeating: 0, count: numberOfElements)\n\n    for index in 0..<numberOfElements {\n        var product = 1\n\n        // Calculate the product of all elements except the one at the current index.\n        for innerIndex in 0..<numberOfElements {\n            if index != innerIndex {\n                product *= numbers[innerIndex]\n            }\n        }\n\n        // Store the calculated product in the corresponding position.\n        result[index] = product\n    }\n\n    return result\n}",
+        "Ruby": "def product_except_self_brute_force(numbers)\n  number_count = numbers.length\n  result = Array.new(number_count)\n\n  for current_index in 0...number_count\n    product = 1\n\n    # Iterate through all indices to calculate product\n\n    for other_index in 0...number_count\n      if current_index != other_index\n        product *= numbers[other_index]\n      end\n    end\n\n    # Assign the calculated product to result array\n\n    result[current_index] = product\n  end\n\n  return result\nend",
+        "PHP": "<?php\nfunction productOfArrayExceptSelfBruteForce(array $numbers): array\n{\n    $length = count($numbers);\n    $result = [];\n\n    for ($i = 0; $i < $length; $i++) {\n        $product = 1;\n\n        // Calculate the product of all numbers except the current one\n        for ($j = 0; $j < $length; $j++) {\n            if ($i !== $j) {\n\n                //This step calculates the running product\n                $product *= $numbers[$j];\n            }\n        }\n\n        $result[$i] = $product;\n    }\n\n    return $result;\n}\n\n?>"
+      }
+    },
+    "optimal": {
+      "overview": "The efficient way to solve this problem avoids recalculating products repeatedly. Instead, it smartly builds up the answer by calculating prefix and suffix products. This approach reduces a lot of unnecessary work and gives you the final answer much faster.",
+      "steps": [
+        "First, calculate the product of all the numbers *before* each position. Store these in a new list.",
+        "Next, calculate the product of all the numbers *after* each position. Store these in another new list.",
+        "Finally, to get the result for each position, simply multiply the product of numbers before it with the product of numbers after it. This gives you the product of all numbers except the number at that position."
+      ],
+      "bigO": {
+        "runtimeValue": "O(n)",
+        "runtimeExplanation": "The algorithm iterates through the input array nums of size n three times. The first iteration calculates prefix products, the second calculates suffix products, and the third calculates the final result by multiplying corresponding prefix and suffix products. Each of these iterations performs a constant amount of work for each element in nums. Since the number of operations grows linearly with the input size n, the time complexity is O(n).",
+        "spaceValue": "O(N)",
+        "spaceExplanation": "The algorithm creates two new lists to store prefix products and suffix products respectively. Both the prefix products list and the suffix products list each have a size equal to the number of elements in the input array (N). Therefore, the auxiliary space required is proportional to the size of the input, resulting in O(N) space complexity."
+      },
+      "languages": [
+        "Python",
+        "JavaScript",
+        "TypeScript",
+        "Java",
+        "C++",
+        "C#",
+        "Go",
+        "Rust",
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "PHP"
+      ],
+      "code": {
+        "Python": "def product_except_self(numbers):\n    number_count = len(numbers)\n    prefix_products = [1] * number_count\n    suffix_products = [1] * number_count\n    result = [1] * number_count\n\n    # Calculate prefix products.\n    # Each element is the product of all elements before it.\n    for i in range(1, number_count):\n        prefix_products[i] = prefix_products[i - 1] * numbers[i - 1]\n\n    # Calculate suffix products.\n    # Each element is the product of all elements after it.\n    for i in range(number_count - 2, -1, -1):\n        suffix_products[i] = suffix_products[i + 1] * numbers[i + 1]\n\n    # Calculate the final result by multiplying prefix and suffix products.\n    for i in range(number_count):\n        result[i] = prefix_products[i] * suffix_products[i]\n\n    return result",
+        "JavaScript": "function productExceptSelf(numbers) {\n  const numberOfElements = numbers.length;\n  const productsBefore = new Array(numberOfElements).fill(1);\n  const productsAfter = new Array(numberOfElements).fill(1);\n  const result = new Array(numberOfElements).fill(1);\n\n  let runningProduct = 1;\n\n  // Calculate products before each element.\n  for (let i = 0; i < numberOfElements; i++) {\n    productsBefore[i] = runningProduct;\n    runningProduct *= numbers[i];\n  }\n\n  runningProduct = 1;\n\n  // Calculate products after each element.\n  for (let i = numberOfElements - 1; i >= 0; i--) {\n    productsAfter[i] = runningProduct;\n    runningProduct *= numbers[i];\n  }\n\n  // We multiply prefix and suffix products.\n  for (let i = 0; i < numberOfElements; i++) {\n    result[i] = productsBefore[i] * productsAfter[i];\n  }\n\n  return result;\n}\n",
+        "TypeScript": "function productExceptSelf(numbers: number[]): number[] {\n    const numberOfElements: number = numbers.length;\n    const prefixProducts: number[] = new Array(numberOfElements).fill(1);\n    const suffixProducts: number[] = new Array(numberOfElements).fill(1);\n    const result: number[] = new Array(numberOfElements).fill(1);\n\n    // Calculate prefix products.\n    // Each element is the product of all before it.\n    for (let index = 1; index < numberOfElements; index++) {\n      prefixProducts[index] = prefixProducts[index - 1] * numbers[index - 1];\n    }\n\n    // Calculate suffix products.\n    // Each element is the product of all after it.\n    for (let index = numberOfElements - 2; index >= 0; index--) {\n      suffixProducts[index] = suffixProducts[index + 1] * numbers[index + 1];\n    }\n\n    // Calculate the final result.\n    // Multiply prefix and suffix products.\n    for (let index = 0; index < numberOfElements; index++) {\n      result[index] = prefixProducts[index] * suffixProducts[index];\n    }\n\n    return result;\n  }",
+        "Java": "public class Solution {\n    public int[] productExceptSelf(int[] nums) {\n        int numberOfElements = nums.length;\n        int[] prefixProducts = new int[numberOfElements];\n        int[] suffixProducts = new int[numberOfElements];\n        int[] result = new int[numberOfElements];\n\n        // Calculate prefix products\n        prefixProducts[0] = 1;\n        for (int i = 1; i < numberOfElements; i++) {\n            prefixProducts[i] = prefixProducts[i - 1] * nums[i - 1];\n        }\n\n        // Calculate suffix products\n        suffixProducts[numberOfElements - 1] = 1;\n        for (int i = numberOfElements - 2; i >= 0; i--) {\n            suffixProducts[i] = suffixProducts[i + 1] * nums[i + 1];\n        }\n\n        // Multiply prefix and suffix products to get the final result\n        for (int i = 0; i < numberOfElements; i++) {\n            result[i] = prefixProducts[i] * suffixProducts[i];\n        }\n\n        return result;\n    }\n}\n",
+        "C++": "#include <vector>\n\nstd::vector<int> productExceptSelf(std::vector<int>& numbers) {\n    int numberOfElements = numbers.size();\n    std::vector<int> prefixProducts(numberOfElements, 1);\n    std::vector<int> suffixProducts(numberOfElements, 1);\n    std::vector<int> result(numberOfElements);\n\n    // Calculate prefix products\n    // Prefix product at i is product of all elements before i\n    for (int i = 1; i < numberOfElements; ++i) {\n        prefixProducts[i] = prefixProducts[i - 1] * numbers[i - 1];\n    }\n\n    // Calculate suffix products\n    // Suffix product at i is product of all elements after i\n    for (int i = numberOfElements - 2; i >= 0; --i) {\n        suffixProducts[i] = suffixProducts[i + 1] * numbers[i + 1];\n    }\n\n    // Calculate the final result\n    // Product at i is product of prefix and suffix products\n    for (int i = 0; i < numberOfElements; ++i) {\n        result[i] = prefixProducts[i] * suffixProducts[i];\n    }\n\n    return result;\n}\n",
+        "C#": "using System;\n\npublic class Solution\n{\n    public int[] ProductExceptSelf(int[] numbers)\n    {\n        int numberOfElements = numbers.Length;\n        int[] prefixProducts = new int[numberOfElements];\n        int[] suffixProducts = new int[numberOfElements];\n        int[] result = new int[numberOfElements];\n\n        // Calculate prefix products.\n        prefixProducts[0] = 1;\n        for (int i = 1; i < numberOfElements; i++)\n        {\n            prefixProducts[i] = prefixProducts[i - 1] * numbers[i - 1];\n        }\n\n        // Calculate suffix products.\n        suffixProducts[numberOfElements - 1] = 1;\n        for (int i = numberOfElements - 2; i >= 0; i--)\n        {\n            suffixProducts[i] = suffixProducts[i + 1] * numbers[i + 1];\n        }\n\n        // Calculate final result by multiplying prefix and suffix products.\n        for (int i = 0; i < numberOfElements; i++)\n        {\n            result[i] = prefixProducts[i] * suffixProducts[i];\n        }\n\n        return result;\n    }\n}\n",
+        "Go": "package main\n\nfunc productExceptSelf(numbers []int) []int {\n\tarrayLength := len(numbers)\n\n\tprefixProducts := make([]int, arrayLength)\n\tsuffixProducts := make([]int, arrayLength)\n\tresultArray := make([]int, arrayLength)\n\n\tprefixProducts[0] = 1\n\t// Calculate prefix products.\n\tfor i := 1; i < arrayLength; i++ {\n\t\tprefixProducts[i] = prefixProducts[i-1] * numbers[i-1]\n\t}\n\n\tsuffixProducts[arrayLength-1] = 1\n\t// Calculate suffix products.\n\tfor i := arrayLength - 2; i >= 0; i-- {\n\t\tsuffixProducts[i] = suffixProducts[i+1] * numbers[i+1]\n\t}\n\n\t// Calculate final result by multiplying prefix and suffix products.\n\tfor i := 0; i < arrayLength; i++ {\n\t\tresultArray[i] = prefixProducts[i] * suffixProducts[i]\n\t}\n\n\treturn resultArray\n}\n",
+        "Rust": "pub fn product_except_self(numbers: Vec<i32>) -> Vec<i32> {\n    let number_of_elements = numbers.len();\n    let mut prefix_products: Vec<i32> = vec![0; number_of_elements];\n    let mut suffix_products: Vec<i32> = vec![0; number_of_elements];\n    let mut results: Vec<i32> = vec![0; number_of_elements];\n\n    // Calculate prefix products.\n    prefix_products[0] = 1;\n    for i in 1..number_of_elements {\n        prefix_products[i] = prefix_products[i - 1] * numbers[i - 1];\n    }\n\n    // Calculate suffix products.\n    suffix_products[number_of_elements - 1] = 1;\n    for i in (0..number_of_elements - 1).rev() {\n        suffix_products[i] = suffix_products[i + 1] * numbers[i + 1];\n    }\n\n    // Multiply prefix and suffix products to get the final result.\n    // This avoids division and handles zero values correctly.\n    for i in 0..number_of_elements {\n        results[i] = prefix_products[i] * suffix_products[i];\n    }\n\n    results\n  }",
+        "Kotlin": "fun productExceptSelf(numbers: IntArray): IntArray {\n    val arrayLength = numbers.size\n    val prefixProducts = IntArray(arrayLength) { 1 }\n    val suffixProducts = IntArray(arrayLength) { 1 }\n    val result = IntArray(arrayLength)\n\n    // Calculate prefix products\n    for (index in 1 until arrayLength) {\n      prefixProducts[index] = prefixProducts[index - 1] * numbers[index - 1]\n    }\n\n    // Calculate suffix products\n    for (index in arrayLength - 2 downTo 0) {\n      suffixProducts[index] = suffixProducts[index + 1] * numbers[index + 1]\n    }\n\n    // Need to multiply prefix and suffix to get result.\n    for (index in 0 until arrayLength) {\n      result[index] = prefixProducts[index] * suffixProducts[index]\n    }\n\n    return result\n  }",
+        "Swift": "func productExceptSelf(numbers: [Int]) -> [Int] {\n    let numberOfElements = numbers.count\n    var prefixProducts = Array(repeating: 1, count: numberOfElements)\n    var suffixProducts = Array(repeating: 1, count: numberOfElements)\n    var result = Array(repeating: 1, count: numberOfElements)\n\n    // Calculate prefix products.\n    // This is needed to get product before each element.\n    for i in 1..<numberOfElements {\n        prefixProducts[i] = prefixProducts[i - 1] * numbers[i - 1]\n    }\n\n    // Calculate suffix products.\n    // This is needed to get product after each element.\n    for i in (0..<numberOfElements - 1).reversed() {\n        suffixProducts[i] = suffixProducts[i + 1] * numbers[i + 1]\n    }\n\n    // Multiply prefix and suffix products to get the final result.\n    for i in 0..<numberOfElements {\n        result[i] = prefixProducts[i] * suffixProducts[i]\n    }\n\n    return result\n}\n",
+        "Ruby": "def product_except_self(numbers)\n  number_of_elements = numbers.length\n  prefix_products = Array.new(number_of_elements, 1)\n  suffix_products = Array.new(number_of_elements, 1)\n  result = Array.new(number_of_elements)\n\n  # Calculate prefix products.\n  for i in 1...number_of_elements\n    prefix_products[i] = prefix_products[i - 1] * numbers[i - 1]\n  end\n\n  # Calculate suffix products.\n  # Iterate backwards to calculate products after the current index.\n  for i in (number_of_elements - 2).downto(0)\n    suffix_products[i] = suffix_products[i + 1] * numbers[i + 1]\n  end\n\n  # Calculate the final result.\n  # Multiply corresponding prefix and suffix products.\n  for i in 0...number_of_elements\n    result[i] = prefix_products[i] * suffix_products[i]\n  end\n\n  result\nend\n",
+        "PHP": "<?php\nfunction productExceptSelf(array $numbers): array {\n    $arrayLength = count($numbers);\n    $prefixProducts = array_fill(0, $arrayLength, 1);\n    $suffixProducts = array_fill(0, $arrayLength, 1);\n    $result = array_fill(0, $arrayLength, 1);\n\n    // Calculate prefix products.\n    // This helps accumulate products from the left.\n    for ($i = 1; $i < $arrayLength; $i++) {\n        $prefixProducts[$i] = $prefixProducts[$i - 1] * $numbers[$i - 1];\n    }\n\n    // Calculate suffix products.\n    // Accumulates products from the right end of the array.\n    for ($i = $arrayLength - 2; $i >= 0; $i--) {\n        $suffixProducts[$i] = $suffixProducts[$i + 1] * $numbers[$i + 1];\n    }\n\n    // Calculate the final result by multiplying prefix and suffix products.\n    // Combines left and right products excluding the current element.\n    for ($i = 0; $i < $arrayLength; $i++) {\n        $result[$i] = $prefixProducts[$i] * $suffixProducts[$i];\n    }\n\n    return $result;\n}\n?>"
+      }
+    }
+  }
+}
